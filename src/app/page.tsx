@@ -8,8 +8,9 @@ const Contact = lazy(() => import("@/components/Contact"));
 const Footer = lazy(() => import("@/components/Footer"));
 const FAQ = lazy(() => import("@/components/FAQ"));
 
-// Import critical CSS component
+// Import critical CSS and preload components
 import CriticalCSS from "@/components/CriticalCSS";
+import PreloadResources from "@/components/PreloadResources";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
@@ -439,17 +440,16 @@ export default function Home() {
   return (
     <div className="relative" key={language}>
       <CriticalCSS />
+      <PreloadResources />
       <main>
       <Suspense fallback={<div className="hero-section"><div className="hero-title">Loading...</div></div>}>
         <ShaderBackground>
-          <Suspense fallback={<div className="hero-section"><div className="hero-title">Loading Hero...</div></div>}>
-            <Hero language={language} />
-          </Suspense>
+          <Hero language={language} />
         </ShaderBackground>
       </Suspense>
 
       {/* Global Presence Section */}
-        <section className="py-20 md:py-32 bg-neutral-50 dark:bg-[#0D1B2A] relative overflow-hidden">
+        <section className="global-presence-section py-20 md:py-32 bg-neutral-50 dark:bg-[#0D1B2A] relative overflow-hidden">
           {/* Simplified background - removed decorative elements to reduce DOM */}
           
           <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -625,7 +625,7 @@ export default function Home() {
           </div>
           
           {/* Simplified Grid Cards Container - Reduced DOM complexity */}
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="services-grid max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {content.services.map((service, index) => (
               <motion.div
                 key={index}
@@ -697,7 +697,7 @@ export default function Home() {
           </div>
           
           {/* Simplified Desktop Grid - Reduced DOM complexity */}
-          <div className="hidden lg:grid lg:grid-cols-2 xl:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="advantages-grid hidden lg:grid lg:grid-cols-2 xl:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {advantages.items.map((item, index) => (
               <motion.div
                 key={index}

@@ -51,16 +51,16 @@ export default function Hero({ language }: HeroProps) {
 
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-5xl mx-auto text-center space-y-8">
-          {/* Badge */}
-          <div className="animate-fade-in-up opacity-0 [animation-delay:100ms]">
+          {/* Badge - Remove animation delays for LCP optimization */}
+          <div className="opacity-100">
             <Badge variant="secondary" className="px-4 py-2 text-sm font-medium rounded-full inline-flex items-center space-x-2">
               <Sparkles className="h-4 w-4" />
               <span>{t.badge}</span>
             </Badge>
           </div>
 
-          {/* Headline */}
-          <h1 className="animate-fade-in-up opacity-0 [animation-delay:200ms] text-white/70">
+          {/* Headline - Critical LCP element - no delays */}
+          <h1 className="opacity-100 text-white/70">
             {t.headline}
             <PointerHighlight
               rectangleClassName="bg-green-100/30 dark:bg-green-900 border-green-100/30 dark:border-green-700 leading-loose"
@@ -73,13 +73,13 @@ export default function Hero({ language }: HeroProps) {
             </PointerHighlight>
           </h1>
 
-          {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto animate-fade-in-up opacity-0 [animation-delay:300ms] text-white">
+          {/* Subheadline - No delays */}
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto opacity-100 text-white">
             {t.subheadline}
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up opacity-0 [animation-delay:400ms]">
+          {/* CTA Buttons - No delays */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-100">
             <Button size="lg" className="rounded-full px-8 text-base shadow-lg hover:shadow-xl transition-all duration-300 group" asChild>
               <Link href="/contact">
                 {t.ctaPrimary}

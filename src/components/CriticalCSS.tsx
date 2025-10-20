@@ -4,8 +4,9 @@ import { useEffect } from 'react';
 
 export default function CriticalCSS() {
   useEffect(() => {
-    // Inject critical CSS for above-the-fold content
+    // Inject critical CSS immediately for LCP optimization
     const criticalCSS = `
+      /* Critical above-the-fold styles - no animations to prevent render delay */
       .hero-section {
         background: linear-gradient(135deg, #163C2E 0%, #239D89 100%);
         min-height: 65vh;
@@ -19,34 +20,25 @@ export default function CriticalCSS() {
         color: white;
         text-align: center;
         margin-bottom: 1rem;
-        opacity: 0;
-        animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        opacity: 1;
+        /* Remove animation delay to prevent render blocking */
       }
       .hero-subtitle {
         font-size: 1.25rem;
         color: rgba(255, 255, 255, 0.8);
         text-align: center;
         margin-bottom: 2rem;
-        opacity: 0;
-        animation: fadeInUp 0.8s ease-out 0.4s forwards;
+        opacity: 1;
+        /* Remove animation delay to prevent render blocking */
       }
       .hero-buttons {
         display: flex;
         gap: 1rem;
         justify-content: center;
-        opacity: 0;
-        animation: fadeInUp 0.8s ease-out 0.6s forwards;
+        opacity: 1;
+        /* Remove animation delay to prevent render blocking */
       }
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+      /* Optimized loading states */
       .loading-skeleton {
         background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
         background-size: 200% 100%;
@@ -56,6 +48,17 @@ export default function CriticalCSS() {
         0% { background-position: 200% 0; }
         100% { background-position: -200% 0; }
       }
+      /* Prevent layout shifts */
+      .global-presence-section {
+        min-height: 500px;
+        contain: layout;
+      }
+      .services-grid {
+        contain: layout;
+      }
+      .advantages-grid {
+        contain: layout;
+      }
     `;
 
     const style = document.createElement('style');
@@ -63,7 +66,9 @@ export default function CriticalCSS() {
     document.head.appendChild(style);
 
     return () => {
-      document.head.removeChild(style);
+      if (document.head.contains(style)) {
+        document.head.removeChild(style);
+      }
     };
   }, []);
 
