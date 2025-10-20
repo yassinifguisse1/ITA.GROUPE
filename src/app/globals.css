@@ -1,0 +1,414 @@
+/* Updated: 2025-10-20T14:46:34.987Z */
+/* Updated: 2025-10-20T14:37:15.135Z */
+/* Updated: 2025-10-20T11:47:48.575Z */
+/* Updated: 2025-10-20T11:06:21.728Z */
+/* Updated: 2025-10-19T18:48:06.576Z */
+/* Updated: 2025-10-19T17:37:45.448Z */
+/* Updated: 2025-10-19T13:26:40.800Z */
+/* Updated: 2025-10-19T13:26:17.244Z */
+/* Updated: 2025-10-18T14:36:57.696Z */
+/* Updated: 2025-10-18T14:36:29.267Z */
+/* Updated: 2025-10-18T12:04:58.961Z */
+/* Updated: 2025-10-18T11:03:47.042Z */
+/* Updated: 2025-10-18T07:56:29.965Z */
+/* Updated: 2025-10-18T07:55:41.570Z */
+/* Updated: 2025-10-17T21:00:19.139Z */
+/* Updated: 2025-10-17T14:07:33.618Z */
+/* Updated: 2025-10-17T12:32:10.811Z */
+/* Updated: 2025-10-17T12:08:42.497Z */
+/* Updated: 2025-10-17T11:40:10.727Z */
+/* Updated: 2025-10-17T10:31:01.357Z */
+/* Updated: 2025-10-16T20:29:21.386Z */
+/* Updated: 2025-10-16T10:57:42.294Z */
+/* Updated: 2025-10-15T17:46:04.792Z */
+/* Updated: 2025-10-15T11:44:28.526Z */
+/* Updated: 2025-10-15T09:55:10.776Z */
+/* Updated: 2025-10-14T16:52:22.608Z */
+/* Updated: 2025-10-14T15:38:27.046Z */
+/* Updated: 2025-10-13T21:47:25.454Z */
+/* Updated: 2025-10-13T12:33:45.023Z */
+/* Updated: 2025-10-13T10:43:44.409Z */
+/* Updated: 2025-10-13T10:43:10.852Z */
+/* Updated: 2025-10-13T09:17:29.591Z */
+/* Updated: 2025-10-13T09:17:23.382Z */
+/* Updated: 2025-10-13T00:00:25.419Z */
+/* Updated: 2025-10-12T23:53:10.527Z */
+/* Updated: 2025-10-12T22:56:11.851Z */
+/* Updated: 2025-10-12T15:44:27.636Z */
+/* Updated: 2025-10-12T13:39:21.037Z */
+/* Updated: 2025-10-10T18:00:33.632Z */
+/* Updated: 2025-10-10T11:56:48.941Z */
+/* Updated: 2025-10-10T11:56:44.372Z */
+/* Updated: 2025-10-10T11:26:11.811Z */
+/* Updated: 2025-10-10T11:03:01.147Z */
+/* Updated: 2025-10-10T10:44:09.278Z */
+/* Updated: 2025-10-09T23:51:29.078Z */
+/* Updated: 2025-10-09T17:18:08.076Z */
+/* Updated: 2025-10-09T17:17:19.410Z */
+/* Updated: 2025-10-09T16:54:07.485Z */
+/* Updated: 2025-10-09T16:49:06.535Z */
+/* Updated: 2025-10-09T14:45:37.600Z */
+/* Updated: 2025-10-09T10:37:18.763Z */
+/* Updated: 2025-10-09T10:37:05.148Z */
+/* Updated: 2025-10-08T17:23:07.435Z */
+/* Updated: 2025-10-08T16:04:48.759Z */
+/* Updated: 2025-10-08T15:53:31.308Z */
+/* Updated: 2025-10-08T15:52:44.203Z */
+/* Updated: 2025-10-08T10:40:12.299Z */
+/* Updated: 2025-10-07T23:27:09.984Z */
+/* Updated: 2025-10-07T23:26:34.011Z */
+/* Updated: 2025-10-07T19:29:28.545Z */
+/* Updated: 2025-10-07T18:08:16.548Z */
+/* Updated: 2025-10-07T18:07:06.244Z */
+/* Updated: 2025-10-07T17:38:50.321Z */
+/* Updated: 2025-10-07T14:41:02.006Z */
+/* Updated: 2025-10-07T14:39:12.455Z */
+/* Updated: 2025-10-07T14:36:53.996Z */
+/* Updated: 2025-10-07T13:55:05.031Z */
+/* Updated: 2025-10-07T13:51:31.406Z */
+/* Updated: 2025-10-07T13:46:03.609Z */
+/* Updated: 2025-10-07T12:36:09.784Z */
+/* Updated: 2025-10-07T12:20:06.397Z */
+/* Updated: 2025-10-07T10:36:43.132Z */
+/* Updated: 2025-10-07T03:02:04.939Z */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: 'Inter', var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: 'Space Grotesk', sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.18 0.05 170);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.05 170);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.05 170);
+  --primary: oklch(0.30 0.08 170);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.55 0.12 175);
+  --secondary-foreground: oklch(0.99 0 0);
+  --muted: oklch(0.96 0.01 170);
+  --muted-foreground: oklch(0.50 0 0);
+  --accent: oklch(0.55 0.12 175);
+  --accent-foreground: oklch(0.99 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.90 0.02 170);
+  --input: oklch(0.90 0.02 170);
+  --ring: oklch(0.30 0.08 170);
+  --chart-1: oklch(0.30 0.08 170);
+  --chart-2: oklch(0.55 0.12 175);
+  --chart-3: oklch(0.40 0.10 172);
+  --chart-4: oklch(0.65 0.14 178);
+  --chart-5: oklch(0.45 0.11 173);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.18 0.05 170);
+  --sidebar-primary: oklch(0.30 0.08 170);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.30 0.08 170);
+  --sidebar-border: oklch(0.90 0.02 170);
+  --sidebar-ring: oklch(0.708 0 0);
+  
+  /* iTA Groupe Brand Colors */
+  --brand-primary: #163C2E;
+  --brand-secondary: #239D89;
+  
+  /* Custom Design Tokens */
+  --gradient-primary: linear-gradient(135deg, #163C2E 0%, #239D89 100%);
+  --gradient-secondary: linear-gradient(135deg, rgba(35, 157, 137, 0.1) 0%, rgba(22, 60, 46, 0.1) 100%);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.03);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+  --spacing-section: 6rem;
+  --spacing-section-sm: 4rem;
+}
+
+.dark {
+  --background: oklch(0.09 0 0);
+  --foreground: oklch(0.99 0 0);
+  --card: oklch(0.13 0 0);
+  --card-foreground: oklch(0.99 0 0);
+  --popover: oklch(0.13 0 0);
+  --popover-foreground: oklch(0.99 0 0);
+  --primary: oklch(0.55 0.12 175);
+  --primary-foreground: oklch(0.09 0 0);
+  --secondary: oklch(0.30 0.08 170);
+  --secondary-foreground: oklch(0.99 0 0);
+  --muted: oklch(0.17 0.01 170);
+  --muted-foreground: oklch(0.60 0 0);
+  --accent: oklch(0.55 0.12 175);
+  --accent-foreground: oklch(0.09 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(0.22 0.02 170);
+  --input: oklch(0.22 0.02 170);
+  --ring: oklch(0.55 0.12 175);
+  --chart-1: oklch(0.55 0.12 175);
+  --chart-2: oklch(0.30 0.08 170);
+  --chart-3: oklch(0.45 0.11 173);
+  --chart-4: oklch(0.65 0.14 178);
+  --chart-5: oklch(0.40 0.10 172);
+  --sidebar: oklch(0.18 0.05 170);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.55 0.12 175);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.24 0.06 170);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+  
+  /* Dark Mode Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.6), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+  }
+  
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+  
+  h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+  
+  p {
+    line-height: 1.7;
+    font-weight: 400;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Smooth Scroll Sections */
+  section {
+    scroll-margin-top: 5rem;
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-320px * 6 - 1.5rem * 6));
+    }
+  }
+  
+  @keyframes scroll-large {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-500px * 6 - 2rem * 6));
+    }
+  }
+  
+  @keyframes scroll-testimonials {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-380px * 6 - 1.5rem * 6));
+    }
+  }
+  
+  .animate-scroll {
+    animation: scroll 30s linear infinite;
+  }
+  
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
+  
+  .animate-scroll-large {
+    animation: scroll-large 40s linear infinite;
+  }
+  
+  .animate-scroll-large:hover {
+    animation-play-state: paused;
+  }
+  
+  .animate-scroll-testimonials {
+    animation: scroll-testimonials 40s linear infinite;
+  }
+  
+  .animate-scroll-testimonials:hover {
+    animation-play-state: paused;
+  }
+  
+  /* Custom Animations */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scale-in 0.4s ease-out forwards;
+  }
+  
+  /* Gradient Text - Updated for iTA Groupe */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Glass Effect */
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  
+  .dark .glass-effect {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Animated Gradient Background - Updated for iTA Groupe */
+  .gradient-bg {
+    background: linear-gradient(
+      -45deg,
+      rgba(22, 60, 46, 0.05),
+      rgba(35, 157, 137, 0.08),
+      rgba(22, 60, 46, 0.03),
+      rgba(35, 157, 137, 0.05)
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+  
+  .dark .gradient-bg {
+    background: linear-gradient(
+      -45deg,
+      rgba(22, 60, 46, 0.2),
+      rgba(35, 157, 137, 0.15),
+      rgba(22, 60, 46, 0.1),
+      rgba(35, 157, 137, 0.12)
+    );
+    background-size: 400% 400%;
+  }
+}
+
+/* Hide Next.js error overlay portal */
+nextjs-portal {
+  display: none !important;
+}
