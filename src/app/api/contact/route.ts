@@ -1,11 +1,78 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Create validation schemas for each language
+const createValidationSchema = (language: "en" | "fr" | "pl") => {
+  const messages = {
+    en: {
+      fullName: "Full name must be at least 2 characters",
+      email: "Please enter a valid email address",
+      phone: "Please enter a valid phone number",
+      subject: "Subject must be at least 5 characters",
+      service: "Please select a service",
+      message: "Message must be at least 10 characters",
+    },
+    fr: {
+      fullName: "Le nom complet doit contenir au moins 2 caractères",
+      email: "Veuillez entrer une adresse email valide",
+      phone: "Veuillez entrer un numéro de téléphone valide",
+      subject: "Le sujet doit contenir au moins 5 caractères",
+      service: "Veuillez sélectionner un service",
+      message: "Le message doit contenir au moins 10 caractères",
+    },
+    pl: {
+      fullName: "Imię i nazwisko musi mieć co najmniej 2 znaki",
+      email: "Proszę podać prawidłowy adres email",
+      phone: "Proszę podać prawidłowy numer telefonu",
+      subject: "Temat musi mieć co najmniej 5 znaków",
+      service: "Proszę wybrać usługę",
+      message: "Wiadomość musi mieć co najmniej 10 znaków",
+    }
+  };
+
+  const msg = messages[language];
+
+  return z.object({
+    fullName: z.string().min(2, msg.fullName),
+    email: z.string().email(msg.email),
+    phone: z.string().optional().refine((val) => {
+      if (!val) return true; // Optional field
+      const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+      return phoneRegex.test(val.replace(/[\s\-\(\)]/g, ''));
+    }, msg.phone),
+    company: z.string().optional(),
+    subject: z.string().min(5, msg.subject),
+    service: z.string().min(1, msg.service),
+    budget: z.string().optional(),
+    timeline: z.string().optional(),
+    message: z.string().min(10, msg.message),
+  });
+};
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+    
+    // Extract language from request body or default to English
+    const language = body.language || 'en';
+    
+    // Validate the request body with language-specific schema
+    const validationSchema = createValidationSchema(language as "en" | "fr" | "pl");
+    const validationResult = validationSchema.safeParse(body);
+    
+    if (!validationResult.success) {
+      return NextResponse.json(
+        { 
+          error: 'Validation failed', 
+          details: validationResult.error.issues 
+        },
+        { status: 400 }
+      );
+    }
+
     const { 
       fullName, 
       email, 
@@ -16,20 +83,16 @@ export async function POST(request: NextRequest) {
       budget, 
       timeline, 
       message 
-    } = body;
+    } = validationResult.data;
 
-    // Validate required fields
-    if (!fullName || !email || !subject || !service || !message) {
-      return NextResponse.json(
-        { error: 'Missing required fields' },
-        { status: 400 }
-      );
-    }
-
-    // Send email using Resend
+    // Send email using Resend (following official documentation format)
+    console.log('📧 Sending email to:', 'hello.itagroupe@gmail.com');
+    console.log('📧 From:', 'ITA Groupe Contact <noreply@itagroupe.com>');
+    console.log('📧 Subject:', `New Contact Form Submission: ${subject}`);
+    
     const { data, error } = await resend.emails.send({
-      from: 'ITA Groupe Contact <onboarding@resend.dev>',
-      to: ['hello.itagroupe@gmail.com'], // Using verified email for testing
+      from: 'ITA Groupe Contact <noreply@itagroupe.com>',
+      to: ['hello.itagroupe@gmail.com'],
       replyTo: email,
       subject: `New Contact Form Submission: ${subject}`,
       html: `
@@ -154,7 +217,7 @@ export async function POST(request: NextRequest) {
               ` : ''}
               
               <div class="field">
-                <div class="label">Message</div>
+                <div class="label">Project Details</div>
                 <div class="message-box">${message}</div>
               </div>
               
@@ -169,15 +232,23 @@ export async function POST(request: NextRequest) {
     });
 
     if (error) {
-      console.error('Resend error:', error);
+      console.error('❌ Resend error:', error);
       return NextResponse.json(
-        { error: 'Failed to send email', details: error },
+        { 
+          error: 'Failed to send email',
+          details: error.message || 'Unknown error'
+        },
         { status: 500 }
       );
     }
 
+    console.log('✅ Email sent successfully:', data?.id);
     return NextResponse.json(
-      { success: true, message: 'Email sent successfully', id: data?.id },
+      { 
+        success: true, 
+        message: 'Email sent successfully', 
+        id: data?.id 
+      },
       { status: 200 }
     );
   } catch (error) {

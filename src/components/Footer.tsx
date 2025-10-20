@@ -117,9 +117,9 @@ const footerContent = {
 };
 
 const socialLinks = [
-  { icon: Linkedin, href: "https://linkedin.com/company/itagroupe", label: "LinkedIn" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/itagroupe", label: "LinkedIn" },
   { icon: Facebook, href: "https://facebook.com/itagroupe", label: "Facebook" },
-  { icon: Instagram, href: "https://instagram.com/itagroupe", label: "Instagram" },
+  { icon: Instagram, href: "https://www.instagram.com/ita.groupe/", label: "Instagram" },
 ];
 
 export default function Footer({ language = "en" }: FooterProps) {

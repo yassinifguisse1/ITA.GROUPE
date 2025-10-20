@@ -66,10 +66,8 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* Contact Form Section */}
-        <section className="py-20">
-          <Contact language={language} />
-        </section>
+        {/* Contact Form Section - Enhanced Form */}
+        <Contact language={language} />
 
         {/* FAQ Section */}
         <FAQ 
