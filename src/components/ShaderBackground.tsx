@@ -12,8 +12,29 @@ interface ShaderBackgroundProps {
 export default function ShaderBackground({ children }: ShaderBackgroundProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [isActive, setIsActive] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
+    // Only initialize when component is visible
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!isVisible) return
+
     const handleMouseEnter = () => setIsActive(true)
     const handleMouseLeave = () => setIsActive(false)
 
@@ -29,7 +50,7 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
         container.removeEventListener("mouseleave", handleMouseLeave)
       }
     }
-  }, [])
+  }, [isVisible])
 
   return (
     <div ref={containerRef} className="min-h-[65vh] bg-black relative overflow-hidden">
@@ -61,17 +82,21 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
         </defs>
       </svg>
 
-      {/* Background Shaders */}
-      <MeshGradient
-        className="absolute inset-0 w-full h-full"
-        colors={["#163C2E", " #239D89", "#239D89", "#163C2E", "#163C2E"]}
-        speed={0.3}
-      />
-      <MeshGradient
-        className="absolute inset-0 w-full h-full opacity-60"
-        colors={["#163C2E", "#163C2E", " #163C2E", "#239D89"]}
-        speed={0.2}
-      />
+      {/* Background Shaders - Only render when visible */}
+      {isVisible && (
+        <>
+          <MeshGradient
+            className="absolute inset-0 w-full h-full"
+            colors={["#163C2E", " #239D89", "#239D89", "#163C2E", "#163C2E"]}
+            speed={0.3}
+          />
+          <MeshGradient
+            className="absolute inset-0 w-full h-full opacity-60"
+            colors={["#163C2E", "#163C2E", " #163C2E", "#239D89"]}
+            speed={0.2}
+          />
+        </>
+      )}
 
       {children}
     </div>

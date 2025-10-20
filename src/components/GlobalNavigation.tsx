@@ -11,7 +11,7 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import { useLanguage } from "@/context/LanguageContext";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { Globe, ChevronDown } from "lucide-react";
 
@@ -34,6 +34,7 @@ export default function GlobalNavigation() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null);
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
+  const languageDropdownRef = useRef<HTMLDivElement>(null);
 
   const languages = [
     { code: "en", name: "English", flag: "🇬🇧" },
@@ -44,6 +45,23 @@ export default function GlobalNavigation() {
   const getCurrentLanguage = () => {
     return languages.find(lang => lang.code === language) || languages[0];
   };
+
+  // Close language dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (languageDropdownRef.current && !languageDropdownRef.current.contains(event.target as Node)) {
+        setLanguageDropdownOpen(false);
+      }
+    };
+
+    if (languageDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [languageDropdownOpen]);
 
   const navItems: NavigationStructure = {
     en: [
@@ -258,9 +276,13 @@ export default function GlobalNavigation() {
         </div>
         <div className="flex items-center gap-3">
           {/* Language Dropdown - Click Only */}
-          <div className="relative">
+          <div className="relative" ref={languageDropdownRef}>
             <button
-              onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setLanguageDropdownOpen(!languageDropdownOpen);
+              }}
               className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors rounded-lg hover:bg-accent"
               aria-label="Select language"
               type="button"
@@ -281,7 +303,9 @@ export default function GlobalNavigation() {
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
-                      onClick={() => {
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
                         setLanguage(lang.code as "en" | "fr" | "pl");
                         setLanguageDropdownOpen(false);
                       }}

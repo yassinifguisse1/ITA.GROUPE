@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion } from "motion/react";
 import DottedMap from "dotted-map";
 import { useTheme } from "next-themes";
@@ -17,17 +17,45 @@ export default function WorldMap({
   dots = [],
   lineColor = "#239D89",
 }: MapProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
-  const map = new DottedMap({ height: 100, grid: "diagonal" });
-
+  const [isVisible, setIsVisible] = useState(false);
   const { theme } = useTheme();
 
-  const svgMap = map.getSVG({
+  // Only create map when visible
+  const map = isVisible ? new DottedMap({ height: 100, grid: "diagonal" }) : null;
+
+  const svgMap = map ? map.getSVG({
     radius: 0.22,
     color: theme === "dark" ? "#FFFFFF40" : "#00000040",
     shape: "circle",
     backgroundColor: theme === "dark" ? "black" : "white",
-  });
+  }) : null;
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    // Fallback: make visible after a short delay if intersection observer doesn't work
+    const fallbackTimer = setTimeout(() => {
+      setIsVisible(true);
+    }, 1000);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(fallbackTimer);
+    };
+  }, []);
 
   const projectPoint = (lat: number, lng: number) => {
     const x = (lng + 180) * (800 / 360);
@@ -44,8 +72,16 @@ export default function WorldMap({
     return `M ${start.x} ${start.y} Q ${midX} ${midY} ${end.x} ${end.y}`;
   };
 
+  if (!isVisible || !svgMap) {
+    return (
+      <div ref={containerRef} className="w-full aspect-[2/1] dark:bg-black bg-white rounded-lg relative font-sans flex items-center justify-center">
+        <div className="animate-pulse text-gray-400">Loading map...</div>
+      </div>
+    );
+  }
+
   return (
-    <div className="w-full aspect-[2/1] dark:bg-black bg-white rounded-lg relative font-sans">
+    <div ref={containerRef} className="w-full aspect-[2/1] dark:bg-black bg-white rounded-lg relative font-sans">
       <img
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
         className="h-full w-full [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)] pointer-events-none select-none"

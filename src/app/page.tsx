@@ -7,9 +7,6 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import { useLanguage } from "@/context/LanguageContext";
-import ShaderBackground from "@/components/ShaderBackground"
-import {StickyScrollRevealDemo} from "@/components/StickyScrollRevealDemo"
-import WorldMap from "@/components/ui/world-map"
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { ArrowUpRight } from "lucide-react"
@@ -17,8 +14,14 @@ import { useRouter } from "next/navigation"
 import { Calendar, Clock } from "lucide-react"
 import { getAllBlogPosts } from "@/lib/blog-data"
 import HiringBanner from "@/components/HiringBanner"
-import { useRef, useState, useEffect } from "react"
+import { useRef, useState, useEffect, lazy, Suspense } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import Image from "next/image"
+
+// Import components directly for now
+import ShaderBackground from "@/components/ShaderBackground";
+import { StickyScrollRevealDemo } from "@/components/StickyScrollRevealDemo";
+import WorldMap from "@/components/ui/world-map";
 
 const faqContent = {
   fr: [
@@ -480,7 +483,7 @@ export default function Home() {
               </div>
 
               {/* World Map */}
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -516,7 +519,7 @@ export default function Home() {
                   ]}
                   lineColor="#239D89"
                 />
-              </motion.div>
+              </motion.div> */}
 
               {/* Benefits Grid */}
               <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
@@ -864,10 +867,13 @@ export default function Home() {
                   <div className="flex flex-col h-full">
                     {/* Blog Image */}
                     <div className="relative aspect-video mb-6 overflow-hidden rounded-xl">
-                      <img 
+                      <Image 
                         src={post.image} 
                         alt={post.title[language]}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        priority={index === 0}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>

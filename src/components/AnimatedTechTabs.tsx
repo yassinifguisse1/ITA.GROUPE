@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -62,10 +63,10 @@ const AndroidSDKIcon = () => (
 );
 
 const MVVMIcon = () => (
-  <img
+  <Image
     src="https://cdn.prod.website-files.com/634e7b67c1fe784841792622/6399f143ef55e9a98edb836a_MVVM-logo.png"
-    loading="lazy"
-    width="42"
+    width={42}
+    height={42}
     title="MVVM logo"
     alt="MVVM"
     className="w-full h-full object-contain"
@@ -93,9 +94,10 @@ const JavaIcon = () => (
 );
 
 const RxJavaIcon = () => (
-  <img
+  <Image
     src="https://cdn.prod.website-files.com/634e7b67c1fe784841792622/6399e0337b883955dbb39713_RxSwift-logo.png"
-    loading="lazy"
+    width={42}
+    height={42}
     title="RxJava logo"
     alt="RxJava"
     className="w-full h-full object-contain"
@@ -256,9 +258,10 @@ const SwiftIcon = () => (
   </svg>
 );
 const ARKitIcon = () => (
-  <img src="https://cdn.prod.website-files.com/634e7b67c1fe784841792622/6399e12c0e4711248faad1bd_arkit-logo.png"
-    loading="lazy"
-    title="RxJava logo"
+  <Image src="https://cdn.prod.website-files.com/634e7b67c1fe784841792622/6399e12c0e4711248faad1bd_arkit-logo.png"
+    width={42}
+    height={42}
+    title="ARKit logo"
     alt="ARKit"
     className="w-full h-full object-contain" />
 );
@@ -281,10 +284,11 @@ const GoogleMapsIcon = () => (
 );
 
 const MapKitIcon = () => (
-  <img src="https://cdn.prod.website-files.com/634e7b67c1fe784841792622/6399e27da01227574ff74b7b_MapKit-logo.png"
-    loading="lazy"
-    title="RxJava logo"
-    alt="ARKit"
+  <Image src="https://cdn.prod.website-files.com/634e7b67c1fe784841792622/6399e27da01227574ff74b7b_MapKit-logo.png"
+    width={42}
+    height={42}
+    title="MapKit logo"
+    alt="MapKit"
     className="w-full h-full object-contain" />
 );
 
@@ -296,26 +300,29 @@ const MapBoxIcon = () => (
 );
 
 const CoreDataIcon = () => (
-  <img src="https://cdn.prod.website-files.com/634e7b67c1fe784841792622/6399eb81d7a136d257117ea7_CoreData-logo.png"
-    loading="lazy"
-    title="RxJava logo"
-    alt="ARKit"
+  <Image src="https://cdn.prod.website-files.com/634e7b67c1fe784841792622/6399eb81d7a136d257117ea7_CoreData-logo.png"
+    width={42}
+    height={42}
+    title="CoreData logo"
+    alt="CoreData"
     className="w-full h-full object-contain" />
 );
 
 const SwinjectIcon = () => (
-  <img src="https://cdn.prod.website-files.com/634e7b67c1fe784841792622/6399eef62bd42350ddaf133a_Swinject-logo.png"
-    loading="lazy"
-    title="RxJava logo"
-    alt="ARKit"
+  <Image src="https://cdn.prod.website-files.com/634e7b67c1fe784841792622/6399eef62bd42350ddaf133a_Swinject-logo.png"
+    width={42}
+    height={42}
+    title="Swinject logo"
+    alt="Swinject"
     className="w-full h-full object-contain" />
 );
 
 const CoreLocationIcon = () => (
-  <img src="https://cdn.prod.website-files.com/634e7b67c1fe784841792622/6399edcc3cb0845c77558457_CoreLocation-logo.png"
-    loading="lazy"
-    title="RxJava logo"
-    alt="ARKit"
+  <Image src="https://cdn.prod.website-files.com/634e7b67c1fe784841792622/6399edcc3cb0845c77558457_CoreLocation-logo.png"
+    width={42}
+    height={42}
+    title="CoreLocation logo"
+    alt="CoreLocation"
     className="w-full h-full object-contain" />
 );
 

@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 const showcaseContent = {
   fr: {
@@ -214,10 +215,13 @@ export function StickyScrollRevealDemo() {
               >
                 {/* Project Image */}
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <img 
+                  <Image 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={index < 2}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                   

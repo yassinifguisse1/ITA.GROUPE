@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -80,12 +81,12 @@ const PostmanIcon = () => (
 );
 
 const JMeterIcon = () => (
-  <img
+  <Image
     src="https://cdn.prod.website-files.com/634e7b67c1fe784841792622/6398853164d52c3b5cd7b4af_JM-icon.png"
-    loading="lazy"
-    width="42"
-    title="MVVM logo"
-    alt="MVVM"
+    width={42}
+    height={42}
+    title="JMeter logo"
+    alt="JMeter"
     className="w-full h-full object-contain"
   />
 );
@@ -136,12 +137,12 @@ const TestFairyIcon = () => (
 );
 
 const TestFlightIcon = () => (
-   <img
+   <Image
     src="https://cdn.prod.website-files.com/634e7b67c1fe784841792622/63988430613a27359a81a70b_testflight-icon.png"
-    loading="lazy"
-    width="42"
-    title="MVVM logo"
-    alt="MVVM"
+    width={42}
+    height={42}
+    title="TestFlight logo"
+    alt="TestFlight"
     className="w-full h-full object-contain"
   />
 );

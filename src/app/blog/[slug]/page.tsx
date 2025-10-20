@@ -2,6 +2,7 @@
 
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Calendar, Clock, User, ArrowLeft, Share2, Bookmark } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { getBlogPost, getAllBlogPosts } from "@/lib/blog-data";
@@ -130,10 +131,13 @@ export default function BlogPostPage() {
         <section className="px-4 mb-12">
           <div className="max-w-5xl mx-auto">
             <div className="relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
-              <img
+              <Image
                 src={post.image}
                 alt={post.title[language]}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+                priority
               />
             </div>
           </div>
@@ -185,10 +189,12 @@ export default function BlogPostPage() {
                     className="group bg-card border border-border rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                   >
                     <Link href={`/blog/${relatedPost.slug}`} className="block relative h-48 overflow-hidden">
-                      <img
+                      <Image
                         src={relatedPost.image}
                         alt={relatedPost.title[language]}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </Link>
                     <div className="p-6">

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Calendar, Clock, User, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { getAllBlogPosts, getBlogPostsByCategory, categories } from "@/lib/blog-data";
@@ -119,10 +120,12 @@ export default function BlogPage() {
                 >
                   {/* Image */}
                   <Link href={`/blog/${post.slug}`} className="block relative h-56 overflow-hidden">
-                    <img
+                    <Image
                       src={post.image}
                       alt={post.title[language]}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute top-4 left-4">
                       <span className="inline-block px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">

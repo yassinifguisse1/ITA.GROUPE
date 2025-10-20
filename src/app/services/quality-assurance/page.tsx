@@ -1,6 +1,6 @@
 "use client";
 
-import { Metadata } from "next";
+
 import { Bug, Shield, Zap, CheckCircle, CheckCircle2, ArrowRight, Phone, Sparkles, MapPin, Check, Trophy, UsersRound, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import Footer from "@/components/Footer";
 import Image from "next/image";
@@ -599,32 +599,32 @@ export default function QualityAssurancePage() {
     </svg>
   );
   const TestNGIcon = () => (
-    <img
+    <Image
       src="https://cdn.prod.website-files.com/634e7b67c1fe784841792622/63988b13af0dc1ae63469d5e_junit5-icon.png"
-      loading="lazy"
-      width="42"
-      title="MVVM logo"
-      alt="MVVM"
+      width={42}
+      height={42}
+      title="TestNG logo"
+      alt="TestNG"
       className="w-full h-full object-contain"
     />
   );
   const MavenIcon = () => (
-    <img
+    <Image
       src="https://cdn.prod.website-files.com/634e7b67c1fe784841792622/63988a9bc356935c7ef5a7e8_maven-logo.png"
-      loading="lazy"
-      width="42"
-      title="MVVM logo"
-      alt="MVVM"
+      width={42}
+      height={42}
+      title="Maven logo"
+      alt="Maven"
       className="w-full h-full object-contain"
     />
   );
   const AllureIcon = () => (
-    <img
+    <Image
       src="https://cdn.prod.website-files.com/634e7b67c1fe784841792622/63988b872186fbdf91f4e026_allure-icon.png"
-      loading="lazy"
-      width="42"
-      title="MVVM logo"
-      alt="MVVM"
+      width={42}
+      height={42}
+      title="Allure logo"
+      alt="Allure"
       className="w-full h-full object-contain"
     />
   );

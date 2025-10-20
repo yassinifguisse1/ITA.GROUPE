@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Linkedin, Facebook, Instagram } from "lucide-react";
 
 interface FooterProps {
@@ -132,10 +133,13 @@ export default function Footer({ language = "en" }: FooterProps) {
           {/* Brand Column */}
           <div className="lg:col-span-4">
             <Link href="/" className="flex items-center space-x-2 mb-6 group">
-              <img 
+              <Image 
                 src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/Untitled-design-29-1759847984982.png"
                 alt="iTA Groupe"
+                width={64}
+                height={64}
                 className="h-16 w-auto object-contain transform group-hover:scale-105 transition-transform duration-300"
+                priority
               />
             </Link>
             <p className="text-muted-foreground mb-6 max-w-sm leading-relaxed">

@@ -9,6 +9,7 @@ import { portfolioTranslations } from "@/i18n/page-translations";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function PortfolioPage() {
   const { language } = useLanguage();
@@ -131,10 +132,12 @@ export default function PortfolioPage() {
                     <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-neutral-100 to-neutral-200 dark:from-[#0D1B2A] dark:to-[#1E3A5F]">
                       {project.image ? (
                         <>
-                          <img 
+                          <Image 
                             src={project.image} 
                             alt={project.title}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </>
