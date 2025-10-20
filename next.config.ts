@@ -17,13 +17,14 @@ const nextConfig: NextConfig = {
     ],
   },
   outputFileTracingRoot: path.resolve(__dirname),
-  turbopack: {
-    rules: {
-      "*.{jsx,tsx}": {
-        loaders: [LOADER]
-      }
-    }
-  }
+  // Temporarily disabled custom loader for deployment
+  // turbopack: {
+  //   rules: {
+  //     "*.{jsx,tsx}": {
+  //       loaders: [LOADER]
+  //     }
+  //   }
+  // }
 };
 
 export default nextConfig;
