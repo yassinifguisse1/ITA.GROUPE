@@ -1,6 +1,5 @@
 "use client";
 
-import { Metadata } from "next";
 import Link from "next/link";
 import { Users, Zap, Shield, Globe, CheckCircle, CheckCircle2, ArrowRight, Phone, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import Footer from "@/components/Footer";
