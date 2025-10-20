@@ -84,18 +84,11 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
 
       {/* Background Shaders - Only render when visible */}
       {isVisible && (
-        <>
-          <MeshGradient
-            className="absolute inset-0 w-full h-full"
-            colors={["#163C2E", " #239D89", "#239D89", "#163C2E", "#163C2E"]}
-            speed={0.3}
-          />
-          <MeshGradient
-            className="absolute inset-0 w-full h-full opacity-60"
-            colors={["#163C2E", "#163C2E", " #163C2E", "#239D89"]}
-            speed={0.2}
-          />
-        </>
+        <MeshGradient
+          className="absolute inset-0 w-full h-full"
+          colors={["#163C2E", "#239D89", "#163C2E"]}
+          speed={0.2}
+        />
       )}
 
       {children}

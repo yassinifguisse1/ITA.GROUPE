@@ -1,11 +1,12 @@
 "use client";
 
-import Hero from "@/components/Hero";
-import Testimonials from "@/components/Testimonials";
-import CTA from "@/components/CTA";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import FAQ from "@/components/FAQ";
+// Lazy load all components for better performance
+const Hero = lazy(() => import("@/components/Hero"));
+const Testimonials = lazy(() => import("@/components/Testimonials"));
+const CTA = lazy(() => import("@/components/CTA"));
+const Contact = lazy(() => import("@/components/Contact"));
+const Footer = lazy(() => import("@/components/Footer"));
+const FAQ = lazy(() => import("@/components/FAQ"));
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
@@ -18,10 +19,10 @@ import { useRef, useState, useEffect, lazy, Suspense } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 
-// Import components directly for now
-import ShaderBackground from "@/components/ShaderBackground";
-import { StickyScrollRevealDemo } from "@/components/StickyScrollRevealDemo";
-import WorldMap from "@/components/ui/world-map";
+// Lazy load heavy components for better performance
+const ShaderBackground = lazy(() => import("@/components/ShaderBackground"));
+const StickyScrollRevealDemo = lazy(() => import("@/components/StickyScrollRevealDemo").then(module => ({ default: module.StickyScrollRevealDemo })));
+const WorldMap = lazy(() => import("@/components/ui/world-map"));
 
 const faqContent = {
   fr: [
@@ -435,9 +436,13 @@ export default function Home() {
   return (
     <div className="relative" key={language}>
       <main>
-      <ShaderBackground>
-        <Hero language={language} />
-      </ShaderBackground>
+      <Suspense fallback={<div className="min-h-[65vh] bg-black flex items-center justify-center"><div className="text-white">Loading...</div></div>}>
+        <ShaderBackground>
+          <Suspense fallback={<div className="min-h-[65vh] bg-black flex items-center justify-center"><div className="text-white">Loading Hero...</div></div>}>
+            <Hero language={language} />
+          </Suspense>
+        </ShaderBackground>
+      </Suspense>
 
       {/* Global Presence Section */}
         <section className="py-20 md:py-32 bg-neutral-50 dark:bg-[#0D1B2A] relative overflow-hidden">
@@ -561,17 +566,21 @@ export default function Home() {
               </div>
 
               {/* Bottom decorative line */}
-              <motion.div
+              
+            </div>
+          </div>
+          <motion.div
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.8 }}
                 className="mt-16 h-1 bg-gradient-to-r from-transparent via-[#239D89] to-transparent"
+                animate={{ scaleX: [0, 1, 0] }}
+                transition={{ duration: 1, delay: 0.8, repeat: Infinity, repeatType: "reverse" }}
               />
-            </div>
-          </div>
         </section>
-         <StickyScrollRevealDemo/>
+         <Suspense fallback={<div className="py-20 bg-gray-100 animate-pulse"><div className="container mx-auto px-4"><div className="h-64 bg-gray-300 rounded-lg"></div></div></div>}>
+           <StickyScrollRevealDemo/>
+         </Suspense>
              {/* We Provide Services Section */}
       <section className="py-20 md:py-32 bg-white dark:bg-[#0A1628] relative overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
@@ -663,6 +672,14 @@ export default function Home() {
             })}
           </div>
         </div>
+        <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                className="mt-16 h-1 bg-gradient-to-r from-transparent via-[#239D89] to-transparent"
+                animate={{ scaleX: [0, 1, 0] }}
+                transition={{ duration: 1, delay: 0.8, repeat: Infinity, repeatType: "reverse" }}
+              />
       </section>
 
       {/* Why Choose ITA Groupe Section - Desktop Overlapping Cards, Mobile Auto-Sliding */}
@@ -823,7 +840,16 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                className="mt-16 h-1 bg-gradient-to-r from-transparent via-[#239D89] to-transparent"
+                animate={{ scaleX: [0, 1, 0] }}
+                transition={{ duration: 1, delay: 0.8, repeat: Infinity, repeatType: "reverse" }}
+              />
       </section>
+    
 
       {/* Blog Section */}
       <section className="py-20 md:py-32 bg-neutral-50 dark:bg-[#0D1B2A] relative overflow-hidden">
@@ -913,11 +939,42 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                className="mt-16 h-1 bg-gradient-to-r from-transparent via-[#239D89] to-transparent"
+                animate={{ scaleX: [0, 1, 0] }}
+                transition={{ duration: 1, delay: 0.8, repeat: Infinity, repeatType: "reverse" }}
+              />
       </section>
+      
 
       {/* WE'RE HIRING Banner - MOVED HERE AFTER BLOG */}
       <HiringBanner />
-
+  
+       <Suspense fallback={<div className="py-20 bg-gray-100 animate-pulse"><div className="container mx-auto px-4"><div className="h-64 bg-gray-300 rounded-lg"></div></div></div>}>
+         <Testimonials language={language} />
+       </Suspense>
+       <motion.div
+                 initial={{ scaleX: 0 }}
+                 whileInView={{ scaleX: 1 }}
+                 viewport={{ once: true }}
+                 className="mt-16 h-1 bg-gradient-to-r from-transparent via-[#239D89] to-transparent"
+                 animate={{ scaleX: [0, 1, 0] }}
+                 transition={{ duration: 1, delay: 0.8, repeat: Infinity, repeatType: "reverse" }}
+               />
+       <Suspense fallback={<div className="py-20 bg-gray-100 animate-pulse"><div className="container mx-auto px-4"><div className="h-64 bg-gray-300 rounded-lg"></div></div></div>}>
+         <FAQ faqs={faqContent[language]} language={language} />
+       </Suspense>
+       <motion.div
+                 initial={{ scaleX: 0 }}
+                 whileInView={{ scaleX: 1 }}
+                 viewport={{ once: true }}
+                 className="mt-16 h-1 bg-gradient-to-r from-transparent via-[#239D89] to-transparent"
+                 animate={{ scaleX: [0, 1, 0] }}
+                 transition={{ duration: 1, delay: 0.8, repeat: Infinity, repeatType: "reverse" }}
+               />
       {/* Let's Work Together Section */}
       <section className="py-20 md:py-32 bg-white dark:bg-[#0A1628] relative overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
@@ -987,27 +1044,31 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Decorative Grid Pattern */}
+                {/* Simplified Decorative Pattern */}
                 <div className="absolute bottom-0 right-0 w-1/2 h-1/2 opacity-5">
-                  <div className="grid grid-cols-8 grid-rows-8 gap-2 h-full">
-                    {Array.from({ length: 64 }).map((_, i) => (
-                      <div key={i} className="bg-[#239D89] rounded-sm"></div>
-                    ))}
-                  </div>
+                  <div className="w-full h-full bg-gradient-to-br from-[#239D89]/20 to-transparent rounded-lg"></div>
                 </div>
               </div>
             </motion.div>
           </div>
         </div>
+        <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                className="mt-16 h-1 bg-gradient-to-r from-transparent via-[#239D89] to-transparent"
+                animate={{ scaleX: [0, 1, 0] }}
+                transition={{ duration: 1, delay: 0.8, repeat: Infinity, repeatType: "reverse" }}
+              />
       </section>
+     
        
-        
-        <Testimonials language={language} />
-        <FAQ faqs={faqContent[language]} language={language} />
-       
-        <CTA language={language} />
+      
+        {/* <CTA language={language} /> */}
       </main>
-      <Footer language={language} />
+        <Suspense fallback={<div className="h-32 bg-gray-100 animate-pulse"></div>}>
+          <Footer language={language} />
+        </Suspense>
     </div>
   );
 }

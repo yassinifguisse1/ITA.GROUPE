@@ -306,6 +306,14 @@ export function StickyScrollRevealDemo() {
           </motion.div>
         </div>
       </div>
+      <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                className="mt-16 h-1 bg-gradient-to-r from-transparent via-[#239D89] to-transparent"
+                animate={{ scaleX: [0, 1, 0] }}
+                transition={{ duration: 1, delay: 0.8, repeat: Infinity, repeatType: "reverse" }}
+              />
     </section>
   );
 }
