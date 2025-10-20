@@ -7,6 +7,9 @@ const CTA = lazy(() => import("@/components/CTA"));
 const Contact = lazy(() => import("@/components/Contact"));
 const Footer = lazy(() => import("@/components/Footer"));
 const FAQ = lazy(() => import("@/components/FAQ"));
+
+// Import critical CSS component
+import CriticalCSS from "@/components/CriticalCSS";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
@@ -435,10 +438,11 @@ export default function Home() {
 
   return (
     <div className="relative" key={language}>
+      <CriticalCSS />
       <main>
-      <Suspense fallback={<div className="min-h-[65vh] bg-black flex items-center justify-center"><div className="text-white">Loading...</div></div>}>
+      <Suspense fallback={<div className="hero-section"><div className="hero-title">Loading...</div></div>}>
         <ShaderBackground>
-          <Suspense fallback={<div className="min-h-[65vh] bg-black flex items-center justify-center"><div className="text-white">Loading Hero...</div></div>}>
+          <Suspense fallback={<div className="hero-section"><div className="hero-title">Loading Hero...</div></div>}>
             <Hero language={language} />
           </Suspense>
         </ShaderBackground>
@@ -446,11 +450,7 @@ export default function Home() {
 
       {/* Global Presence Section */}
         <section className="py-20 md:py-32 bg-neutral-50 dark:bg-[#0D1B2A] relative overflow-hidden">
-          {/* Background decorative elements */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-[#239D89] rounded-full blur-[150px]"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#163C2E] rounded-full blur-[150px]"></div>
-          </div>
+          {/* Simplified background - removed decorative elements to reduce DOM */}
           
           <div className="container mx-auto px-4 lg:px-8 relative z-10">
             <div className="max-w-7xl mx-auto">
@@ -624,52 +624,32 @@ export default function Home() {
             </motion.p>
           </div>
           
-          {/* Grid Cards Container */}
+          {/* Simplified Grid Cards Container - Reduced DOM complexity */}
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {content.services.map((service, index) => {
-              const hoverColors = ["#FF8D3E", "#F15556", "#53ACF1", "#1BC65C", "#AF6AF0", "#FF8D3E", "#F15556", "#53ACF1", "#1BC65C"];
-              
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  onClick={() => router.push(service.link)}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = hoverColors[index];
-                    (e.currentTarget.querySelector('h3') as HTMLElement)!.style.color = '#FFFFFF';
-                    (e.currentTarget.querySelector('p') as HTMLElement)!.style.color = '#FFFFFF';
-                    (e.currentTarget.querySelector('.service-number') as HTMLElement)!.style.color = '#FFFFFF';
-                    const icon = e.currentTarget.querySelector('.service-icon') as HTMLElement;
-                    if (icon) icon.style.color = '#FFFFFF';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = '';
-                    (e.currentTarget.querySelector('h3') as HTMLElement)!.style.color = '';
-                    (e.currentTarget.querySelector('p') as HTMLElement)!.style.color = '';
-                    (e.currentTarget.querySelector('.service-number') as HTMLElement)!.style.color = '';
-                    const icon = e.currentTarget.querySelector('.service-icon') as HTMLElement;
-                    if (icon) icon.style.color = '';
-                  }}
-                  className="group relative p-8 bg-white dark:bg-[#0A1628] border border-neutral-200 dark:border-[#1E3A5F] rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#239D89]/50 cursor-pointer"
-                >
-                  <div className="flex items-start justify-between mb-6">
-                    <div className="service-number text-sm text-[#239D89] font-mono transition-colors duration-300">
-                      [0{index + 1}]
-                    </div>
-                    <ArrowUpRight className="service-icon w-5 h-5 text-[#239D89] transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
+            {content.services.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                onClick={() => router.push(service.link)}
+                className="group relative p-8 bg-white dark:bg-[#0A1628] border border-neutral-200 dark:border-[#1E3A5F] rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#239D89]/50 cursor-pointer hover:bg-[#239D89] hover:text-white"
+              >
+                <div className="flex items-start justify-between mb-6">
+                  <div className="text-sm text-[#239D89] group-hover:text-white font-mono transition-colors duration-300">
+                    [0{index + 1}]
                   </div>
-                  <h3 className="text-xl md:text-2xl font-bold text-[#163C2E] dark:text-white mb-4 tracking-wide transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="text-base text-neutral-600 dark:text-gray-400 leading-relaxed transition-colors duration-300">
-                    {service.description}
-                  </p>
-                </motion.div>
-              );
-            })}
+                  <ArrowUpRight className="w-5 h-5 text-[#239D89] group-hover:text-white transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-[#163C2E] dark:text-white group-hover:text-white mb-4 tracking-wide transition-colors duration-300">
+                  {service.title}
+                </h3>
+                <p className="text-base text-neutral-600 dark:text-gray-400 group-hover:text-white/90 leading-relaxed transition-colors duration-300">
+                  {service.description}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
         <motion.div
@@ -716,59 +696,28 @@ export default function Home() {
             </motion.p>
           </div>
           
-          {/* Desktop: Overlapping Cards */}
-          <div className="hidden lg:block relative max-w-6xl mx-auto" style={{ minHeight: '600px' }}>
-            {advantages.items.map((item, index) => {
-              const hoverColors = ["#FF8D3E", "#F15556", "#53ACF1", "#1BC65C", "#AF6AF0"];
-              const leftOffset = index * 15;
-              const topOffset = index * 100;
-              
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 40, x: -20 }}
-                  whileInView={{ opacity: 1, y: 0, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.zIndex = '100';
-                    e.currentTarget.style.backgroundColor = hoverColors[index];
-                    const title = e.currentTarget.querySelector('.advantage-title') as HTMLElement;
-                    const desc = e.currentTarget.querySelector('.advantage-desc') as HTMLElement;
-                    const number = e.currentTarget.querySelector('.advantage-number') as HTMLElement;
-                    if (title) title.style.color = '#FFFFFF';
-                    if (desc) desc.style.color = '#FFFFFF';
-                    if (number) number.style.color = '#FFFFFF';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.zIndex = String(10 + index);
-                    e.currentTarget.style.backgroundColor = '';
-                    const title = e.currentTarget.querySelector('.advantage-title') as HTMLElement;
-                    const desc = e.currentTarget.querySelector('.advantage-desc') as HTMLElement;
-                    const number = e.currentTarget.querySelector('.advantage-number') as HTMLElement;
-                    if (title) title.style.color = '';
-                    if (desc) desc.style.color = '';
-                    if (number) number.style.color = '';
-                  }}
-                  className="group absolute w-full md:w-[650px] p-12 bg-white dark:bg-[#0A1628] border border-neutral-200 dark:border-[#1E3A5F] rounded-none transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#239D89]/50 cursor-pointer"
-                  style={{
-                    left: `${leftOffset}%`,
-                    top: `${topOffset}px`,
-                    zIndex: 10 + index
-                  }}
-                >
-                  <div className="advantage-number text-base text-[#239D89] font-mono mb-6 transition-colors duration-300">
-                    {item.number}
-                  </div>
-                  <h3 className="advantage-title text-3xl md:text-4xl font-bold text-[#163C2E] dark:text-white mb-6 tracking-wide transition-colors duration-300">
-                    {item.title}
-                  </h3>
-                  <p className="advantage-desc text-lg text-neutral-600 dark:text-gray-400 leading-relaxed opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-48 transition-all duration-500 ease-in-out">
-                    {item.description}
-                  </p>
-                </motion.div>
-              );
-            })}
+          {/* Simplified Desktop Grid - Reduced DOM complexity */}
+          <div className="hidden lg:grid lg:grid-cols-2 xl:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {advantages.items.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group p-8 bg-white dark:bg-[#0A1628] border border-neutral-200 dark:border-[#1E3A5F] rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#239D89]/50 cursor-pointer"
+              >
+                <div className="text-base text-[#239D89] font-mono mb-6">
+                  {item.number}
+                </div>
+                <h3 className="text-2xl font-bold text-[#163C2E] dark:text-white mb-4 tracking-wide">
+                  {item.title}
+                </h3>
+                <p className="text-lg text-neutral-600 dark:text-gray-400 leading-relaxed">
+                  {item.description}
+                </p>
+              </motion.div>
+            ))}
           </div>
 
           {/* Mobile & Tablet: Auto-Sliding Cards */}

@@ -19,8 +19,6 @@ const nextConfig: NextConfig = {
   outputFileTracingRoot: path.resolve(__dirname),
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
-    // Enable modern bundling optimizations
-    esmExternals: true,
   },
   serverExternalPackages: ['@paper-design/shaders-react'],
   compiler: {
@@ -33,57 +31,64 @@ const nextConfig: NextConfig = {
       config.optimization.usedExports = true;
       config.optimization.sideEffects = false;
       
-      // Split chunks more aggressively for better caching
+      // Split chunks more aggressively for better caching and performance
       config.optimization.splitChunks = {
         chunks: 'all',
-        minSize: 20000,
-        maxSize: 244000,
+        minSize: 10000,
+        maxSize: 200000,
+        minChunks: 1,
         cacheGroups: {
-          // Split large libraries into separate chunks
-          framerMotion: {
-            test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
-            name: 'framer-motion',
-            chunks: 'all',
-            priority: 20,
-          },
-          lucide: {
-            test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
-            name: 'lucide-react',
-            chunks: 'all',
-            priority: 20,
-          },
-          shaders: {
-            test: /[\\/]node_modules[\\/]@paper-design[\\/]/,
-            name: 'shaders',
-            chunks: 'all',
-            priority: 20,
-          },
+          // Critical libraries that should load first
           react: {
-            test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+            test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/,
             name: 'react',
             chunks: 'all',
-            priority: 15,
+            priority: 30,
+            enforce: true,
           },
           next: {
             test: /[\\/]node_modules[\\/]next[\\/]/,
             name: 'next',
             chunks: 'all',
-            priority: 15,
+            priority: 25,
+            enforce: true,
           },
+          // UI libraries
+          framerMotion: {
+            test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
+            name: 'framer-motion',
+            chunks: 'async',
+            priority: 20,
+          },
+          lucide: {
+            test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
+            name: 'lucide-react',
+            chunks: 'async',
+            priority: 20,
+          },
+          // Heavy shader libraries - load async
+          shaders: {
+            test: /[\\/]node_modules[\\/]@paper-design[\\/]/,
+            name: 'shaders',
+            chunks: 'async',
+            priority: 20,
+          },
+          // Other vendor libraries
           vendor: {
             test: /[\\/]node_modules[\\/]/,
             name: 'vendors',
-            chunks: 'all',
+            chunks: 'async',
             priority: 10,
-            maxSize: 244000,
+            maxSize: 200000,
           },
+          // Common code
           common: {
             name: 'common',
             minChunks: 2,
             chunks: 'all',
             priority: 5,
             reuseExistingChunk: true,
-            maxSize: 244000,
+            maxSize: 200000,
           },
         },
       };
