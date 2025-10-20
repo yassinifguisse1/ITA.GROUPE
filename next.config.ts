@@ -24,15 +24,6 @@ const nextConfig: NextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  // Simplified webpack optimizations for better compatibility
-  webpack: (config, { dev, isServer }) => {
-    if (!dev && !isServer) {
-      // Enable tree shaking
-      config.optimization.usedExports = true;
-      config.optimization.sideEffects = false;
-    }
-    return config;
-  },
 };
 
 export default nextConfig;
