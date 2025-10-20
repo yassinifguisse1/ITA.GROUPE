@@ -99,8 +99,8 @@ export default function Contact({ language }: ContactProps) {
           message?: string;
         } = {};
         
-        if (error.errors && Array.isArray(error.errors)) {
-          error.errors.forEach((err) => {
+        if (error.issues && Array.isArray(error.issues)) {
+          error.issues.forEach((err) => {
             const field = err.path[0] as keyof typeof fieldErrors;
             if (field) {
               fieldErrors[field] = err.message;
@@ -340,6 +340,26 @@ const content = {
     message: "Message",
     messagePlaceholder: "Please describe your project requirements and objectives...",
     submit: "Send Message",
+    infoCards: [
+      {
+        icon: MapPin,
+        label: "Location",
+        title: "Casablanca, Morocco",
+        value: "We're based in the heart of Morocco's business capital"
+      },
+      {
+        icon: Phone,
+        label: "Phone",
+        title: "+212 6XX-XXXXXX",
+        value: "Available Monday to Friday, 9AM to 6PM"
+      },
+      {
+        icon: Mail,
+        label: "Email",
+        title: "hello@itagroupe.com",
+        value: "We'll respond within 24 hours"
+      }
+    ]
   },
   fr: {
     badge: "Contactez-nous",
@@ -353,6 +373,26 @@ const content = {
     message: "Message",
     messagePlaceholder: "Veuillez décrire les exigences et objectifs de votre projet...",
     submit: "Envoyer le Message",
+    infoCards: [
+      {
+        icon: MapPin,
+        label: "Localisation",
+        title: "Casablanca, Maroc",
+        value: "Nous sommes basés au cœur de la capitale économique du Maroc"
+      },
+      {
+        icon: Phone,
+        label: "Téléphone",
+        title: "+212 6XX-XXXXXX",
+        value: "Disponible du lundi au vendredi, 9h à 18h"
+      },
+      {
+        icon: Mail,
+        label: "Email",
+        title: "hello@itagroupe.com",
+        value: "Nous répondrons dans les 24 heures"
+      }
+    ]
   },
   pl: {
     badge: "Kontakt",
@@ -366,5 +406,25 @@ const content = {
     message: "Wiadomość",
     messagePlaceholder: "Proszę opisać wymagania i cele projektu...",
     submit: "Wyślij wiadomość",
+    infoCards: [
+      {
+        icon: MapPin,
+        label: "Lokalizacja",
+        title: "Casablanca, Maroko",
+        value: "Jesteśmy zlokalizowani w sercu marokańskiej stolicy biznesu"
+      },
+      {
+        icon: Phone,
+        label: "Telefon",
+        title: "+212 6XX-XXXXXX",
+        value: "Dostępni od poniedziałku do piątku, 9:00-18:00"
+      },
+      {
+        icon: Mail,
+        label: "Email",
+        title: "hello@itagroupe.com",
+        value: "Odpowiemy w ciągu 24 godzin"
+      }
+    ]
   }
 };

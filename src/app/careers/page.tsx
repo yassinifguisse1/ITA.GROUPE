@@ -631,9 +631,9 @@ export default function CareersPage() {
     } catch (error) {
       if (error instanceof z.ZodError) {
         const fieldErrors: Record<string, string> = {};
-        // FIXED: Check if errors array exists before using forEach
-        if (error.errors && Array.isArray(error.errors)) {
-          error.errors.forEach((err) => {
+        // FIXED: Check if issues array exists before using forEach
+        if (error.issues && Array.isArray(error.issues)) {
+          error.issues.forEach((err) => {
             if (err.path[0]) {
               fieldErrors[err.path[0] as string] = err.message;
             }

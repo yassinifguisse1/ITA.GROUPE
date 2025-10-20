@@ -70,7 +70,7 @@ export default function Navigation() {
     <Navbar>
       {/* Desktop Navigation */}
       <NavBody>
-        <NavbarLogo isScrolled={isScrolled} />
+        <NavbarLogo  />
         <div className="flex items-center gap-6">
           <a href="/" className="text-base font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary transition-colors py-2">
             Home
@@ -175,7 +175,7 @@ export default function Navigation() {
       {/* Mobile Navigation */}
       <MobileNav>
         <MobileNavHeader>
-          <NavbarLogo isScrolled={isScrolled} />
+          <NavbarLogo  />
           <MobileNavToggle
             isOpen={isMobileMenuOpen}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

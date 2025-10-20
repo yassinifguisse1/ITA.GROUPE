@@ -94,7 +94,7 @@ const websiteFeatures = [
 
 export default function WebsitesBlog() {
   const { language } = useLanguage();
-  const t = servicesTranslations.websites[language];
+  const t = servicesTranslations.websites[language as keyof typeof servicesTranslations.websites];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-muted/10 to-background">

@@ -814,7 +814,7 @@ export default function UXUIDesignPage() {
                       <div key={resultIndex} className="text-center">
                         <div className="text-2xl font-bold text-primary mb-1">{value}</div>
                         <div className="text-xs text-neutral-600 dark:text-neutral-400 capitalize">
-                          {t.caseStudies.resultsLabels[key]}
+                          {t.caseStudies.resultsLabels[key as keyof typeof t.caseStudies.resultsLabels]}
                         </div>
                       </div>
                     ))}

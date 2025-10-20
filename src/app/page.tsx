@@ -627,17 +627,17 @@ export default function Home() {
                   onClick={() => router.push(service.link)}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.backgroundColor = hoverColors[index];
-                    e.currentTarget.querySelector('h3')!.style.color = '#FFFFFF';
-                    e.currentTarget.querySelector('p')!.style.color = '#FFFFFF';
-                    e.currentTarget.querySelector('.service-number')!.style.color = '#FFFFFF';
+                    (e.currentTarget.querySelector('h3') as HTMLElement)!.style.color = '#FFFFFF';
+                    (e.currentTarget.querySelector('p') as HTMLElement)!.style.color = '#FFFFFF';
+                    (e.currentTarget.querySelector('.service-number') as HTMLElement)!.style.color = '#FFFFFF';
                     const icon = e.currentTarget.querySelector('.service-icon') as HTMLElement;
                     if (icon) icon.style.color = '#FFFFFF';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = '';
-                    e.currentTarget.querySelector('h3')!.style.color = '';
-                    e.currentTarget.querySelector('p')!.style.color = '';
-                    e.currentTarget.querySelector('.service-number')!.style.color = '';
+                    (e.currentTarget.querySelector('h3') as HTMLElement)!.style.color = '';
+                    (e.currentTarget.querySelector('p') as HTMLElement)!.style.color = '';
+                    (e.currentTarget.querySelector('.service-number') as HTMLElement)!.style.color = '';
                     const icon = e.currentTarget.querySelector('.service-icon') as HTMLElement;
                     if (icon) icon.style.color = '';
                   }}
