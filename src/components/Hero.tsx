@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -80,10 +81,10 @@ export default function Hero({ language }: HeroProps) {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up opacity-0 [animation-delay:400ms]">
             <Button size="lg" className="rounded-full px-8 text-base shadow-lg hover:shadow-xl transition-all duration-300 group" asChild>
-              <a href="/contact">
+              <Link href="/contact">
                 {t.ctaPrimary}
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Link>
             </Button>
             <Button
               size="lg"
@@ -91,10 +92,10 @@ export default function Hero({ language }: HeroProps) {
               className="rounded-full px-8 text-base group"
               asChild
             >
-              <a href="/contact">
+              <Link href="/contact">
                 <Phone className="mr-2 h-5 w-5" />
                 {t.ctaSecondary}
-              </a>
+              </Link>
             </Button>
           </div>
         </div>

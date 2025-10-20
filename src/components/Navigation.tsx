@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import {
   Navbar,
   NavBody,
@@ -72,9 +73,9 @@ export default function Navigation() {
       <NavBody>
         <NavbarLogo  />
         <div className="flex items-center gap-6">
-          <a href="/" className="text-base font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary transition-colors py-2">
+          <Link href="/" className="text-base font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary transition-colors py-2">
             Home
-          </a>
+          </Link>
           
           {/* What We Do Mega Menu */}
           <div
@@ -157,15 +158,15 @@ export default function Navigation() {
             </div>
           </div>
 
-          <a href="/about" className="text-base font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary transition-colors py-2">
+          <Link href="/about" className="text-base font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary transition-colors py-2">
             About
-          </a>
-          <a href="/careers" className="text-base font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary transition-colors py-2">
+          </Link>
+          <Link href="/careers" className="text-base font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary transition-colors py-2">
             Careers
-          </a>
-          <a href="/contact" className="text-base font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary transition-colors py-2">
+          </Link>
+          <Link href="/contact" className="text-base font-medium text-neutral-600 dark:text-neutral-300 hover:text-primary transition-colors py-2">
             Contact
-          </a>
+          </Link>
         </div>
         <div className="flex items-center gap-4">
           <NavbarButton variant="primary">Demander un devis</NavbarButton>
@@ -186,13 +187,13 @@ export default function Navigation() {
           isOpen={isMobileMenuOpen}
           onClose={() => setIsMobileMenuOpen(false)}
         >
-          <a
+          <Link
             href="/"
             onClick={() => setIsMobileMenuOpen(false)}
             className="relative text-neutral-600 dark:text-neutral-300 text-base"
           >
             <span className="block">Home</span>
-          </a>
+          </Link>
 
           {/* What We Do - Services Submenu */}
           <div>

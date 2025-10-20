@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Globe2, Sparkles } from "lucide-react";
@@ -586,7 +587,7 @@ export default function AboutPage() {
                   className="rounded-full bg-[#239D89] hover:bg-[#1e8473] text-white px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all"
                   asChild
                 >
-                  <a href="/contact">{t.cta.primary}</a>
+                  <Link href="/contact">{t.cta.primary}</Link>
                 </Button>
                 <Button 
                   size="lg" 
@@ -594,7 +595,7 @@ export default function AboutPage() {
                   className="rounded-full border-2 border-[#239D89] text-[#239D89] hover:bg-[#239D89]/10 px-8 py-6 text-lg"
                   asChild
                 >
-                  <a href="/">{t.cta.secondary}</a>
+                  <Link href="/">{t.cta.secondary}</Link>
                 </Button>
               </motion.div>
             </div>

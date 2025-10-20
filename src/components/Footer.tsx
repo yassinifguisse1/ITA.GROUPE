@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Linkedin, Facebook, Instagram } from "lucide-react";
 
 interface FooterProps {
@@ -130,13 +131,13 @@ export default function Footer({ language = "en" }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 mb-12">
           {/* Brand Column */}
           <div className="lg:col-span-4">
-            <a href="/" className="flex items-center space-x-2 mb-6 group">
+            <Link href="/" className="flex items-center space-x-2 mb-6 group">
               <img 
                 src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/Untitled-design-29-1759847984982.png"
                 alt="iTA Groupe"
                 className="h-16 w-auto object-contain transform group-hover:scale-105 transition-transform duration-300"
               />
-            </a>
+            </Link>
             <p className="text-muted-foreground mb-6 max-w-sm leading-relaxed">
               {content.description}
             </p>

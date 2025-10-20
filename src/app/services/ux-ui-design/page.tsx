@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Palette, Sparkles, Users, Zap, CheckCircle2, ArrowRight, MapPin, Award, Check, Trophy, UsersRound, Phone, Figma, Layers, Layout, Smile } from "lucide-react";
 import Footer from "@/components/Footer";
 import Image from "next/image";
@@ -641,10 +642,10 @@ export default function UXUIDesignPage() {
                 className="flex flex-col sm:flex-row items-center justify-center gap-4"
               >
                 <Button size="lg" className="rounded-full px-8 text-base shadow-lg hover:shadow-xl transition-all duration-300 group bg-white text-[#163C2E] hover:bg-white/90" asChild>
-                  <a href="/contact">
+                  <Link href="/contact">
                     {t.hero.cta}
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </a>
+                  </Link>
                 </Button>
                 <Button
                   size="lg"
@@ -652,10 +653,10 @@ export default function UXUIDesignPage() {
                   className="rounded-full px-8 text-base group bg-transparent border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50"
                   asChild
                 >
-                  <a href="/contact">
+                  <Link href="/contact">
                     <Phone className="mr-2 h-5 w-5" />
                     {t.hero.ctaSecondary}
-                  </a>
+                  </Link>
                 </Button>
               </motion.div>
 

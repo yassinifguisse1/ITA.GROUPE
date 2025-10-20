@@ -1,6 +1,7 @@
 "use client";
 
 import { Metadata } from "next";
+import Link from "next/link";
 import { Users, Zap, Shield, Globe, CheckCircle, CheckCircle2, ArrowRight, Phone, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
@@ -338,10 +339,10 @@ export default function DedicatedTeamsPage() {
                 className="flex flex-col sm:flex-row items-center justify-center gap-4"
               >
                 <Button size="lg" className="rounded-full px-8 text-base shadow-lg hover:shadow-xl transition-all duration-300 group bg-white text-[#163C2E] hover:bg-white/90" asChild>
-                  <a href="/contact">
+                  <Link href="/contact">
                     {t.cta1}
                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </a>
+                  </Link>
                 </Button>
                 <Button
                   size="lg"
@@ -349,10 +350,10 @@ export default function DedicatedTeamsPage() {
                   className="rounded-full px-8 text-base group bg-transparent border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50"
                   asChild
                 >
-                  <a href="/contact">
+                  <Link href="/contact">
                     <Phone className="mr-2 h-5 w-5" />
                     {t.cta2}
-                  </a>
+                  </Link>
                 </Button>
               </motion.div>
 
@@ -716,13 +717,13 @@ export default function DedicatedTeamsPage() {
           <p className="text-xl text-neutral-600 dark:text-neutral-400 mb-8">
             Let's discuss your needs and assemble the perfect team for your project
           </p>
-          <a
+          <Link
             href="/contact"
             className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl"
           >
             Get Started Today
             <ArrowRight className="w-5 h-5" />
-          </a>
+          </Link>
         </div>
       </section>
 

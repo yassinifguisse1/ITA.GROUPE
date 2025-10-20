@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Cloud, Zap, Shield, Users, CreditCard, BarChart3, Layers, Workflow } from "lucide-react";
@@ -141,10 +142,10 @@ export default function SaaSPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
                 <Button size="lg" className="rounded-full" asChild>
-                  <a href="/contact">Start Building</a>
+                  <Link href="/contact">Start Building</Link>
                 </Button>
                 <Button size="lg" variant="outline" className="rounded-full" asChild>
-                  <a href="/portfolio">View Case Studies</a>
+                  <Link href="/portfolio">View Case Studies</Link>
                 </Button>
               </div>
             </div>
@@ -275,10 +276,10 @@ export default function SaaSPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="rounded-full" asChild>
-                  <a href="/contact">Get Started</a>
+                  <Link href="/contact">Get Started</Link>
                 </Button>
                 <Button size="lg" variant="outline" className="rounded-full" asChild>
-                  <a href="/">Learn More</a>
+                  <Link href="/">Learn More</Link>
                 </Button>
               </div>
             </div>
