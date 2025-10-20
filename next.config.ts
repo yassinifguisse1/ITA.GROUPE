@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-import path from "path";
 
 const nextConfig: NextConfig = {
   images: {
@@ -16,7 +15,6 @@ const nextConfig: NextConfig = {
     formats: ['image/webp', 'image/avif'],
     minimumCacheTTL: 60,
   },
-  outputFileTracingRoot: path.resolve(__dirname),
   serverExternalPackages: ['@paper-design/shaders-react'],
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
