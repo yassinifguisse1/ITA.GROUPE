@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Heart, Shield, Users, Calendar, FileText, Activity, Smartphone, Lock } from "lucide-react";
+import {  Shield, Users, Calendar, FileText, Activity, Smartphone, Lock } from "lucide-react";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 

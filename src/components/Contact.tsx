@@ -630,22 +630,17 @@ const content = {
     messagePlaceholder: "Please describe your project requirements, objectives, and any specific features you need...",
     submit: "Send Message",
     infoCards: [
-      {
-        icon: MapPin,
-        label: "Location",
-        title: "Casablanca, Morocco",
-        value: "We're based in the heart of Morocco's business capital"
-      },
+      
       {
         icon: Phone,
         label: "Phone",
-        title: "+212 6XX-XXXXXX",
+        title: "+1 (555) 123-4567",
         value: "Available Monday to Friday, 9AM to 6PM"
       },
       {
         icon: Mail,
         label: "Email",
-        title: "hello@itagroupe.com",
+        title: "hello.itagroupe@gmail.com",
         value: "We'll respond within 24 hours"
       },
       {
@@ -726,13 +721,13 @@ const content = {
       {
         icon: Phone,
         label: "Téléphone",
-        title: "+212 6XX-XXXXXX",
+        title: "+1 (555) 123-4567",
         value: "Disponible du lundi au vendredi, 9h à 18h"
       },
       {
         icon: Mail,
         label: "Email",
-        title: "hello@itagroupe.com",
+        title: "hello.itagroupe@gmail.com",
         value: "Nous répondrons dans les 24 heures"
       },
       {
@@ -813,13 +808,13 @@ const content = {
       {
         icon: Phone,
         label: "Telefon",
-        title: "+212 6XX-XXXXXX",
+        title: "+1 (555) 123-4567",
         value: "Dostępni od poniedziałku do piątku, 9:00-18:00"
       },
       {
         icon: Mail,
         label: "Email",
-        title: "hello@itagroupe.com",
+        title: "hello.itagroupe@gmail.com",
         value: "Odpowiemy w ciągu 24 godzin"
       },
       {

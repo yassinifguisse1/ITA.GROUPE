@@ -1,88 +1,153 @@
-"use client";
+import type { Metadata } from "next";
+import { Suspense } from "react";
+import Image from "next/image";
+import FAQPageClient from "./FAQPageClient";
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
-import Footer from "@/components/Footer";
-import { useLanguage } from "@/context/LanguageContext";
-import { faqPageTranslations } from "@/i18n/page-translations";
+export const metadata: Metadata = {
+  title: "Frequently Asked Questions - iTA Groupe Digital Solutions",
+  description: "Find answers to common questions about our web development, SEO, digital marketing, and software development services. Get expert insights from iTA Groupe's digital solutions team.",
+  keywords: [
+    "FAQ iTA Groupe",
+    "web development questions",
+    "SEO frequently asked questions",
+    "digital marketing FAQ",
+    "software development FAQ",
+    "website creation questions",
+    "digital agency FAQ",
+    "web design questions Morocco",
+    "IT consulting FAQ",
+    "digital solutions questions"
+  ],
+  authors: [{ name: "iTA Groupe" }],
+  creator: "iTA Groupe",
+  publisher: "iTA Groupe",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    title: "Frequently Asked Questions - iTA Groupe Digital Solutions",
+    description: "Find answers to common questions about our web development, SEO, digital marketing, and software development services. Get expert insights from iTA Groupe's digital solutions team.",
+    url: "https://itagroupe.com/faq",
+    siteName: "iTA Groupe",
+    images: [
+      {
+        url: "/og-faq.jpg",
+        width: 1200,
+        height: 630,
+        alt: "iTA Groupe FAQ - Digital Solutions Questions",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Frequently Asked Questions - iTA Groupe Digital Solutions",
+    description: "Find answers to common questions about our web development, SEO, digital marketing, and software development services.",
+    images: ["/twitter-faq.jpg"],
+    creator: "@itagroupe",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://itagroupe.com/faq",
+  },
+};
 
 export default function FAQPage() {
-  const { language } = useLanguage();
-  const t = faqPageTranslations[language];
+  // JSON-LD structured data for FAQ page
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What services does iTA Groupe offer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "iTA Groupe offers comprehensive digital solutions including web development, SEO optimization, digital marketing, custom software development, mobile app development, and IT consulting services."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to create a website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Website development timelines vary based on complexity. Simple websites take 7-10 days, multi-page sites with blogs require 14-18 days, and complex platforms need 20-25 days. We always meet agreed deadlines."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer support after website launch?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, all our packages include technical support and maintenance. Level 1 includes 3 months, Level 2 includes 6 months, and Level 3 includes 12 months of premium support."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does SEO optimization work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our SEO service includes technical optimization, keyword research, content optimization, Google Business profile creation, and continuous performance monitoring. Results typically appear after 3-6 months."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I modify my website after launch?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, all our sites include revisions during the initial period. For modifications after that, we offer monthly maintenance packages or one-time interventions as requested."
+        }
+      }
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "iTA Groupe",
+      "url": "https://itagroupe.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://itagroupe.com/logo.png",
+      },
+    },
+  };
 
   return (
     <>
-      <main className="min-h-screen">
-        {/* Hero Section */}
-        <section className="relative py-24 md:py-32 overflow-hidden">
-          <div className="absolute inset-0 gradient-bg -z-10"></div>
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="max-w-3xl mx-auto text-center space-y-6">
-              <Badge variant="secondary" className="mb-4">{t.hero.badge}</Badge>
-              <h1 className="text-4xl md:text-6xl font-bold">
-                {t.hero.title}{" "}
-                <span className="gradient-text">{t.hero.titleHighlight}</span>
-              </h1>
-              <p className="text-xl text-muted-foreground">
-                {t.hero.subtitle}
-              </p>
-            </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
+      <Suspense fallback={
+        <div className="min-h-screen bg-gray-100 animate-pulse flex items-center justify-center">
+          <div className="text-gray-600 flex flex-col items-center">
+            {/* iTA Groupe Logo */}
+            <Image
+              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/Untitled-design-29-1759847984982.png"
+              alt="iTA Groupe Logo"
+              width={100}
+              height={100}
+              priority
+            />
+            <span className="mt-4">Loading...</span>
           </div>
-        </section>
-
-        {/* FAQ Content */}
-        <section className="py-20 md:py-32">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="max-w-4xl mx-auto space-y-16">
-              {t.categories.map((category, categoryIndex) => (
-                <div key={categoryIndex} className="space-y-6">
-                  <h2 className="text-2xl md:text-3xl font-bold">{category.category}</h2>
-                  <div className="space-y-4">
-                    {category.questions.map((faq, faqIndex) => (
-                      <details
-                        key={faqIndex}
-                        className="group bg-card rounded-xl border border-border/50 hover:border-primary/50 transition-all"
-                      >
-                        <summary className="flex items-center justify-between cursor-pointer p-6 list-none">
-                          <h3 className="text-lg font-semibold pr-8">{faq.question}</h3>
-                          <Plus className="h-5 w-5 text-muted-foreground group-open:rotate-45 transition-transform flex-shrink-0" />
-                        </summary>
-                        <div className="px-6 pb-6 text-muted-foreground leading-relaxed">
-                          {faq.answer}
-                        </div>
-                      </details>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 md:py-32 bg-muted/30">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="max-w-4xl mx-auto text-center space-y-6">
-              <h2 className="text-3xl md:text-5xl font-bold">
-                {t.cta.title}
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                {t.cta.subtitle}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="rounded-full">
-                  {t.cta.primary}
-                </Button>
-                <Button size="lg" variant="outline" className="rounded-full">
-                  {t.cta.secondary}
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-      <Footer language={language} />
+        </div>
+      }>
+        <FAQPageClient />
+      </Suspense>
     </>
   );
 }

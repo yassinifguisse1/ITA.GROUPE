@@ -1,8 +1,5 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Calendar, Clock, User, ArrowRight } from "lucide-react";
-import { getAllBlogPosts, getBlogPostsByCategory, categories } from "@/lib/blog-data";
-import Footer from "@/components/Footer";
+
+import { getAllBlogPosts, categories } from "@/lib/blog-data";
 import BlogClient from "@/app/blog/BlogClient";
 
 const translations = {

@@ -1,84 +1,64 @@
-"use client";
+import type { Metadata } from "next";
+import { Suspense } from "react";
+import ContactPageClient from "./ContactPageClient";
+import Image from "next/image";
 
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import FAQ from "@/components/FAQ";
-import { useLanguage } from "@/context/LanguageContext";
-import { contactTranslations } from "@/i18n/page-translations";
-
-const iconMap = { Mail, Phone, MapPin, Clock };
+export const metadata: Metadata = {
+  title: "Contact iTA Groupe - Get Your Free Digital Consultation",
+  description: "Contact iTA Groupe for professional web development, SEO, and digital marketing services. Get a free consultation for your project. Located in Casablanca, Morocco with global reach.",
+  keywords: [
+    "contact iTA Groupe",
+    "web development consultation",
+    "digital marketing consultation",
+    "SEO services Morocco",
+    "web design consultation",
+    "IT consulting Morocco",
+    "digital agency contact",
+    "software development consultation",
+    "get quote web development",
+    "free consultation Morocco"
+  ],
+  openGraph: {
+    title: "Contact iTA Groupe - Get Your Free Digital Consultation",
+    description: "Contact iTA Groupe for professional web development, SEO, and digital marketing services. Get a free consultation for your project. Located in Casablanca, Morocco with global reach.",
+    url: "https://itagroupe.com/contact",
+    siteName: "iTA Groupe",
+    images: [
+      {
+        url: "/og-contact.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Contact iTA Groupe - Digital Solutions Consultation",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact iTA Groupe - Get Your Free Digital Consultation",
+    description: "Contact iTA Groupe for professional web development, SEO, and digital marketing services. Get a free consultation for your project.",
+    images: ["/twitter-contact.jpg"],
+  },
+  alternates: {
+    canonical: "https://itagroupe.com/contact",
+  },
+};
 
 export default function ContactPage() {
-  const { language } = useLanguage();
-  const t = contactTranslations[language];
-
-  const contactInfo = t.contactInfo.map((info, index) => ({
-    ...info,
-    icon: [Mail, Phone, MapPin, Clock][index]
-  }));
-
   return (
-    <>
-      <main className="min-h-screen">
-        {/* Hero Section */}
-        <section className="relative py-24 md:py-32 overflow-hidden">
-          <div className="absolute inset-0 gradient-bg -z-10"></div>
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="max-w-3xl mx-auto text-center space-y-6">
-              <h1 className="text-4xl md:text-6xl font-bold">
-                {t.hero.title}{" "}
-                <span className="gradient-text">{t.hero.titleHighlight}</span>
-              </h1>
-              <p className="text-xl text-muted-foreground">
-                {t.hero.subtitle}
-              </p>
-            </div>
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gray-100 animate-pulse flex items-center justify-center">
+          <div className="text-gray-600 flex flex-col items-center">
+            {/* iTA Groupe Logo */}
+            <Image src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/Untitled-design-29-1759847984982.png" alt="iTA Groupe Logo" width={100} height={100} priority />
+            <span className="mt-4">Loading...</span>
           </div>
-        </section>
-
-        {/* Contact Info Cards */}
-        <section className="py-16 -mt-8">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {contactInfo.map((info, index) => (
-                <div 
-                  key={index}
-                  className="bg-card rounded-2xl p-6 border border-border/50 hover:border-primary/50 transition-all hover:shadow-lg"
-                >
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                    <info.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold mb-2">{info.title}</h3>
-                  {info.href ? (
-                    <a 
-                      href={info.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {info.content}
-                    </a>
-                  ) : (
-                    <p className="text-sm text-muted-foreground">{info.content}</p>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Form Section - Enhanced Form */}
-        <Contact language={language} />
-
-        {/* FAQ Section */}
-        <FAQ 
-          faqs={t.faq.items}
-          title={t.faq.title}
-          description={t.faq.description}
-        />
-
-     
-      </main>
-      <Footer language={language} />
-    </>
+        </div>
+      }
+    >
+      <ContactPageClient />
+    </Suspense>
   );
 }
