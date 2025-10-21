@@ -6,6 +6,7 @@ import { Send, MapPin, Phone, Mail, ArrowUpRight, Linkedin, Instagram } from "lu
 import { Button } from "@/components/ui/button";
 import { z } from 'zod';
 import SuccessMessage from "@/components/SuccessMessage";
+import { FaSquareXTwitter } from "react-icons/fa6";
 
 // Create validation schemas for each language
 const createValidationSchema = (language: "en" | "fr" | "pl") => {
@@ -514,10 +515,11 @@ export default function Contact({ language }: ContactProps) {
             >
               {content[language].infoCards.map((card, idx) => {
                 const Icon = card.icon;
-                const isSocialMedia = card.label === "LinkedIn" || card.label === "Instagram";
+                const isSocialMedia = card.label === "LinkedIn" || card.label === "Instagram" || card.label === "Twitter";
                 const socialMediaLinks = {
                   LinkedIn: "https://www.linkedin.com/company/itagroupe",
-                  Instagram: "https://www.instagram.com/ita.groupe/"
+                  Instagram: "https://www.instagram.com/ita.groupe/",
+                  Twitter: "https://x.com/ITAGROUPE"
                 };
                 
                 const CardComponent = isSocialMedia ? 'a' : 'div';
@@ -654,6 +656,12 @@ const content = {
         label: "Instagram",
         title: "Follow us on Instagram",
         value: "See our work and company culture"
+      },
+      {
+        icon: FaSquareXTwitter,
+        label: "Twitter",
+        title: "Follow us on Twitter",
+        value: "Stay updated with our latest projects and insights"
       }
     ]
   },

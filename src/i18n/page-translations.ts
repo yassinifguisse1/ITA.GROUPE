@@ -20,6 +20,11 @@ export const contactTranslations = {
         title: "Business Hours",
         content: "Mon - Fri: 9:00 AM - 6:00 PM EST",
         href: null
+      },
+      {
+        title: "Follow Us",
+        content: "@ITAGROUPE",
+        href: "https://x.com/ITAGROUPE"
       }
     ],
     faq: {
@@ -79,6 +84,11 @@ export const contactTranslations = {
         title: "Heures d'Ouverture",
         content: "Lun - Ven: 9h00 - 18h00 EST",
         href: null
+      },
+      {
+        title: "Suivez-nous",
+        content: "@ITAGROUPE",
+        href: "https://x.com/ITAGROUPE"
       }
     ],
     faq: {
@@ -135,9 +145,9 @@ export const contactTranslations = {
         href: "tel:+15551234567"
       },
       {
-        title: "Godziny Otwarcia",
-        content: "Pon - Pt: 9:00 - 18:00 EST",
-        href: null
+        title: "Obserwuj Nas",
+        content: "@ITAGROUPE",
+        href: "https://x.com/ITAGROUPE"
       }
     ],
     faq: {

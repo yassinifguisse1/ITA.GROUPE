@@ -1,13 +1,14 @@
 "use client";
 
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { FaSquareXTwitter } from "react-icons/fa6";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import { useLanguage } from "@/context/LanguageContext";
 import { contactTranslations } from "@/i18n/page-translations";
 
-const iconMap = { Mail, Phone, MapPin, Clock };
+const iconMap = { Mail, Phone, MapPin, FaSquareXTwitter };
 
 export default function ContactPageClient() {
   const { language } = useLanguage();
@@ -15,7 +16,7 @@ export default function ContactPageClient() {
 
   const contactInfo = t.contactInfo.map((info, index) => ({
     ...info,
-    icon: [Mail, Phone, MapPin, Clock][index]
+    icon: [Mail, Phone, MapPin, FaSquareXTwitter][index]
   }));
 
   return (
