@@ -26,6 +26,15 @@ export const metadata: Metadata = {
     "e-commerce development",
     "mobile app development"
   ],
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+    other: {
+      rel: "icon",
+      url: "/favicon.ico",
+    },
+  },
   authors: [{ name: "iTA Groupe" }],
   creator: "iTA Groupe",
   publisher: "iTA Groupe",
