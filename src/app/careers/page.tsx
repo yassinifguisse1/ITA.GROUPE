@@ -1,33 +1,140 @@
 "use client";
 
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useLanguage } from "@/context/LanguageContext";
 import Footer from "@/components/Footer";
+import ApplicationSuccessDialog from "@/components/ApplicationSuccessDialog";
 import { Briefcase, MapPin, Clock, DollarSign, CheckCircle, Users, TrendingUp, Heart, Coffee, Laptop, Calendar, Loader2, Check } from "lucide-react";
-import { toast } from "sonner";
 import { z } from "zod";
 
-// Zod validation schema - matches backend
-const applicationSchema = z.object({
-  fullName: z.string().min(2, 'Full name must be at least 2 characters'),
-  email: z.string().email('Invalid email address'),
-  phone: z.string().min(10, 'Phone number must be at least 10 characters'),
-  linkedin: z.string().url('Invalid LinkedIn URL').optional().or(z.literal('')),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
-});
+// Create validation schemas for each language
+const createValidationSchema = (language: "en" | "fr" | "pl") => {
+  const messages = {
+    en: {
+      fullName: "Full name must be at least 2 characters",
+      email: "Please enter a valid email address",
+      phone: "Phone number is required",
+      linkedin: "Please enter a valid LinkedIn URL",
+      message: "Message must be at least 10 characters",
+      resume: "Resume file is required",
+      coverLetter: "Cover letter file is optional",
+    },
+    fr: {
+      fullName: "Le nom complet doit contenir au moins 2 caractères",
+      email: "Veuillez entrer une adresse email valide",
+      phone: "Le numéro de téléphone est requis",
+      linkedin: "Veuillez entrer une URL LinkedIn valide",
+      message: "Le message doit contenir au moins 10 caractères",
+      resume: "Le fichier CV est requis",
+      coverLetter: "Le fichier de lettre de motivation est optionnel",
+    },
+    pl: {
+      fullName: "Imię i nazwisko musi mieć co najmniej 2 znaki",
+      email: "Proszę podać prawidłowy adres email",
+      phone: "Numer telefonu jest wymagany",
+      linkedin: "Proszę podać prawidłowy URL LinkedIn",
+      message: "Wiadomość musi mieć co najmniej 10 znaków",
+      resume: "Plik CV jest wymagany",
+      coverLetter: "Plik listu motywacyjnego jest opcjonalny",
+    }
+  };
 
-// File validation helper
-const validateFile = (file: File | null, required: boolean = false): string | null => {
+  const msg = messages[language];
+
+  return z.object({
+    fullName: z.string().min(2, msg.fullName),
+    email: z.string().email(msg.email),
+    phone: z.string().min(1, msg.phone),
+    linkedin: z.string().optional().or(z.literal('')).or(z.literal(null)).transform(val => val === '' || val === null ? undefined : val),
+    message: z.string().min(10, msg.message),
+    resume: z.any()
+      .refine((files) => files && files.length > 0, {
+        message: msg.resume,
+        path: ['resume']
+      })
+      .refine((files) => {
+        if (!files || files.length === 0) return false;
+        const file = files[0];
+        const maxSize = 5 * 1024 * 1024; // 5MB
+        return file.size <= maxSize;
+      }, {
+        message: language === 'fr' ? 'La taille du fichier doit être inférieure à 5MB' : language === 'en' ? 'File size must be less than 5MB' : 'Rozmiar pliku musi być mniejszy niż 5MB',
+        path: ['resume']
+      })
+      .refine((files) => {
+        if (!files || files.length === 0) return false;
+        const file = files[0];
+        const allowedTypes = [
+          'application/pdf',
+          'application/msword',
+          'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+        ];
+        return allowedTypes.includes(file.type);
+      }, {
+        message: language === 'fr' ? 'Le fichier doit être au format PDF ou DOC' : language === 'en' ? 'File must be PDF or DOC format' : 'Plik musi być w formacie PDF lub DOC',
+        path: ['resume']
+      }),
+    coverLetter: z.any()
+      .optional()
+      .refine((files) => {
+        if (!files || files.length === 0) return true; // Optional field
+        const file = files[0];
+        const maxSize = 5 * 1024 * 1024; // 5MB
+        return file.size <= maxSize;
+      }, {
+        message: language === 'fr' ? 'La taille du fichier doit être inférieure à 5MB' : language === 'en' ? 'File size must be less than 5MB' : 'Rozmiar pliku musi być mniejszy niż 5MB',
+        path: ['coverLetter']
+      })
+      .refine((files) => {
+        if (!files || files.length === 0) return true; // Optional field
+        const file = files[0];
+        const allowedTypes = [
+          'application/pdf',
+          'application/msword',
+          'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+        ];
+        return allowedTypes.includes(file.type);
+      }, {
+        message: language === 'fr' ? 'Le fichier doit être au format PDF ou DOC' : language === 'en' ? 'File must be PDF or DOC format' : 'Plik musi być w formacie PDF lub DOC',
+        path: ['coverLetter']
+      }),
+  });
+};
+
+// File validation helper with language support
+const validateFile = (file: File | null, required: boolean = false, language: "en" | "fr" | "pl" = "en"): string | null => {
+  const messages = {
+    en: {
+      required: 'File is required',
+      size: 'File size must be less than 5MB',
+      format: 'File must be PDF or DOC format'
+    },
+    fr: {
+      required: 'Fichier requis',
+      size: 'La taille du fichier doit être inférieure à 5MB',
+      format: 'Le fichier doit être au format PDF ou DOC'
+    },
+    pl: {
+      required: 'Plik jest wymagany',
+      size: 'Rozmiar pliku musi być mniejszy niż 5MB',
+      format: 'Plik musi być w formacie PDF lub DOC'
+    }
+  };
+
+  const msg = messages[language];
+
   if (!file || file.size === 0) {
     if (required) {
-      return 'File is required';
+      return msg.required;
     }
     return null;
   }
 
   const maxSize = 5 * 1024 * 1024; // 5MB
   if (file.size > maxSize) {
-    return 'File size must be less than 5MB';
+    return msg.size;
   }
 
   const allowedTypes = [
@@ -36,7 +143,7 @@ const validateFile = (file: File | null, required: boolean = false): string | nu
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
   ];
   if (!allowedTypes.includes(file.type)) {
-    return 'File must be PDF or DOC format';
+    return msg.format;
   }
 
   return null;
@@ -564,23 +671,40 @@ interface JobPosition {
   salary: string;
 }
 
+// Form data type
+type ApplicationFormData = {
+  fullName: string;
+  email: string;
+  phone: string;
+  linkedin?: string | null;
+  message: string;
+  resume: FileList;
+  coverLetter?: FileList;
+};
+
 export default function CareersPage() {
   const { language } = useLanguage();
   const t = translations[language];
   const [selectedJob, setSelectedJob] = useState<string | null>(null);
   const [showApplicationForm, setShowApplicationForm] = useState(false);
   const [currentJobTitle, setCurrentJobTitle] = useState<string>('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [applicationForm, setApplicationForm] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    linkedin: '',
-    resume: null as File | null,
-    coverLetter: null as File | null,
-    message: '',
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+
+  // Create validation schema for current language
+  const validationSchema = createValidationSchema(language as "en" | "fr" | "pl");
+
+  // Initialize react-hook-form
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+    setError,
+    clearErrors,
+    watch
+  } = useForm<ApplicationFormData>({
+    resolver: zodResolver(validationSchema),
+    mode: "onChange"
   });
 
   const jobPositions: JobPosition[] = [
@@ -614,108 +738,68 @@ export default function CareersPage() {
     return t.positions[jobId as keyof typeof t.positions];
   };
 
-  const handleApply = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setErrors({}); // Clear previous errors
-
-    // Validate form data with Zod
+  const onSubmit = async (data: ApplicationFormData) => {
     try {
-      applicationSchema.parse({
-        fullName: applicationForm.fullName,
-        email: applicationForm.email,
-        phone: applicationForm.phone,
-        linkedin: applicationForm.linkedin,
-        message: applicationForm.message,
-      });
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        const fieldErrors: Record<string, string> = {};
-        // FIXED: Check if issues array exists before using forEach
-        if (error.issues && Array.isArray(error.issues)) {
-          error.issues.forEach((err) => {
-            if (err.path[0]) {
-              fieldErrors[err.path[0] as string] = err.message;
-            }
-          });
-        }
-        setErrors(fieldErrors);
-        setIsSubmitting(false);
-        return;
+      // Get files (validation already done by Zod schema)
+      const resumeFile = data.resume[0];
+      const coverLetterFile = data.coverLetter?.[0];
+
+      // Prepare form data
+      const formData = new FormData();
+      formData.append('fullName', data.fullName);
+      formData.append('email', data.email);
+      formData.append('phone', data.phone);
+      if (data.linkedin) {
+        formData.append('linkedin', data.linkedin);
       }
-    }
-
-    // Validate files
-    if (!applicationForm.resume) {
-      setErrors(prev => ({ ...prev, resume: language === 'fr' ? 'CV requis' : language === 'en' ? 'Resume required' : 'CV wymagane' }));
-      setIsSubmitting(false);
-      return;
-    }
-
-    const resumeError = validateFile(applicationForm.resume, true);
-    if (resumeError) {
-      setErrors(prev => ({ ...prev, resume: resumeError }));
-      setIsSubmitting(false);
-      return;
-    }
-
-    if (applicationForm.coverLetter) {
-      const coverLetterError = validateFile(applicationForm.coverLetter, false);
-      if (coverLetterError) {
-        setErrors(prev => ({ ...prev, coverLetter: coverLetterError }));
-        setIsSubmitting(false);
-        return;
+      formData.append('position', currentJobTitle);
+      formData.append('message', data.message);
+      formData.append('resume', resumeFile);
+      if (coverLetterFile) {
+        formData.append('coverLetter', coverLetterFile);
       }
-    }
 
-    const formData = new FormData();
-    formData.append('fullName', applicationForm.fullName);
-    formData.append('email', applicationForm.email);
-    formData.append('phone', applicationForm.phone);
-    formData.append('linkedin', applicationForm.linkedin);
-    formData.append('position', currentJobTitle);
-    formData.append('message', applicationForm.message);
-    if (applicationForm.resume) {
-      formData.append('resume', applicationForm.resume);
-    }
-    if (applicationForm.coverLetter) {
-      formData.append('coverLetter', applicationForm.coverLetter);
-    }
-
-    try {
+      // Submit to API
       const response = await fetch('/api/careers', {
         method: 'POST',
+        headers: {
+          'Accept-Language': language,
+        },
         body: formData,
       });
 
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || 'Failed to submit application');
+        // Handle validation errors from API
+        if (result.details && Array.isArray(result.details)) {
+          result.details.forEach((detail: any) => {
+            setError(detail.field as keyof ApplicationFormData, {
+              type: 'server',
+              message: detail.message
+            });
+          });
+          return;
+        }
+        // Handle general API errors
+        setError('root', {
+          type: 'server',
+          message: result.error || 'Failed to submit application'
+        });
+        return;
       }
 
-      setSubmitSuccess(true);
-      toast.success(language === 'fr' ? 'Candidature envoyée avec succès!' : language === 'en' ? 'Application submitted successfully!' : 'Aplikacja wysłana pomyślnie!');
-      setTimeout(() => {
-        setShowApplicationForm(false);
-        setApplicationForm({
-          fullName: '',
-          email: '',
-          phone: '',
-          linkedin: '',
-          resume: null,
-          coverLetter: null,
-          message: '',
-        });
-        setSubmitSuccess(false);
-        setErrors({});
-        setCurrentJobTitle('');
-      }, 2000);
+      // Success - show dialog and reset form
+      setShowSuccessDialog(true);
+      setShowApplicationForm(false);
+      reset();
+      setCurrentJobTitle('');
     } catch (error) {
       console.error('Error submitting application:', error);
-      toast.error(language === 'fr' ? 'Erreur lors de l\'envoi. Réessayez.' : language === 'en' ? 'Error submitting application. Please try again.' : 'Błąd podczas wysyłania. Spróbuj ponownie.');
-    } finally {
-      setIsSubmitting(false);
+      setError('root', {
+        type: 'server',
+        message: language === 'fr' ? 'Erreur lors de l\'envoi. Réessayez.' : language === 'en' ? 'Error submitting application. Please try again.' : 'Błąd podczas wysyłania. Spróbuj ponownie.'
+      });
     }
   };
 
@@ -910,75 +994,75 @@ export default function CareersPage() {
             <h2 className="text-3xl font-bold mb-2">{t.applicationForm.title}</h2>
             <p className="text-muted-foreground mb-8">{t.applicationForm.subtitle}</p>
 
-            <form onSubmit={handleApply} className="space-y-6">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              {/* General Error Display */}
+              {errors.root && (
+                <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+                  <p className="text-red-600 dark:text-red-400 text-sm flex items-center gap-2">
+                    <span className="text-xs">⚠</span> {errors.root.message}
+                  </p>
+                </div>
+              )}
+
               <div>
-                <label className="block text-sm font-medium mb-2">{t.applicationForm.fullName}</label>
+                <label className="block text-sm font-medium mb-2">
+                  {t.applicationForm.fullName} <span className="text-red-500">*</span>
+                </label>
                 <input
                   type="text"
-                  value={applicationForm.fullName}
-                  onChange={(e) => {
-                    setApplicationForm({ ...applicationForm, fullName: e.target.value });
-                    setErrors(prev => ({ ...prev, fullName: '' })); // Clear error on change
-                  }}
+                  {...register('fullName')}
                   className={`w-full px-4 py-3 rounded-lg border ${
                     errors.fullName ? 'border-red-500' : 'border-neutral-300 dark:border-[#1E3A5F]'
                   } bg-white dark:bg-[#0D1B2A] text-neutral-900 dark:text-white focus:outline-none focus:ring-2 ${
                     errors.fullName ? 'focus:ring-red-500' : 'focus:ring-[#239D89]'
                   } transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
-                  required
                   disabled={isSubmitting}
                 />
                 {errors.fullName && (
                   <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                    <span className="text-xs">⚠</span> {errors.fullName}
+                    <span className="text-xs">⚠</span> {errors.fullName.message}
                   </p>
                 )}
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-2">{t.applicationForm.email}</label>
+                  <label className="block text-sm font-medium mb-2">
+                    {t.applicationForm.email} <span className="text-red-500">*</span>
+                  </label>
                   <input
                     type="email"
-                    value={applicationForm.email}
-                    onChange={(e) => {
-                      setApplicationForm({ ...applicationForm, email: e.target.value });
-                      setErrors(prev => ({ ...prev, email: '' }));
-                    }}
+                    {...register('email')}
                     className={`w-full px-4 py-3 rounded-lg border ${
                       errors.email ? 'border-red-500' : 'border-neutral-300 dark:border-[#1E3A5F]'
                     } bg-white dark:bg-[#0D1B2A] text-neutral-900 dark:text-white focus:outline-none focus:ring-2 ${
                       errors.email ? 'focus:ring-red-500' : 'focus:ring-[#239D89]'
                     } transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
-                    required
                     disabled={isSubmitting}
                   />
                   {errors.email && (
                     <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                      <span className="text-xs">⚠</span> {errors.email}
+                      <span className="text-xs">⚠</span> {errors.email.message}
                     </p>
                   )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">{t.applicationForm.phone}</label>
+                  <label className="block text-sm font-medium mb-2">
+                    {t.applicationForm.phone} <span className="text-red-500">*</span>
+                  </label>
                   <input
                     type="tel"
-                    value={applicationForm.phone}
-                    onChange={(e) => {
-                      setApplicationForm({ ...applicationForm, phone: e.target.value });
-                      setErrors(prev => ({ ...prev, phone: '' }));
-                    }}
+                    {...register('phone')}
                     className={`w-full px-4 py-3 rounded-lg border ${
                       errors.phone ? 'border-red-500' : 'border-neutral-300 dark:border-[#1E3A5F]'
                     } bg-white dark:bg-[#0D1B2A] text-neutral-900 dark:text-white focus:outline-none focus:ring-2 ${
                       errors.phone ? 'focus:ring-red-500' : 'focus:ring-[#239D89]'
                     } transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
-                    required
                     disabled={isSubmitting}
                   />
                   {errors.phone && (
                     <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                      <span className="text-xs">⚠</span> {errors.phone}
+                      <span className="text-xs">⚠</span> {errors.phone.message}
                     </p>
                   )}
                 </div>
@@ -988,11 +1072,7 @@ export default function CareersPage() {
                 <label className="block text-sm font-medium mb-2">{t.applicationForm.linkedin}</label>
                 <input
                   type="url"
-                  value={applicationForm.linkedin}
-                  onChange={(e) => {
-                    setApplicationForm({ ...applicationForm, linkedin: e.target.value });
-                    setErrors(prev => ({ ...prev, linkedin: '' }));
-                  }}
+                  {...register('linkedin')}
                   className={`w-full px-4 py-3 rounded-lg border ${
                     errors.linkedin ? 'border-red-500' : 'border-neutral-300 dark:border-[#1E3A5F]'
                   } bg-white dark:bg-[#0D1B2A] text-neutral-900 dark:text-white focus:outline-none focus:ring-2 ${
@@ -1002,33 +1082,29 @@ export default function CareersPage() {
                 />
                 {errors.linkedin && (
                   <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                    <span className="text-xs">⚠</span> {errors.linkedin}
+                    <span className="text-xs">⚠</span> {errors.linkedin.message}
                   </p>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">{t.applicationForm.resume}</label>
+                <label className="block text-sm font-medium mb-2">
+                  {t.applicationForm.resume} <span className="text-red-500">*</span>
+                </label>
                 <input
                   type="file"
-                  name="resume"
                   accept=".pdf,.doc,.docx"
-                  onChange={(e) => {
-                    const file = e.target.files?.[0] || null;
-                    setApplicationForm({ ...applicationForm, resume: file });
-                    setErrors(prev => ({ ...prev, resume: '' }));
-                  }}
+                  {...register('resume')}
                   className={`w-full px-4 py-3 rounded-lg border ${
                     errors.resume ? 'border-red-500' : 'border-neutral-300 dark:border-[#1E3A5F]'
                   } bg-white dark:bg-[#0D1B2A] text-neutral-900 dark:text-white focus:outline-none focus:ring-2 ${
                     errors.resume ? 'focus:ring-red-500' : 'focus:ring-[#239D89]'
                   } transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
-                  required
                   disabled={isSubmitting}
                 />
                 {errors.resume && (
                   <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                    <span className="text-xs">⚠</span> {errors.resume}
+                    <span className="text-xs">⚠</span> {errors.resume.message}
                   </p>
                 )}
               </div>
@@ -1037,43 +1113,39 @@ export default function CareersPage() {
                 <label className="block text-sm font-medium mb-2">{t.applicationForm.coverLetter}</label>
                 <input
                   type="file"
-                  name="coverLetter"
                   accept=".pdf,.doc,.docx"
-                  onChange={(e) => {
-                    const file = e.target.files?.[0] || null;
-                    setApplicationForm({ ...applicationForm, coverLetter: file });
-                    setErrors(prev => ({ ...prev, coverLetter: '' }));
-                  }}
-                  className="w-full px-4 py-3 rounded-lg border border-neutral-300 dark:border-[#1E3A5F] bg-white dark:bg-[#0D1B2A] text-neutral-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#239D89] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  {...register('coverLetter')}
+                  className={`w-full px-4 py-3 rounded-lg border ${
+                    errors.coverLetter ? 'border-red-500' : 'border-neutral-300 dark:border-[#1E3A5F]'
+                  } bg-white dark:bg-[#0D1B2A] text-neutral-900 dark:text-white focus:outline-none focus:ring-2 ${
+                    errors.coverLetter ? 'focus:ring-red-500' : 'focus:ring-[#239D89]'
+                  } transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
                   disabled={isSubmitting}
                 />
                 {errors.coverLetter && (
                   <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                    <span className="text-xs">⚠</span> {errors.coverLetter}
+                    <span className="text-xs">⚠</span> {errors.coverLetter.message}
                   </p>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">{t.applicationForm.message}</label>
+                <label className="block text-sm font-medium mb-2">
+                  {t.applicationForm.message} <span className="text-red-500">*</span>
+                </label>
                 <textarea
-                  value={applicationForm.message}
-                  onChange={(e) => {
-                    setApplicationForm({ ...applicationForm, message: e.target.value });
-                    setErrors(prev => ({ ...prev, message: '' }));
-                  }}
+                  {...register('message')}
                   rows={4}
                   className={`w-full px-4 py-3 rounded-lg border ${
                     errors.message ? 'border-red-500' : 'border-neutral-300 dark:border-[#1E3A5F]'
                   } bg-white dark:bg-[#0D1B2A] text-neutral-900 dark:text-white focus:outline-none focus:ring-2 ${
                     errors.message ? 'focus:ring-red-500' : 'focus:ring-[#239D89]'
                   } transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed`}
-                  required
                   disabled={isSubmitting}
                 />
                 {errors.message && (
                   <p className="mt-1 text-sm text-red-500 flex items-center gap-1">
-                    <span className="text-xs">⚠</span> {errors.message}
+                    <span className="text-xs">⚠</span> {errors.message.message}
                   </p>
                 )}
               </div>
@@ -1088,11 +1160,6 @@ export default function CareersPage() {
                     <>
                       <Loader2 className="h-5 w-5 animate-spin" />
                       {language === 'fr' ? 'Envoi en cours...' : language === 'en' ? 'Submitting...' : 'Wysyłanie...'}
-                    </>
-                  ) : submitSuccess ? (
-                    <>
-                      <Check className="h-5 w-5" />
-                      {language === 'fr' ? 'Envoyé!' : language === 'en' ? 'Submitted!' : 'Wysłano!'}
                     </>
                   ) : (
                     t.applicationForm.submit
@@ -1111,6 +1178,13 @@ export default function CareersPage() {
           </div>
         </div>
       )}
+
+      {/* Success Dialog */}
+      <ApplicationSuccessDialog
+        isOpen={showSuccessDialog}
+        onClose={() => setShowSuccessDialog(false)}
+        language={language}
+      />
 
       <Footer language={language} />
     </div>

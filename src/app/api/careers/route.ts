@@ -4,28 +4,79 @@ import { z } from 'zod';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Zod validation schema
-const applicationSchema = z.object({
-  fullName: z.string().min(2, 'Full name must be at least 2 characters'),
-  email: z.string().email('Invalid email address'),
-  phone: z.string().min(10, 'Phone number must be at least 10 characters'),
-  linkedin: z.string().url('Invalid LinkedIn URL').optional().or(z.literal('')),
-  position: z.string().min(1, 'Position is required'),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
-});
+// Create validation schemas for each language
+const createValidationSchema = (language: "en" | "fr" | "pl") => {
+  const messages = {
+    en: {
+      fullName: "Full name must be at least 2 characters",
+      email: "Please enter a valid email address",
+      phone: "Phone number is required",
+      linkedin: "Please enter a valid LinkedIn URL",
+      position: "Position is required",
+      message: "Message must be at least 10 characters",
+    },
+    fr: {
+      fullName: "Le nom complet doit contenir au moins 2 caractères",
+      email: "Veuillez entrer une adresse email valide",
+      phone: "Le numéro de téléphone est requis",
+      linkedin: "Veuillez entrer une URL LinkedIn valide",
+      position: "Le poste est requis",
+      message: "Le message doit contenir au moins 10 caractères",
+    },
+    pl: {
+      fullName: "Imię i nazwisko musi mieć co najmniej 2 znaki",
+      email: "Proszę podać prawidłowy adres email",
+      phone: "Numer telefonu jest wymagany",
+      linkedin: "Proszę podać prawidłowy URL LinkedIn",
+      position: "Stanowisko jest wymagane",
+      message: "Wiadomość musi mieć co najmniej 10 znaków",
+    }
+  };
 
-// File validation
-const validateFile = (file: File | null, required: boolean = false) => {
+  const msg = messages[language];
+
+  return z.object({
+    fullName: z.string().min(2, msg.fullName),
+    email: z.string().email(msg.email),
+    phone: z.string().min(1, msg.phone),
+    linkedin: z.string().optional().or(z.literal('')).or(z.literal(null)).transform(val => val === '' || val === null ? undefined : val),
+    position: z.string().min(1, msg.position),
+    message: z.string().min(10, msg.message),
+  });
+};
+
+// File validation with language support
+const validateFile = (file: File | null, required: boolean = false, language: "en" | "fr" | "pl" = "en") => {
+  const messages = {
+    en: {
+      required: 'File is required',
+      size: 'File size must be less than 5MB',
+      format: 'File must be PDF or DOC format'
+    },
+    fr: {
+      required: 'Fichier requis',
+      size: 'La taille du fichier doit être inférieure à 5MB',
+      format: 'Le fichier doit être au format PDF ou DOC'
+    },
+    pl: {
+      required: 'Plik jest wymagany',
+      size: 'Rozmiar pliku musi być mniejszy niż 5MB',
+      format: 'Plik musi być w formacie PDF lub DOC'
+    }
+  };
+
+  const msg = messages[language];
+
   if (!file || file.size === 0) {
     if (required) {
-      throw new Error('File is required');
+      throw new Error(msg.required);
     }
     return false;
   }
 
   const maxSize = 5 * 1024 * 1024; // 5MB
   if (file.size > maxSize) {
-    throw new Error('File size must be less than 5MB');
+    throw new Error(msg.size);
   }
 
   const allowedTypes = [
@@ -34,7 +85,7 @@ const validateFile = (file: File | null, required: boolean = false) => {
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
   ];
   if (!allowedTypes.includes(file.type)) {
-    throw new Error('File must be PDF or DOC format');
+    throw new Error(msg.format);
   }
 
   return true;
@@ -54,18 +105,30 @@ export async function POST(request: NextRequest) {
       message: formData.get('message') as string,
     };
 
-    // Validate data with Zod
-    const validatedData = applicationSchema.parse(data);
+    // Detect language from Accept-Language header or default to English
+    const acceptLanguage = request.headers.get('accept-language') || 'en';
+    let language: "en" | "fr" | "pl" = "en";
+    
+    if (acceptLanguage.includes('fr')) {
+      language = "fr";
+    } else if (acceptLanguage.includes('pl')) {
+      language = "pl";
+    }
+
+    // Validate data with language-specific Zod schema
+    const validationSchema = createValidationSchema(language);
+    const validatedData = validationSchema.parse(data);
 
     const resume = formData.get('resume') as File | null;
     const coverLetter = formData.get('coverLetter') as File | null;
 
-    // Validate files
+    // Validate files with language support
     try {
-      validateFile(resume, true); // Resume is required
+      validateFile(resume, true, language); // Resume is required
       if (coverLetter && coverLetter.size > 0) {
-        validateFile(coverLetter, false); // Cover letter is optional
+        validateFile(coverLetter, false, language); // Cover letter is optional
       }
+      
     } catch (fileError) {
       return NextResponse.json(
         { error: fileError instanceof Error ? fileError.message : 'File validation failed' },
