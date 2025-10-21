@@ -60,7 +60,7 @@ export default function Careers() {
           />
           <span className="mt-4">Loading...</span>
         </div>
-      </div>
+          </div>
     }
     >
       <CareersPageClient />
