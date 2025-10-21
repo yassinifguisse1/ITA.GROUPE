@@ -238,7 +238,7 @@ export const portfolioTranslations = {
         category: "Services",
         description: "Premium car rental service platform featuring luxury vehicle fleet with real-time booking system, elegant showcase of high-end vehicles, seamless rental management, and immersive photo galleries for exotic car rentals.",
         tags: ["Car Rental", "Booking System", "Luxury Services"],
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/car-1760970084717.jpg",
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1761042786652.png",
         link: "https://amseelcars.com/",
         featured: true
       },
@@ -256,7 +256,7 @@ export const portfolioTranslations = {
         category: "SaaS",
         description: "Comprehensive SEO tools and analytics platform for digital marketers. Features keyword tracking, rank monitoring, competitor analysis, site audits, and advanced reporting dashboards for SEO professionals and agencies.",
         tags: ["SaaS", "SEO Tools", "Analytics"],
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/dad-1760970443820.jpg",
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1761043906770.png",
         link: "https://dadofseo.com/",
         featured: true
       },
@@ -304,14 +304,6 @@ export const portfolioTranslations = {
         image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/fi-1760970346789.png",
         link: "https://bcufinancial.com/",
         featured: true
-      },
-      {
-        title: "Restaurant Chain Digital",
-        category: "Food & Beverage",
-        description: "Multi-location restaurant website with online ordering and reservation system.",
-        tags: ["Website", "E-commerce", "Social Media"],
-        image: null,
-        link: null
       }
     ],
     viewCaseStudy: "View Case Study",
@@ -380,7 +372,7 @@ export const portfolioTranslations = {
         category: "Services",
         description: "Plateforme de location de voitures premium présentant une flotte de véhicules de luxe avec système de réservation en temps réel, vitrine élégante de véhicules haut de gamme, gestion fluide des locations et galeries photo immersives pour location de voitures exotiques.",
         tags: ["Location de Voitures", "Système de Réservation", "Services de Luxe"],
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/car-1760970084717.jpg",
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1761042786652.png",
         link: "https://amseelcars.com/",
         featured: true
       },
@@ -398,7 +390,7 @@ export const portfolioTranslations = {
         category: "SaaS",
         description: "Plateforme complète d'outils SEO et d'analyses pour spécialistes du marketing digital. Propose suivi de mots-clés, surveillance de classement, analyse de concurrents, audits de site et tableaux de bord de rapport avancés pour professionnels SEO et agences.",
         tags: ["SaaS", "Outils SEO", "Analyses"],
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/dad-1760970443820.jpg",
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1761043906770.png",
         link: "https://dadofseo.com/",
         featured: true
       },
@@ -522,7 +514,7 @@ export const portfolioTranslations = {
         category: "Usługi",
         description: "Platforma wynajmu samochodów premium z luksusową flotą pojazdów z systemem rezerwacji w czasie rzeczywistym, elegancką prezentacją wysokiej klasy pojazdów, płynnym zarządzaniem wynajmem i wciągającymi galeriami zdjęć egzotycznych samochodów.",
         tags: ["Wynajem Samochodów", "System Rezerwacji", "Usługi Luksusowe"],
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/car-1760970084717.jpg",
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1761042786652.png",
         link: "https://amseelcars.com/",
         featured: true
       },
@@ -540,7 +532,7 @@ export const portfolioTranslations = {
         category: "SaaS",
         description: "Kompleksowa platforma narzędzi SEO i analityki dla marketerów cyfrowych. Oferuje śledzenie słów kluczowych, monitorowanie rankingów, analizę konkurencji, audyty stron i zaawansowane pulpity raportowania dla profesjonalistów SEO i agencji.",
         tags: ["SaaS", "Narzędzia SEO", "Analityka"],
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/dad-1760970443820.jpg",
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1761043906770.png",
         link: "https://dadofseo.com/",
         featured: true
       },

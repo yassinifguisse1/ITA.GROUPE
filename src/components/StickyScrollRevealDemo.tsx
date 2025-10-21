@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight, MapPin } from "lucide-react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -20,9 +19,9 @@ const showcaseContent = {
         location: "Morocco",
         category: "E-Commerce",
         description: "Plateforme de location de voitures premium avec système de réservation en temps réel et gestion de flotte.",
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/ee5c3257-c8b5-46cb-a5e9-d3c2a26d1cac/generated_images/modern-luxury-car-rental-website-screens-7d09115e-20251019134540.jpg",
-        color: "#FF8D3E",
-        link: "/portfolio/amseel-cars"
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1761042786652.png",
+        color: "#D90B0F",
+        link: "https://amseelcars.com/"
       },
       {
         title: "Soul Surf House",
@@ -30,9 +29,9 @@ const showcaseContent = {
         location: "Morocco",
         category: "Tourisme",
         description: "Site web moderne pour une auberge de surf au Maroc avec système de réservation et galerie photo immersive.",
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/ee5c3257-c8b5-46cb-a5e9-d3c2a26d1cac/generated_images/modern-surf-hostel-website-screenshot%2c-f2202e7e-20251019134548.jpg",
-        color: "#53ACF1",
-        link: "/portfolio/soul-surf"
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1760970115144.png",
+        color: "#8F672B",
+        link: "https://www.soulsurfhouse.com/"
       },
       {
         title: "Unity HVAC",
@@ -40,9 +39,9 @@ const showcaseContent = {
         location: "USA",
         category: "Services",
         description: "Site vitrine professionnel pour entreprise de chauffage et climatisation avec système de devis en ligne.",
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/ee5c3257-c8b5-46cb-a5e9-d3c2a26d1cac/generated_images/professional-hvac-company-website-screen-edee806c-20251019134555.jpg",
-        color: "#F15556",
-        link: "/portfolio/unity-hvac"
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1760969888607.png",
+        color: "#3E9EC7",
+        link: "https://unityhvac.com/"
       },
       {
         title: "DadOfSeo",
@@ -50,9 +49,9 @@ const showcaseContent = {
         location: "USA",
         category: "Marketing Digital",
         description: "Plateforme complète d'agence SEO avec blog, portfolio de clients et outils d'analyse de performance.",
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/ee5c3257-c8b5-46cb-a5e9-d3c2a26d1cac/generated_images/modern-seo-and-digital-marketing-agency--21eb7bbe-20251019134602.jpg",
-        color: "#1BC65C",
-        link: "/portfolio/dadofseo"
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1761043906770.png",
+        color: "#38287E",
+        link: "https://dadofseo.com/"
       }
     ]
   },
@@ -68,9 +67,9 @@ const showcaseContent = {
         location: "Morocco",
         category: "E-Commerce",
         description: "Premium car rental platform with real-time booking system and fleet management.",
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/ee5c3257-c8b5-46cb-a5e9-d3c2a26d1cac/generated_images/modern-luxury-car-rental-website-screens-7d09115e-20251019134540.jpg",
-        color: "#FF8D3E",
-        link: "/portfolio/amseel-cars"
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1761042786652.png",
+        color: "#D90B0F",
+        link: "https://amseelcars.com/"
       },
       {
         title: "Soul Surf House",
@@ -78,9 +77,9 @@ const showcaseContent = {
         location: "Morocco",
         category: "Tourism",
         description: "Modern website for a surf hostel in Morocco with booking system and immersive photo gallery.",
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/ee5c3257-c8b5-46cb-a5e9-d3c2a26d1cac/generated_images/modern-surf-hostel-website-screenshot%2c-f2202e7e-20251019134548.jpg",
-        color: "#53ACF1",
-        link: "/portfolio/soul-surf"
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1760970115144.png",
+        color: "#8F672B",
+        link: "https://www.soulsurfhouse.com/"
       },
       {
         title: "Unity HVAC",
@@ -88,9 +87,9 @@ const showcaseContent = {
         location: "USA",
         category: "Services",
         description: "Professional showcase website for heating and air conditioning company with online quote system.",
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/ee5c3257-c8b5-46cb-a5e9-d3c2a26d1cac/generated_images/professional-hvac-company-website-screen-edee806c-20251019134555.jpg",
-        color: "#F15556",
-        link: "/portfolio/unity-hvac"
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1760969888607.png",
+        color: "#3E9EC7",
+        link: "https://unityhvac.com/"
       },
       {
         title: "DadOfSeo",
@@ -98,9 +97,9 @@ const showcaseContent = {
         location: "USA",
         category: "Digital Marketing",
         description: "Complete SEO agency platform with blog, client portfolio, and performance analysis tools.",
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/ee5c3257-c8b5-46cb-a5e9-d3c2a26d1cac/generated_images/modern-seo-and-digital-marketing-agency--21eb7bbe-20251019134602.jpg",
-        color: "#1BC65C",
-        link: "/portfolio/dadofseo"
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1761043906770.png",
+        color: "#38287E",
+        link: "https://dadofseo.com/"
       }
     ]
   },
@@ -116,9 +115,9 @@ const showcaseContent = {
         location: "Morocco",
         category: "E-Commerce",
         description: "Platforma wynajmu samochodów premium z systemem rezerwacji w czasie rzeczywistym i zarządzaniem flotą.",
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/ee5c3257-c8b5-46cb-a5e9-d3c2a26d1cac/generated_images/modern-luxury-car-rental-website-screens-7d09115e-20251019134540.jpg",
-        color: "#FF8D3E",
-        link: "/portfolio/amseel-cars"
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1761042786652.png",
+        color: "#D90B0F",
+        link: "https://amseelcars.com/"
       },
       {
         title: "Soul Surf House",
@@ -126,9 +125,9 @@ const showcaseContent = {
         location: "Morocco",
         category: "Turystyka",
         description: "Nowoczesna strona dla hostelu surfingowego w Maroku z systemem rezerwacji i immersyjną galerią zdjęć.",
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/ee5c3257-c8b5-46cb-a5e9-d3c2a26d1cac/generated_images/modern-surf-hostel-website-screenshot%2c-f2202e7e-20251019134548.jpg",
-        color: "#53ACF1",
-        link: "/portfolio/soul-surf"
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1760970115144.png",
+        color: "#8F672B",
+        link: "https://www.soulsurfhouse.com/"
       },
       {
         title: "Unity HVAC",
@@ -136,9 +135,9 @@ const showcaseContent = {
         location: "USA",
         category: "Usługi",
         description: "Profesjonalna strona wizytówkowa dla firmy klimatyzacyjnej i grzewczej z systemem wyceny online.",
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/ee5c3257-c8b5-46cb-a5e9-d3c2a26d1cac/generated_images/professional-hvac-company-website-screen-edee806c-20251019134555.jpg",
-        color: "#F15556",
-        link: "/portfolio/unity-hvac"
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1760969888607.png",
+        color: "#3E9EC7",
+        link: "https://unityhvac.com/"
       },
       {
         title: "DadOfSeo",
@@ -146,16 +145,15 @@ const showcaseContent = {
         location: "USA",
         category: "Marketing Cyfrowy",
         description: "Kompletna platforma agencji SEO z blogiem, portfolio klientów i narzędziami analitycznymi.",
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/ee5c3257-c8b5-46cb-a5e9-d3c2a26d1cac/generated_images/modern-seo-and-digital-marketing-agency--21eb7bbe-20251019134602.jpg",
-        color: "#1BC65C",
-        link: "/portfolio/dadofseo"
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1761043906770.png",
+        color: "#38287E",
+        link: "https://dadofseo.com/"
       }
     ]
   }
 };
 
 export function StickyScrollRevealDemo() {
-  const router = useRouter();
   const language = "en";
   const content = showcaseContent[language];
 
@@ -210,9 +208,14 @@ export function StickyScrollRevealDemo() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                onClick={() => router.push(project.link)}
                 className="group relative bg-white dark:bg-[#0A1628] rounded-2xl overflow-hidden border border-neutral-200 dark:border-[#1E3A5F] hover:border-[#239D89] transition-all duration-500 cursor-pointer hover:-translate-y-2 hover:shadow-2xl"
               >
+                <Link 
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block h-full"
+                >
                 {/* Project Image */}
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image 
@@ -282,6 +285,7 @@ export function StickyScrollRevealDemo() {
                   className="absolute left-0 top-0 w-1 h-0 group-hover:h-full transition-all duration-500"
                   style={{ backgroundColor: project.color }}
                 ></div>
+                </Link>
               </motion.div>
             ))}
           </div>

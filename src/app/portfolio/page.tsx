@@ -2,7 +2,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ExternalLink, ArrowUpRight } from "lucide-react";
+import {  ExternalLink, ArrowUpRight } from "lucide-react";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
 import { portfolioTranslations } from "@/i18n/page-translations";
