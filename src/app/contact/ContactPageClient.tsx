@@ -6,6 +6,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import { useLanguage } from "@/context/LanguageContext";
+
 import { contactTranslations } from "@/i18n/page-translations";
 
 const iconMap = { Mail, Phone, MapPin, FaSquareXTwitter };
