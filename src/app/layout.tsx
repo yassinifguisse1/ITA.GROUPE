@@ -27,29 +27,9 @@ export const metadata: Metadata = {
     "software development company"
   ],
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any", type: "image/x-icon" },
-
-    ],
+    icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: [
-      { url: "/favicon.ico", sizes: "any", type: "image/x-icon" }
-    ],
-    other: [
-      {
-        rel: "icon",
-        url: "/favicon.ico",
-      },
-      {
-        rel: "mask-icon",
-        url: "/safari-pinned-tab.svg",
-        color: "#10B981"
-      },
-      {
-        rel: "manifest",
-        url: "/site.webmanifest"
-      }
-    ],
+    apple: "/favicon.ico",
   },
   authors: [{ name: "iTA Groupe" }],
   creator: "iTA Groupe",
