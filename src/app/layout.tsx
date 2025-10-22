@@ -10,30 +10,48 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL('https://itagroupe.com'),
   title: {
-    default: "iTA Groupe - Digital Solutions & Web Development Agency",
+    default: "iTA Groupe | Software Development Company",
     template: "%s | iTA Groupe"
   },
-  description: "Professional web development, SEO optimization, digital marketing, and custom software solutions. Expert team delivering results-driven digital strategies for businesses worldwide.",
+  description: "Professional software development, web development, SEO optimization, digital marketing, and custom software solutions. Expert team delivering results-driven digital strategies for businesses worldwide.",
   keywords: [
     "web development",
+    "software development",
     "digital marketing",
     "SEO optimization", 
-    "software development",
-    "web design",
-    "digital agency",
-    "Morocco web development",
     "custom software",
     "e-commerce development",
-    "mobile app development"
+    "mobile app development",
+    "digital transformation",
+    "IT consulting",
+    "software development company"
   ],
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" }
+    ],
     shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
-    other: {
-      rel: "icon",
-      url: "/favicon.ico",
-    },
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
+    ],
+    other: [
+      {
+        rel: "icon",
+        url: "/favicon.ico",
+      },
+      {
+        rel: "mask-icon",
+        url: "/safari-pinned-tab.svg",
+        color: "#10B981"
+      },
+      {
+        rel: "manifest",
+        url: "/site.webmanifest"
+      }
+    ],
   },
   authors: [{ name: "iTA Groupe" }],
   creator: "iTA Groupe",
