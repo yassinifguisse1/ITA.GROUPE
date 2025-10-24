@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/sonner";
 import Script from "next/script";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://itagroupe.com'),
@@ -157,6 +158,7 @@ export default function RootLayout({
         <Script id="orchids-init" strategy="afterInteractive">
           {`window.__ORCHIDS_VISUAL_EDITS__ = true;`}
         </Script>
+        <Analytics />
       </body>
     </html>
   );
