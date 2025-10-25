@@ -25,13 +25,26 @@ export const metadata: Metadata = {
     "mobile app development",
     "digital transformation",
     "IT consulting",
-    "software development company"
+    "software development company",
+    "itagroup",
   ],
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
+      { url: "/favicon.ico", sizes: "16x16", type: "image/x-icon" }
+    ],
     shortcut: "/favicon.ico",
     apple: "/favicon.ico",
+    other: [
+      {
+        rel: "icon",
+        url: "/favicon.ico",
+        sizes: "32x32"
+      }
+    ]
   },
+  manifest: "/site.webmanifest",
   authors: [{ name: "iTA Groupe" }],
   creator: "iTA Groupe",
   publisher: "iTA Groupe",
@@ -139,6 +152,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" href="/favicon.ico" sizes="16x16" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
+        <meta name="msapplication-TileImage" content="/favicon.ico" />
+        <meta name="msapplication-TileColor" content="#239D89" />
         <Script
           id="json-ld"
           type="application/ld+json"
