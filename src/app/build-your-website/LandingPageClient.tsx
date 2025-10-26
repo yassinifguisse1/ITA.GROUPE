@@ -316,6 +316,146 @@ export default function LandingPageClient() {
           </div>
         </motion.div>
       </section>
+      {/* Video Testimonials */}
+      <div className="mb-16 pt-16">
+            <motion.div 
+              className="text-center mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="text-3xl font-bold text-slate-900 mb-4">Hear From Our Clients</h3>
+              <p className="text-lg text-slate-600">Real testimonials from satisfied customers</p>
+            </motion.div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="relative group"
+              >
+                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                  <video
+                    className="w-full h-auto"
+                    controls
+                    controlsList="nodownload nofullscreen noremoteplayback"
+                    poster="/first-client.webp"
+                    preload="metadata"
+                    playsInline
+                    
+                    loop
+                    crossOrigin="anonymous"
+                    onError={(e) => {
+                      console.error('Video error:', e);
+                      console.error('Video error details:', (e.target as HTMLVideoElement).error);
+                    }}
+                    onLoadStart={() => console.log('Video loading started')}
+                    onCanPlay={() => console.log('Video can play')}
+                    onLoadedData={() => console.log('Video data loaded')}
+                    onLoadedMetadata={() => console.log('Video metadata loaded')}
+                    onAbort={() => console.log('Video aborted')}
+                  >
+                    <source src="/video/first-client.mp4" type="video/mp4" />
+                    <source src="/video/first-client.mp4" type="video/quicktime" />
+                    <source src="/video/first-client.mp4" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" />
+                    Your browser does not support the video tag.
+                  </video>
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                    <div className="bg-white/90 rounded-full p-4">
+                      <Play className="w-8 h-8 text-[#239D89]" />
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="relative group"
+              >
+                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                  <video
+                    className="w-full h-auto"
+                    controls
+                    controlsList="nodownload nofullscreen noremoteplayback"
+                    poster="/second.webp"
+                    preload="metadata"
+                    playsInline
+                    
+                    loop
+                    crossOrigin="anonymous"
+                    onError={(e) => {
+                      console.error('Video error:', e);
+                      console.error('Video error details:', (e.target as HTMLVideoElement).error);
+                    }}
+                    onLoadStart={() => console.log('Video loading started')}
+                    onCanPlay={() => console.log('Video can play')}
+                    onLoadedData={() => console.log('Video data loaded')}
+                    onLoadedMetadata={() => console.log('Video metadata loaded')}
+                    onAbort={() => console.log('Video aborted')}
+                  >
+                    <source src="/video/second-client.mp4" type="video/mp4" />
+                    <source src="/video/second-client.mp4" type="video/quicktime" />
+                    <source src="/video/second-client.mp4" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" />
+                    Your browser does not support the video tag.
+                  </video>
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                    <div className="bg-white/90 rounded-full p-4">
+                      <Play className="w-8 h-8 text-[#239D89]" />
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="relative group"
+              >
+                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                  <video
+                    className="w-full h-auto"
+                    controls
+                    controlsList="nodownload nofullscreen noremoteplayback"
+                    poster="/third.png"
+                    preload="metadata"
+                    playsInline
+                    
+                    loop
+                    crossOrigin="anonymous"
+                    onError={(e) => {
+                      console.error('Video error:', e);
+                      console.error('Video error details:', (e.target as HTMLVideoElement).error);
+                    }}
+                    onLoadStart={() => console.log('Video loading started')}
+                    onCanPlay={() => console.log('Video can play')}
+                    onLoadedData={() => console.log('Video data loaded')}
+                    onLoadedMetadata={() => console.log('Video metadata loaded')}
+                    onAbort={() => console.log('Video aborted')}
+                  >
+                    <source src="/video/third-client.mp4" type="video/mp4" />
+                    <source src="/video/third-client.mp4" type="video/quicktime" />
+                    <source src="/video/third-client.mp4" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" />
+                    Your browser does not support the video tag.
+                  </video>
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
+                    <div className="bg-white/90 rounded-full p-4">
+                      <Play className="w-8 h-8 text-[#239D89]" />
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              
+            </div>
+          </div>
 
          {/* About Founder/Team Section */}
          <section className="py-20 bg-white">
@@ -774,146 +914,7 @@ export default function LandingPageClient() {
             </motion.div>
           </div>
 
-          {/* Video Testimonials */}
-          <div className="mb-16">
-            <motion.div 
-              className="text-center mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h3 className="text-3xl font-bold text-slate-900 mb-4">Hear From Our Clients</h3>
-              <p className="text-lg text-slate-600">Real testimonials from satisfied customers</p>
-            </motion.div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="relative group"
-              >
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                  <video
-                    className="w-full h-auto"
-                    controls
-                    controlsList="nodownload nofullscreen noremoteplayback"
-                    poster="/first-client.webp"
-                    preload="metadata"
-                    playsInline
-                    muted
-                    loop
-                    crossOrigin="anonymous"
-                    onError={(e) => {
-                      console.error('Video error:', e);
-                      console.error('Video error details:', (e.target as HTMLVideoElement).error);
-                    }}
-                    onLoadStart={() => console.log('Video loading started')}
-                    onCanPlay={() => console.log('Video can play')}
-                    onLoadedData={() => console.log('Video data loaded')}
-                    onLoadedMetadata={() => console.log('Video metadata loaded')}
-                    onAbort={() => console.log('Video aborted')}
-                  >
-                    <source src="/video/first-client.mp4" type="video/mp4" />
-                    <source src="/video/first-client.mp4" type="video/quicktime" />
-                    <source src="/video/first-client.mp4" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" />
-                    Your browser does not support the video tag.
-                  </video>
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-                    <div className="bg-white/90 rounded-full p-4">
-                      <Play className="w-8 h-8 text-[#239D89]" />
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="relative group"
-              >
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                  <video
-                    className="w-full h-auto"
-                    controls
-                    controlsList="nodownload nofullscreen noremoteplayback"
-                    poster="/second.webp"
-                    preload="metadata"
-                    playsInline
-                    muted
-                    loop
-                    crossOrigin="anonymous"
-                    onError={(e) => {
-                      console.error('Video error:', e);
-                      console.error('Video error details:', (e.target as HTMLVideoElement).error);
-                    }}
-                    onLoadStart={() => console.log('Video loading started')}
-                    onCanPlay={() => console.log('Video can play')}
-                    onLoadedData={() => console.log('Video data loaded')}
-                    onLoadedMetadata={() => console.log('Video metadata loaded')}
-                    onAbort={() => console.log('Video aborted')}
-                  >
-                    <source src="/video/second-client.mp4" type="video/mp4" />
-                    <source src="/video/second-client.mp4" type="video/quicktime" />
-                    <source src="/video/second-client.mp4" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" />
-                    Your browser does not support the video tag.
-                  </video>
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-                    <div className="bg-white/90 rounded-full p-4">
-                      <Play className="w-8 h-8 text-[#239D89]" />
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative group"
-              >
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                  <video
-                    className="w-full h-auto"
-                    controls
-                    controlsList="nodownload nofullscreen noremoteplayback"
-                    poster="/third.png"
-                    preload="metadata"
-                    playsInline
-                    muted
-                    loop
-                    crossOrigin="anonymous"
-                    onError={(e) => {
-                      console.error('Video error:', e);
-                      console.error('Video error details:', (e.target as HTMLVideoElement).error);
-                    }}
-                    onLoadStart={() => console.log('Video loading started')}
-                    onCanPlay={() => console.log('Video can play')}
-                    onLoadedData={() => console.log('Video data loaded')}
-                    onLoadedMetadata={() => console.log('Video metadata loaded')}
-                    onAbort={() => console.log('Video aborted')}
-                  >
-                    <source src="/video/third-client.mp4" type="video/mp4" />
-                    <source src="/video/third-client.mp4" type="video/quicktime" />
-                    <source src="/video/third-client.mp4" type="video/mp4; codecs=avc1.42E01E,mp4a.40.2" />
-                    Your browser does not support the video tag.
-                  </video>
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-                    <div className="bg-white/90 rounded-full p-4">
-                      <Play className="w-8 h-8 text-[#239D89]" />
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              
-            </div>
-          </div>
+          
 
           {/* Animated Moving Reviews */}
           <div className="relative overflow-hidden">
