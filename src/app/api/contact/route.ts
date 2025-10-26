@@ -4,8 +4,20 @@ import { z } from 'zod';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Create validation schemas for each language
-const createValidationSchema = (language: "en" | "fr" | "pl") => {
+// Create validation schemas for different form types
+const createValidationSchema = (formType: "contact" | "landing") => {
+  if (formType === "landing") {
+    // Landing page form schema (simpler)
+    return z.object({
+      name: z.string().min(2, "Full name must be at least 2 characters"),
+      email: z.string().email("Please enter a valid email address"),
+      phone: z.string().min(10, "Phone number must be at least 10 digits"),
+      message: z.string().min(10, "Message must be at least 10 characters"),
+      source: z.string().optional(),
+    });
+  }
+
+  // Regular contact form schema (more complex)
   const messages = {
     en: {
       fullName: "Full name must be at least 2 characters",
@@ -33,6 +45,7 @@ const createValidationSchema = (language: "en" | "fr" | "pl") => {
     }
   };
 
+  const language = "en"; // Default to English for now
   const msg = messages[language];
 
   return z.object({
@@ -56,46 +69,158 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     
-    // Extract language from request body or default to English
-    const language = body.language || 'en';
+    // Determine form type based on the presence of 'source' field
+    const formType = body.source ? "landing" : "contact";
     
-    // Validate the request body with language-specific schema
-    const validationSchema = createValidationSchema(language as "en" | "fr" | "pl");
+    // Validate the request body with appropriate schema
+    const validationSchema = createValidationSchema(formType);
     const validationResult = validationSchema.safeParse(body);
     
     if (!validationResult.success) {
       return NextResponse.json(
         { 
           error: 'Validation failed', 
-          details: validationResult.error.issues 
+          details: validationResult.error.issues,
+          message: 'Please check your form data and try again'
         },
         { status: 400 }
       );
     }
 
-    const { 
-      fullName, 
-      email, 
-      phone, 
-      company, 
-      subject, 
-      service, 
-      budget, 
-      timeline, 
-      message 
-    } = validationResult.data;
+    const validatedData = validationResult.data;
 
-    // Send email using Resend (following official documentation format)
-    console.log('📧 Sending email to:', 'hello.itagroupe@gmail.com');
-    console.log('📧 From:', 'ITA Groupe Contact <noreply@itagroupe.com>');
-    console.log('📧 Subject:', `New Contact Form Submission: ${subject}`);
+    // Prepare email data based on form type
+    let emailSubject, emailHtml, replyToEmail;
     
-    const { data, error } = await resend.emails.send({
-      from: 'ITA Groupe Contact <noreply@itagroupe.com>',
-      to: ['hello.itagroupe@gmail.com'],
-      replyTo: email,
-      subject: `New Contact Form Submission: ${subject}`,
-      html: `
+    if (formType === "landing") {
+      const landingData = validatedData as { name: string; email: string; phone: string; message: string; source?: string };
+      const { name, email, phone, message, source } = landingData;
+      replyToEmail = email;
+      emailSubject = `🚀 New Lead from ${source || 'Landing Page'}: ${name}`;
+      
+      emailHtml = `
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="utf-8">
+            <style>
+              body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+                line-height: 1.6;
+                color: #333;
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+              }
+              .header {
+                background: linear-gradient(135deg, #163C2E 0%, #239D89 100%);
+                color: white;
+                padding: 30px;
+                border-radius: 10px 10px 0 0;
+                text-align: center;
+              }
+              .content {
+                background: #f9fafb;
+                padding: 30px;
+                border: 1px solid #e5e7eb;
+                border-top: none;
+                border-radius: 0 0 10px 10px;
+              }
+              .field {
+                margin-bottom: 20px;
+                padding: 15px;
+                background: white;
+                border-radius: 8px;
+                border: 1px solid #e5e7eb;
+              }
+              .label {
+                font-weight: 600;
+                color: #163C2E;
+                margin-bottom: 5px;
+                font-size: 14px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+              }
+              .value {
+                color: #4b5563;
+                font-size: 16px;
+              }
+              .message-box {
+                background: white;
+                padding: 20px;
+                border-radius: 8px;
+                border: 1px solid #e5e7eb;
+                margin-top: 10px;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+              }
+              .footer {
+                text-align: center;
+                margin-top: 30px;
+                padding-top: 20px;
+                border-top: 1px solid #e5e7eb;
+                color: #6b7280;
+                font-size: 14px;
+              }
+              .priority {
+                background: #fef3c7;
+                border: 1px solid #f59e0b;
+                color: #92400e;
+                padding: 10px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+                text-align: center;
+                font-weight: 600;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="header">
+              <h1 style="margin: 0; font-size: 24px;">🚀 New Lead from Landing Page</h1>
+              <p style="margin: 10px 0 0 0; opacity: 0.9;">Facebook Ads Campaign</p>
+            </div>
+            
+            <div class="content">
+              <div class="priority">
+                ⚡ HIGH PRIORITY - Landing Page Lead
+              </div>
+              
+              <div class="field">
+                <div class="label">Full Name</div>
+                <div class="value">${name}</div>
+              </div>
+              
+              <div class="field">
+                <div class="label">Email Address</div>
+                <div class="value"><a href="mailto:${email}" style="color: #239D89; text-decoration: none;">${email}</a></div>
+              </div>
+              
+              <div class="field">
+                <div class="label">Phone Number</div>
+                <div class="value"><a href="tel:${phone}" style="color: #239D89; text-decoration: none;">${phone}</a></div>
+              </div>
+              
+              <div class="field">
+                <div class="label">Project Details</div>
+                <div class="message-box">${message}</div>
+              </div>
+              
+              <div class="footer">
+                <p>This lead came from your Facebook Ads landing page.</p>
+                <p>Reply directly to this email to contact the lead.</p>
+              </div>
+            </div>
+          </body>
+        </html>
+      `;
+    } else {
+      // Regular contact form
+      const contactData = validatedData as { fullName: string; email: string; phone?: string; company?: string; subject: string; service: string; budget?: string; timeline?: string; message: string };
+      const { fullName, email, phone, company, subject, service, budget, timeline, message } = contactData;
+      replyToEmail = email;
+      emailSubject = `New Contact Form Submission: ${subject}`;
+      
+      emailHtml = `
         <!DOCTYPE html>
         <html>
           <head>
@@ -228,7 +353,21 @@ export async function POST(request: NextRequest) {
             </div>
           </body>
         </html>
-      `,
+      `;
+    }
+
+    // Send email using Resend
+    console.log('📧 Sending email to:', 'hello.itagroupe@gmail.com');
+    console.log('📧 From:', 'ITA Groupe Contact <noreply@itagroupe.com>');
+    console.log('📧 Subject:', emailSubject);
+    console.log('📧 Form Type:', formType);
+    
+    const { data, error } = await resend.emails.send({
+      from: 'ITA Groupe Contact <noreply@itagroupe.com>',
+      to: ['hello.itagroupe@gmail.com'],
+      replyTo: replyToEmail,
+      subject: emailSubject,
+      html: emailHtml,
     });
 
     if (error) {
@@ -236,7 +375,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { 
           error: 'Failed to send email',
-          details: error.message || 'Unknown error'
+          details: error.message || 'Unknown error',
+          message: 'Unable to send your message. Please try again later.'
         },
         { status: 500 }
       );
@@ -254,7 +394,11 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('API error:', error);
     return NextResponse.json(
-      { error: 'Internal server error', details: error instanceof Error ? error.message : 'Unknown error' },
+      { 
+        error: 'Internal server error', 
+        details: error instanceof Error ? error.message : 'Unknown error',
+        message: 'Something went wrong. Please try again later.'
+      },
       { status: 500 }
     );
   }
