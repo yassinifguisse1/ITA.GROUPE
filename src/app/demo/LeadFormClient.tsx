@@ -319,31 +319,31 @@ export default function LeadFormClient() {
 
 
   return (
-    <Card className="p-8 shadow-2xl">
-      <CardHeader>
-        <CardTitle className="text-2xl text-center text-slate-900 mb-2">
+    <Card className="p-4 sm:p-6 lg:p-8 shadow-2xl">
+      <CardHeader className="px-0 pb-4 sm:pb-6">
+        <CardTitle className="text-xl sm:text-2xl text-center text-slate-900 mb-2">
           Request Your Quote
         </CardTitle>
-        <p className="text-center text-slate-600">
+        <p className="text-sm sm:text-base text-center text-slate-600">
           Fill out the form below and we'll contact you with a custom proposal
         </p>
       </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <CardContent className="px-0">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
+          <div className="grid grid-cols-1 gap-4 sm:gap-6">
             <div>
-              <Label htmlFor="fullName" className="text-sm font-medium text-slate-700">
+              <Label htmlFor="fullName" className="text-sm font-medium text-slate-700 block mb-2">
                 Full Name *
               </Label>
               <Input
                 id="fullName"
                 type="text"
                 {...register('fullName')}
-                className={`mt-1 ${errors.fullName ? 'border-red-500 focus:border-red-500' : ''}`}
+                className={`h-12 text-base ${errors.fullName ? 'border-red-500 focus:border-red-500' : ''}`}
                 placeholder="Enter your full name"
               />
               {errors.fullName && (
-                <div className="flex items-center gap-1 mt-1">
+                <div className="flex items-center gap-1 mt-2">
                   <AlertCircle className="w-4 h-4 text-red-500" />
                   <p className="text-red-500 text-sm">{errors.fullName.message}</p>
                 </div>
@@ -351,18 +351,18 @@ export default function LeadFormClient() {
             </div>
             
             <div>
-              <Label htmlFor="email" className="text-sm font-medium text-slate-700">
+              <Label htmlFor="email" className="text-sm font-medium text-slate-700 block mb-2">
                 Email Address *
               </Label>
               <Input
                 id="email"
                 type="email"
                 {...register('email')}
-                className={`mt-1 ${errors.email ? 'border-red-500 focus:border-red-500' : ''}`}
+                className={`h-12 text-base ${errors.email ? 'border-red-500 focus:border-red-500' : ''}`}
                 placeholder="your@email.com"
               />
               {errors.email && (
-                <div className="flex items-center gap-1 mt-1">
+                <div className="flex items-center gap-1 mt-2">
                   <AlertCircle className="w-4 h-4 text-red-500" />
                   <p className="text-red-500 text-sm">{errors.email.message}</p>
                 </div>
@@ -371,10 +371,10 @@ export default function LeadFormClient() {
           </div>
           
           <div>
-            <Label htmlFor="phone" className="text-sm font-medium text-slate-700">
+            <Label htmlFor="phone" className="text-sm font-medium text-slate-700 block mb-2">
               Phone Number *
             </Label>
-            <div className="flex gap-2 mt-1">
+            <div className="flex gap-2 sm:gap-3">
               <Select
                 value={watch('countryCode')}
                 open={isCountrySelectOpen}
@@ -390,12 +390,12 @@ export default function LeadFormClient() {
                   setIsCountrySelectOpen(false); // Close the select
                 }}
               >
-                <SelectTrigger className="w-40">
-                  <SelectValue placeholder="Select Country">
+                <SelectTrigger className="w-24 sm:w-32 h-12 text-sm">
+                  <SelectValue placeholder="Country">
                     {watch('countryCode') && (
-                      <span className="flex items-center gap-2">
-                        <span>{countryCodes.find(c => c.code === watch('countryCode'))?.flag}</span>
-                        <span>{watch('countryCode')}</span>
+                      <span className="flex items-center gap-1">
+                        <span className="text-sm">{countryCodes.find(c => c.code === watch('countryCode'))?.flag}</span>
+                        <span className="text-sm">{watch('countryCode')}</span>
                       </span>
                     )}
                   </SelectValue>
@@ -464,18 +464,18 @@ export default function LeadFormClient() {
                 id="phoneNumber"
               type="tel"
                 {...register('phoneNumber')}
-                className={`flex-1 ${errors.phoneNumber ? 'border-red-500 focus:border-red-500' : ''}`}
-                placeholder="123 456 7890"
+                className={`flex-1 h-12 text-base ${errors.phoneNumber ? 'border-red-500 focus:border-red-500' : ''}`}
+                placeholder="Phone number"
               />
             </div>
             {errors.countryCode && (
-              <div className="flex items-center gap-1 mt-1">
+              <div className="flex items-center gap-1 mt-2">
                 <AlertCircle className="w-4 h-4 text-red-500" />
                 <p className="text-red-500 text-sm">{errors.countryCode.message}</p>
               </div>
             )}
             {errors.phoneNumber && (
-              <div className="flex items-center gap-1 mt-1">
+              <div className="flex items-center gap-1 mt-2">
                 <AlertCircle className="w-4 h-4 text-red-500" />
                 <p className="text-red-500 text-sm">{errors.phoneNumber.message}</p>
               </div>
@@ -483,18 +483,18 @@ export default function LeadFormClient() {
           </div>
           
           <div>
-            <Label htmlFor="message" className="text-sm font-medium text-slate-700">
+            <Label htmlFor="message" className="text-sm font-medium text-slate-700 block mb-2">
               Tell us about your project *
             </Label>
             <Textarea
               id="message"
               {...register('message')}
               rows={4}
-              className={`mt-1 ${errors.message ? 'border-red-500 focus:border-red-500' : ''}`}
+              className={`text-base resize-none ${errors.message ? 'border-red-500 focus:border-red-500' : ''}`}
               placeholder="Describe your website needs, business type, and any specific requirements..."
             />
             {errors.message && (
-              <div className="flex items-center gap-1 mt-1">
+              <div className="flex items-center gap-1 mt-2">
                 <AlertCircle className="w-4 h-4 text-red-500" />
                 <p className="text-red-500 text-sm">{errors.message.message}</p>
               </div>
@@ -514,7 +514,7 @@ export default function LeadFormClient() {
           <Button 
             type="submit" 
             disabled={isSubmitting}
-            className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 text-lg font-semibold disabled:opacity-50"
+            className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 text-lg font-semibold disabled:opacity-50 h-14"
           >
             {isSubmitting ? (
               <>
@@ -526,7 +526,7 @@ export default function LeadFormClient() {
             )}
           </Button>
           
-          <p className="text-center text-sm text-slate-500">
+          <p className="text-center text-sm text-slate-500 mt-4">
             We'll respond within 24 hours with a detailed proposal
           </p>
         </form>

@@ -275,12 +275,12 @@ export default function LandingPageClient() {
       {/* Hero Section with Form */}
       <section className="relative overflow-hidden bg-gradient-to-r from-emerald-600 to-teal-700 text-white pt-24">
         <motion.div 
-          className="container mx-auto px-4 py-20"
+          className="container mx-auto px-4 py-16 sm:py-20"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Hero Content */}
             <motion.div className="text-center lg:text-left" variants={itemVariants}>
               <motion.h1 
@@ -301,12 +301,12 @@ export default function LandingPageClient() {
 
             {/* Lead Capture Form */}
             <motion.div variants={itemVariants}>
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-                <div className="text-center mb-8">
-                  <h2 className="text-3xl font-bold text-white mb-4">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-white/20">
+                <div className="text-center mb-6 sm:mb-8">
+                  <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">
                     Get Your Free Quote
                   </h2>
-                  <p className="text-lg text-emerald-100">
+                  <p className="text-base sm:text-lg text-emerald-100">
                     Tell us about your project and we'll get back to you within 24 hours
                   </p>
                 </div>
@@ -799,6 +799,7 @@ export default function LandingPageClient() {
                   <video
                     className="w-full h-auto"
                     controls
+                    controlsList="nodownload nofullscreen noremoteplayback"
                     poster="/first-client.webp"
                     preload="metadata"
                     playsInline
@@ -839,6 +840,7 @@ export default function LandingPageClient() {
                   <video
                     className="w-full h-auto"
                     controls
+                    controlsList="nodownload nofullscreen noremoteplayback"
                     poster="/second.webp"
                     preload="metadata"
                     playsInline
@@ -879,6 +881,7 @@ export default function LandingPageClient() {
                   <video
                     className="w-full h-auto"
                     controls
+                    controlsList="nodownload nofullscreen noremoteplayback"
                     poster="/third.png"
                     preload="metadata"
                     playsInline
