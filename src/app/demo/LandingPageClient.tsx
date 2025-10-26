@@ -271,11 +271,11 @@ export default function LandingPageClient() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 ">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 overflow-x-hidden">
       {/* Hero Section with Form */}
       <section className="relative overflow-hidden bg-gradient-to-r from-emerald-600 to-teal-700 text-white pt-24">
         <motion.div 
-          className="container mx-auto px-4 py-16 sm:py-20"
+          className="container mx-auto px-4 py-16 sm:py-20 max-w-7xl"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -284,14 +284,14 @@ export default function LandingPageClient() {
             {/* Hero Content */}
             <motion.div className="text-center lg:text-left" variants={itemVariants}>
               <motion.h1 
-                className="text-5xl md:text-6xl font-bold mb-6 leading-tight"
+                className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight"
                 variants={itemVariants}
               >
                 Get Your Modern Website
                 <span className="block text-emerald-200">Built Today</span>
               </motion.h1>
               <motion.p 
-                className="text-xl md:text-2xl mb-8 text-emerald-100"
+                className="text-lg sm:text-xl md:text-2xl mb-8 text-emerald-100"
                 variants={itemVariants}
               >
                 Professional, fast, and beautiful websites that convert visitors into customers
@@ -416,7 +416,7 @@ export default function LandingPageClient() {
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {showcaseProjects.map((project, index) => (
               <motion.div
                 key={index}
@@ -521,7 +521,7 @@ export default function LandingPageClient() {
           </div>
           
           {/* Services Grid */}
-          <div className="services-grid max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="services-grid max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {content.services.map((service, index) => (
               <motion.div
                 key={index}
@@ -593,7 +593,7 @@ export default function LandingPageClient() {
           </div>
           
           {/* Desktop Grid */}
-          <div className="advantages-grid hidden lg:grid lg:grid-cols-2 xl:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="advantages-grid hidden lg:grid lg:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
             {advantages.items.map((item, index) => (
               <motion.div
                 key={index}
@@ -617,7 +617,7 @@ export default function LandingPageClient() {
           </div>
 
           {/* Mobile & Tablet: Auto-Sliding Cards */}
-          <div className="lg:hidden relative">
+          <div className="lg:hidden relative overflow-hidden">
             <div className="overflow-hidden">
               <motion.div 
                 className="flex transition-transform duration-700 ease-out"
@@ -940,19 +940,19 @@ export default function LandingPageClient() {
                 { name: "Alex Johnson", company: "Tech Innovations", text: "Best web development experience ever!" },
                 { name: "Sophie Lee", company: "Creative Agency", text: "Outstanding work and great communication." }
               ].map((review, index) => (
-                <div key={index} className="flex-shrink-0 w-80">
-                  <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-200">
+                <div key={index} className="flex-shrink-0 w-72 sm:w-80">
+                  <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-slate-200">
                     <div className="flex justify-center mb-3">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                        <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current" />
                       ))}
                     </div>
-                    <p className="text-slate-600 italic mb-3 text-sm">
+                    <p className="text-slate-600 italic mb-3 text-sm sm:text-base">
                       "{review.text}"
                     </p>
                     <div className="text-center">
-                      <p className="font-semibold text-slate-900 text-sm">{review.name}</p>
-                      <p className="text-xs text-slate-500">{review.company}</p>
+                      <p className="font-semibold text-slate-900 text-sm sm:text-base">{review.name}</p>
+                      <p className="text-xs sm:text-sm text-slate-500">{review.company}</p>
                     </div>
                   </div>
                 </div>
@@ -962,7 +962,7 @@ export default function LandingPageClient() {
 
           {/* Stats Section */}
           <motion.div 
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 max-w-4xl mx-auto"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 mt-16 max-w-4xl mx-auto"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -1004,7 +1004,7 @@ export default function LandingPageClient() {
           <motion.p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto" variants={itemVariants}>
             Join hundreds of satisfied clients who have already transformed their online presence with our modern websites.
           </motion.p>
-          <motion.div className="flex flex-wrap justify-center gap-4" variants={itemVariants}>
+          <motion.div className="flex flex-wrap justify-center gap-3 sm:gap-4" variants={itemVariants}>
             <div className="flex items-center gap-2 text-slate-600">
               <Users className="w-5 h-5 text-emerald-600" />
               <span>500+ Happy Clients</span>
