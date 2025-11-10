@@ -42,6 +42,7 @@ export async function GET() {
     
     // Landing pages
     { url: '/build-your-website', lastmod: currentDate },
+    { url: '/get-your-website', lastmod: currentDate },
   ];
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>

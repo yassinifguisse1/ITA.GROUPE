@@ -12,6 +12,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { CheckCircle, Loader2, AlertCircle, Search, Clock, FileText, Phone, Rocket } from 'lucide-react';
+import { useLanguage } from "@/context/LanguageContext";
+import { landingPageTranslations } from "@/i18n/page-translations";
 
 // Country codes data
 const countryCodes = [
@@ -220,30 +222,34 @@ const countryCodes = [
   { code: '+998', country: 'Uzbekistan', flag: '🇺🇿' }
 ];
 
-// Zod validation schema
-const leadFormSchema = z.object({
+// Function to create validation schema with translated messages
+const createLeadFormSchema = (t: any) => z.object({
   fullName: z.string()
-    .min(2, 'Full name must be at least 2 characters')
-    .max(50, 'Full name must be less than 50 characters')
-    .regex(/^[a-zA-Z\s]+$/, 'Full name can only contain letters and spaces'),
+    .min(2, t.form.validation.fullNameMin)
+    .max(50, t.form.validation.fullNameMax)
+    .regex(/^[a-zA-Z\s]+$/, t.form.validation.fullNameInvalid),
   email: z.string()
-    .email('Please enter a valid email address')
-    .min(5, 'Email must be at least 5 characters')
-    .max(100, 'Email must be less than 100 characters'),
+    .email(t.form.validation.emailInvalid)
+    .min(5, t.form.validation.emailMin)
+    .max(100, t.form.validation.emailMax),
   countryCode: z.string()
-    .min(1, 'Please select a country code'),
+    .min(1, t.form.validation.countryRequired),
   phoneNumber: z.string()
-    .min(5, 'Phone number must be at least 5 digits')
-    .max(15, 'Phone number must be less than 15 digits')
-    .regex(/^[0-9\s\-\(\)]+$/, 'Please enter a valid phone number'),
+    .min(5, t.form.validation.phoneMin)
+    .max(15, t.form.validation.phoneMax)
+    .regex(/^[0-9\s\-\(\)]+$/, t.form.validation.phoneInvalid),
   message: z.string()
-    .min(10, 'Message must be at least 10 characters')
-    .max(1000, 'Message must be less than 1000 characters')
+    .min(10, t.form.validation.messageMin)
+    .max(1000, t.form.validation.messageMax)
 });
 
-type LeadFormData = z.infer<typeof leadFormSchema>;
-
 export default function LeadFormClient() {
+  const { language } = useLanguage();
+  const t = landingPageTranslations[language];
+  const leadFormSchema = createLeadFormSchema(t);
+
+  type LeadFormData = z.infer<typeof leadFormSchema>;
+
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [countrySearch, setCountrySearch] = useState('');
@@ -312,7 +318,7 @@ export default function LeadFormClient() {
       setSubmitError(
         error instanceof Error 
           ? error.message 
-          : 'Something went wrong. Please try again or contact us directly.'
+          : t.form.messages.submitError
       );
     }
   };
@@ -322,10 +328,10 @@ export default function LeadFormClient() {
     <Card className="p-4 sm:p-6 lg:p-8 shadow-2xl">
       <CardHeader className="px-0 pb-4 sm:pb-6">
         <CardTitle className="text-xl sm:text-2xl text-center text-slate-900 mb-2">
-          Request Your Quote
+          {t.form.title}
         </CardTitle>
         <p className="text-sm sm:text-base text-center text-slate-600">
-          Fill out the form below and we'll contact you with a custom proposal
+          {t.form.subtitle}
         </p>
       </CardHeader>
       <CardContent className="px-0">
@@ -333,14 +339,14 @@ export default function LeadFormClient() {
           <div className="grid grid-cols-1 gap-4 sm:gap-6">
             <div>
               <Label htmlFor="fullName" className="text-sm font-medium text-slate-700 block mb-2">
-                Full Name *
+                {t.form.fields.fullName}
               </Label>
               <Input
                 id="fullName"
                 type="text"
                 {...register('fullName')}
                 className={`h-12 text-base ${errors.fullName ? 'border-red-500 focus:border-red-500' : ''}`}
-                placeholder="Enter your full name"
+                placeholder={t.form.fields.fullNamePlaceholder}
               />
               {errors.fullName && (
                 <div className="flex items-center gap-1 mt-2">
@@ -352,14 +358,14 @@ export default function LeadFormClient() {
             
             <div>
               <Label htmlFor="email" className="text-sm font-medium text-slate-700 block mb-2">
-                Email Address *
+                {t.form.fields.email}
               </Label>
               <Input
                 id="email"
                 type="email"
                 {...register('email')}
                 className={`h-12 text-base ${errors.email ? 'border-red-500 focus:border-red-500' : ''}`}
-                placeholder="your@email.com"
+                placeholder={t.form.fields.emailPlaceholder}
               />
               {errors.email && (
                 <div className="flex items-center gap-1 mt-2">
@@ -372,7 +378,7 @@ export default function LeadFormClient() {
           
           <div>
             <Label htmlFor="phone" className="text-sm font-medium text-slate-700 block mb-2">
-              Phone Number *
+              {t.form.fields.phone}
             </Label>
             <div className="flex gap-2 sm:gap-3">
               <Select
@@ -391,7 +397,7 @@ export default function LeadFormClient() {
                 }}
               >
                 <SelectTrigger className="w-24 sm:w-32 h-12 text-sm">
-                  <SelectValue placeholder="Country">
+                  <SelectValue placeholder={t.form.fields.countryPlaceholder}>
                     {watch('countryCode') && (
                       <span className="flex items-center gap-1">
                         <span className="text-sm">{countryCodes.find(c => c.code === watch('countryCode'))?.flag}</span>
@@ -406,7 +412,7 @@ export default function LeadFormClient() {
                     <div className="relative">
                       <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-400" />
                       <Input
-                        placeholder="Search country..."
+                        placeholder={t.form.fields.searchCountry}
                         value={countrySearch}
                         onChange={(e) => {
                           setCountrySearch(e.target.value);
@@ -465,7 +471,7 @@ export default function LeadFormClient() {
               type="tel"
                 {...register('phoneNumber')}
                 className={`flex-1 h-12 text-base ${errors.phoneNumber ? 'border-red-500 focus:border-red-500' : ''}`}
-                placeholder="Phone number"
+                placeholder={t.form.fields.phonePlaceholder}
               />
             </div>
             {errors.countryCode && (
@@ -484,14 +490,14 @@ export default function LeadFormClient() {
           
           <div>
             <Label htmlFor="message" className="text-sm font-medium text-slate-700 block mb-2">
-              Tell us about your project *
+              {t.form.fields.message}
             </Label>
             <Textarea
               id="message"
               {...register('message')}
               rows={4}
               className={`text-base resize-none ${errors.message ? 'border-red-500 focus:border-red-500' : ''}`}
-              placeholder="Describe your website needs, business type, and any specific requirements..."
+              placeholder={t.form.fields.messagePlaceholder}
             />
             {errors.message && (
               <div className="flex items-center gap-1 mt-2">
@@ -519,15 +525,15 @@ export default function LeadFormClient() {
             {isSubmitting ? (
               <>
                 <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                Sending...
+                {t.form.buttons.submitting}
               </>
             ) : (
-              'Get My Free Quote'
+              t.form.buttons.submit
             )}
           </Button>
           
           <p className="text-center text-sm text-slate-500 mt-4">
-            We'll respond within 24 hours with a detailed proposal
+            {t.form.messages.responseTime}
           </p>
         </form>
       </CardContent>
@@ -540,10 +546,10 @@ export default function LeadFormClient() {
               <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="w-8 h-8 text-emerald-600" />
               </div>
-              <span className="text-2xl font-bold text-slate-900">Thank You!</span>
+              <span className="text-2xl font-bold text-slate-900">{t.form.confirmation.title}</span>
             </DialogTitle>
             <DialogDescription className="text-center text-slate-600 mb-6">
-              We've received your request and will contact you within 24 hours with a detailed proposal for your website project.
+              {t.form.confirmation.subtitle}
             </DialogDescription>
           </DialogHeader>
           
@@ -551,48 +557,23 @@ export default function LeadFormClient() {
             <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-lg p-6">
               <h4 className="text-emerald-800 font-semibold mb-4 flex items-center gap-2">
                 <Rocket className="w-5 h-5" />
-                What happens next?
+                {t.form.confirmation.nextSteps}
               </h4>
               <div className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <FileText className="w-4 h-4 text-emerald-600" />
+                {t.form.confirmation.steps.map((step, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      {index === 0 && <FileText className="w-4 h-4 text-emerald-600" />}
+                      {index === 1 && <FileText className="w-4 h-4 text-emerald-600" />}
+                      {index === 2 && <Phone className="w-4 h-4 text-emerald-600" />}
+                      {index === 3 && <Rocket className="w-4 h-4 text-emerald-600" />}
+                    </div>
+                    <div>
+                      <p className="font-medium text-emerald-800">{step.title}</p>
+                      <p className="text-sm text-emerald-700">{step.description}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-medium text-emerald-800">Review Your Requirements</p>
-                    <p className="text-sm text-emerald-700">We'll carefully analyze your project needs</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <FileText className="w-4 h-4 text-emerald-600" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-emerald-800">Prepare Custom Proposal</p>
-                    <p className="text-sm text-emerald-700">Detailed plan tailored to your business</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Phone className="w-4 h-4 text-emerald-600" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-emerald-800">Schedule Free Consultation</p>
-                    <p className="text-sm text-emerald-700">Discuss your project in detail</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Rocket className="w-4 h-4 text-emerald-600" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-emerald-800">Start Building Your Website</p>
-                    <p className="text-sm text-emerald-700">Transform your vision into reality</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
             
@@ -601,7 +582,7 @@ export default function LeadFormClient() {
                 onClick={() => setShowConfirmationDialog(false)}
                 className="bg-emerald-600 hover:bg-emerald-700 text-white px-8"
               >
-                Got it!
+                {t.form.confirmation.gotIt}
               </Button>
             </div>
           </div>

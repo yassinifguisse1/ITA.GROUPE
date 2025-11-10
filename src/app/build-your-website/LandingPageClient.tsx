@@ -8,13 +8,14 @@ import { CheckCircle, Star, Users, Zap, ArrowUpRight, ExternalLink, Play } from 
 import LeadFormClient from './LeadFormClient';
 import Image from 'next/image';
 import { useLanguage } from "@/context/LanguageContext";
-import { portfolioTranslations } from "@/i18n/page-translations";
+import { portfolioTranslations, landingPageTranslations } from "@/i18n/page-translations";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function LandingPageClient() {
   const { language } = useLanguage();
   const t = portfolioTranslations[language];
+  const landingT = landingPageTranslations[language];
   const [selectedCategory, setSelectedCategory] = useState(0);
   const [currentSlide, setCurrentSlide] = useState(0);
   const router = useRouter();
@@ -287,14 +288,14 @@ export default function LandingPageClient() {
                 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight"
                 variants={itemVariants}
               >
-                Get Your Modern Website
-                <span className="block text-emerald-200">Built Today</span>
+                {landingT.hero.title}
+                <span className="block text-emerald-200">{landingT.hero.titleSpan}</span>
               </motion.h1>
               <motion.p 
                 className="text-lg sm:text-xl md:text-2xl mb-8 text-emerald-100"
                 variants={itemVariants}
               >
-                Professional, fast, and beautiful websites that convert visitors into customers
+                {landingT.hero.subtitle}
               </motion.p>
             
             </motion.div>
@@ -304,10 +305,10 @@ export default function LandingPageClient() {
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-white/20">
                 <div className="text-center mb-6 sm:mb-8">
                   <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">
-                    Get Your Free Quote
+                    {landingT.hero.formTitle}
                   </h2>
                   <p className="text-base sm:text-lg text-emerald-100">
-                    Tell us about your project and we'll get back to you within 24 hours
+                    {landingT.hero.formSubtitle}
                   </p>
                 </div>
                 <LeadFormClient />
@@ -325,8 +326,8 @@ export default function LandingPageClient() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h3 className="text-3xl font-bold text-slate-900 mb-4">Hear From Our Clients</h3>
-              <p className="text-lg text-slate-600">Real testimonials from satisfied customers</p>
+              <h3 className="text-3xl font-bold text-slate-900 mb-4">{landingT.videoTestimonials.title}</h3>
+              <p className="text-lg text-slate-600">{landingT.videoTestimonials.subtitle}</p>
             </motion.div>
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -492,25 +493,17 @@ export default function LandingPageClient() {
               >
                 <div>
                   <Badge variant="secondary" className="mb-4 text-[#239D89] bg-[#239D89]/10 uppercase tracking-wider">
-                    Meet Our Team
+                    {landingT.team.badge}
                   </Badge>
                   <h2 className="text-4xl md:text-5xl font-bold text-[#163C2E] mb-6 leading-tight">
-                    Passionate Experts
-                    <span className="block text-[#239D89]">Behind Every Project</span>
+                    {landingT.team.title}
+                    <span className="block text-[#239D89]">{landingT.team.titleSpan}</span>
                   </h2>
                 </div>
 
                 <div className="space-y-4 text-lg text-neutral-700 leading-relaxed">
                   <p>
-                    <strong>Experience meets innovation</strong> in our dedicated team of developers, designers, and digital strategists. We don't just build websites – we craft digital experiences that drive real business results.
-                  </p>
-                  
-                  <p>
-                    With <strong>years of expertise</strong> in modern web technologies and a deep understanding of what makes businesses succeed online, we're here to transform your vision into a powerful digital presence.
-                  </p>
-                  
-                  <p>
-                    Every project is a partnership. We listen, we understand, and we deliver solutions that not only meet your needs but exceed your expectations.
+                    {landingT.team.description}
                   </p>
                 </div>
 
@@ -526,7 +519,7 @@ export default function LandingPageClient() {
                     className="bg-[#239D89] hover:bg-[#1e7a6b] text-white px-8 py-3"
                     onClick={() => router.push('/about')}
                   >
-                    Learn More About Us
+                    {landingT.buttons.learnMore}
                     <ArrowUpRight className="w-4 h-4 ml-2" />
                   </Button>
                 </motion.div>
@@ -549,10 +542,10 @@ export default function LandingPageClient() {
         >
           <motion.div className="text-center mb-16" variants={itemVariants}>
             <h2 className="text-4xl font-bold text-slate-900 mb-4">
-              Our Recent Work
+              {landingT.showcase.title}
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              See the quality and variety of websites we've built for our clients
+              {landingT.showcase.subtitle}
             </p>
           </motion.div>
           
@@ -581,7 +574,7 @@ export default function LandingPageClient() {
                         onClick={() => window.open(project.link || '', '_blank', 'noopener,noreferrer')}
                       >
                         <ExternalLink className="w-4 h-4 mr-2" />
-                        View Live
+                        {landingT.showcase.viewLive}
                       </Button>
                     </div>
                   </div>
@@ -847,13 +840,13 @@ export default function LandingPageClient() {
         >
           <motion.div className="text-center mb-16" variants={itemVariants}>
             <Badge variant="secondary" className="mb-4 text-[#239D89] bg-[#239D89]/10 uppercase tracking-wider">
-              Client Success
+              {landingT.socialProof.badge}
             </Badge>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-              Trusted by Businesses Worldwide
+              {landingT.socialProof.title}
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Join hundreds of satisfied clients who have transformed their digital presence with our modern websites
+              {landingT.socialProof.subtitle}
             </p>
           </motion.div>
           
@@ -869,11 +862,11 @@ export default function LandingPageClient() {
                 ))}
               </div>
               <p className="text-slate-600 italic mb-4 text-lg">
-                "Amazing work! Our website looks professional and loads super fast. Highly recommended!"
+                "{landingT.socialProof.testimonials[0].text}"
               </p>
               <div className="border-t pt-4">
-                <p className="font-semibold text-slate-900">Sarah Johnson</p>
-                <p className="text-sm text-slate-500">CEO, TechStart Inc.</p>
+                <p className="font-semibold text-slate-900">{landingT.socialProof.testimonials[0].name}</p>
+                <p className="text-sm text-slate-500">{landingT.socialProof.testimonials[0].position}</p>
               </div>
             </motion.div>
             
@@ -887,11 +880,11 @@ export default function LandingPageClient() {
                 ))}
               </div>
               <p className="text-slate-600 italic mb-4 text-lg">
-                "Professional team, great communication, and delivered exactly what we needed."
+                "{landingT.socialProof.testimonials[1].text}"
               </p>
               <div className="border-t pt-4">
-                <p className="font-semibold text-slate-900">Mike Chen</p>
-                <p className="text-sm text-slate-500">Business Owner, Retail Plus</p>
+                <p className="font-semibold text-slate-900">{landingT.socialProof.testimonials[1].name}</p>
+                <p className="text-sm text-slate-500">{landingT.socialProof.testimonials[1].position}</p>
               </div>
             </motion.div>
             
@@ -905,11 +898,11 @@ export default function LandingPageClient() {
                 ))}
               </div>
               <p className="text-slate-600 italic mb-4 text-lg">
-                "Best investment we made for our business. Our online presence is now outstanding!"
+                "{landingT.socialProof.testimonials[2].text}"
               </p>
               <div className="border-t pt-4">
-                <p className="font-semibold text-slate-900">Lisa Rodriguez</p>
-                <p className="text-sm text-slate-500">Marketing Director, Growth Co.</p>
+                <p className="font-semibold text-slate-900">{landingT.socialProof.testimonials[2].name}</p>
+                <p className="text-sm text-slate-500">{landingT.socialProof.testimonials[2].position}</p>
               </div>
             </motion.div>
           </div>
@@ -928,18 +921,8 @@ export default function LandingPageClient() {
               }}
             >
               {[
-                { name: "David Wilson", company: "Finance Pro", text: "Exceptional service and results!" },
-                { name: "Emma Thompson", company: "HealthCare Plus", text: "Our website traffic increased by 300%!" },
-                { name: "James Brown", company: "E-commerce Solutions", text: "Fast delivery and amazing quality." },
-                { name: "Maria Garcia", company: "Real Estate Group", text: "Professional team, exceeded expectations." },
-                { name: "Alex Johnson", company: "Tech Innovations", text: "Best web development experience ever!" },
-                { name: "Sophie Lee", company: "Creative Agency", text: "Outstanding work and great communication." },
-                { name: "David Wilson", company: "Finance Pro", text: "Exceptional service and results!" },
-                { name: "Emma Thompson", company: "HealthCare Plus", text: "Our website traffic increased by 300%!" },
-                { name: "James Brown", company: "E-commerce Solutions", text: "Fast delivery and amazing quality." },
-                { name: "Maria Garcia", company: "Real Estate Group", text: "Professional team, exceeded expectations." },
-                { name: "Alex Johnson", company: "Tech Innovations", text: "Best web development experience ever!" },
-                { name: "Sophie Lee", company: "Creative Agency", text: "Outstanding work and great communication." }
+                ...landingT.socialProof.movingReviews,
+                ...landingT.socialProof.movingReviews
               ].map((review, index) => (
                 <div key={index} className="flex-shrink-0 w-72 sm:w-80">
                   <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-slate-200">
@@ -969,22 +952,12 @@ export default function LandingPageClient() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <motion.div className="text-center" variants={itemVariants}>
-              <div className="text-4xl font-bold text-[#239D89] mb-2">500+</div>
-              <div className="text-slate-600">Happy Clients</div>
-            </motion.div>
-            <motion.div className="text-center" variants={itemVariants}>
-              <div className="text-4xl font-bold text-[#239D89] mb-2">1000+</div>
-              <div className="text-slate-600">Projects Completed</div>
-            </motion.div>
-            <motion.div className="text-center" variants={itemVariants}>
-              <div className="text-4xl font-bold text-[#239D89] mb-2">5★</div>
-              <div className="text-slate-600">Average Rating</div>
-            </motion.div>
-            <motion.div className="text-center" variants={itemVariants}>
-              <div className="text-4xl font-bold text-[#239D89] mb-2">24/7</div>
-              <div className="text-slate-600">Support Available</div>
-            </motion.div>
+            {landingT.socialProof.stats.map((stat, index) => (
+              <motion.div key={index} className="text-center" variants={itemVariants}>
+                <div className="text-4xl font-bold text-[#239D89] mb-2">{stat.number}</div>
+                <div className="text-slate-600">{stat.label}</div>
+              </motion.div>
+            ))}
           </motion.div>
         </motion.div>
       </section>
@@ -1000,23 +973,23 @@ export default function LandingPageClient() {
           viewport={{ once: true }}
         >
           <motion.h2 className="text-3xl font-bold text-slate-900 mb-4" variants={itemVariants}>
-            Ready to Transform Your Business?
+            {landingT.finalCta.title}
           </motion.h2>
           <motion.p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto" variants={itemVariants}>
-            Join hundreds of satisfied clients who have already transformed their online presence with our modern websites.
+            {landingT.finalCta.subtitle}
           </motion.p>
           <motion.div className="flex flex-wrap justify-center gap-3 sm:gap-4" variants={itemVariants}>
             <div className="flex items-center gap-2 text-slate-600">
               <Users className="w-5 h-5 text-emerald-600" />
-              <span>500+ Happy Clients</span>
+              <span>{landingT.finalCta.features[0]}</span>
             </div>
             <div className="flex items-center gap-2 text-slate-600">
               <CheckCircle className="w-5 h-5 text-emerald-600" />
-              <span>14-Day Delivery</span>
+              <span>{landingT.finalCta.features[1]}</span>
             </div>
             <div className="flex items-center gap-2 text-slate-600">
               <Star className="w-5 h-5 text-emerald-600" />
-              <span>5-Star Reviews</span>
+              <span>{landingT.finalCta.features[2]}</span>
             </div>
           </motion.div>
         </motion.div>

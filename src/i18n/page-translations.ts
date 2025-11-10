@@ -1,3 +1,417 @@
+export const landingPageTranslations = {
+  en: {
+    hero: {
+      title: "Get Your Modern Website",
+      titleSpan: "Built Today",
+      subtitle: "Professional, fast, and beautiful websites that convert visitors into customers",
+      formTitle: "Get Your Free Quote",
+      formSubtitle: "Tell us about your project and we'll get back to you within 24 hours"
+    },
+    videoTestimonials: {
+      title: "Hear From Our Clients",
+      subtitle: "Real testimonials from satisfied customers"
+    },
+    team: {
+      badge: "Meet Our Team",
+      title: "Passionate Experts",
+      titleSpan: "Behind Every Project",
+      description: "With years of experience in web development and digital marketing, our team is dedicated to delivering exceptional results for every client. We combine technical expertise with creative vision to build websites that not only look stunning but also drive real business growth.",
+      experience: "5+ Years Experience",
+      projects: "200+ Projects Completed",
+      satisfaction: "100% Client Satisfaction"
+    },
+    socialProof: {
+      badge: "Client Success",
+      title: "Trusted by Businesses Worldwide",
+      subtitle: "Join hundreds of satisfied clients who have transformed their digital presence with our modern websites",
+      testimonials: [
+        {
+          text: "Amazing work! Our website looks professional and loads super fast. Highly recommended!",
+          name: "Sarah Johnson",
+          position: "CEO, TechStart Inc."
+        },
+        {
+          text: "Professional team, great communication, and delivered exactly what we needed.",
+          name: "Mike Chen",
+          position: "Business Owner, Retail Plus"
+        },
+        {
+          text: "Best investment we made for our business. Our online presence is now outstanding!",
+          name: "Lisa Rodriguez",
+          position: "Marketing Director, Growth Co."
+        }
+      ],
+      movingReviews: [
+        { name: "David Wilson", company: "Finance Pro", text: "Exceptional service and results!" },
+        { name: "Emma Thompson", company: "HealthCare Plus", text: "Our website traffic increased by 300%!" },
+        { name: "James Brown", company: "E-commerce Solutions", text: "Fast delivery and amazing quality." },
+        { name: "Maria Garcia", company: "Real Estate Group", text: "Professional team, exceeded expectations." },
+        { name: "Alex Johnson", company: "Tech Innovations", text: "Best web development experience ever!" },
+        { name: "Sophie Lee", company: "Creative Agency", text: "Outstanding work and great communication." }
+      ],
+      stats: [
+        { number: "500+", label: "Happy Clients" },
+        { number: "1000+", label: "Projects Completed" },
+        { number: "5★", label: "Average Rating" },
+        { number: "24/7", label: "Support Available" }
+      ]
+    },
+    finalCta: {
+      title: "Ready to Transform Your Business?",
+      subtitle: "Join hundreds of satisfied clients who have already transformed their online presence with our modern websites.",
+      features: [
+        "500+ Happy Clients",
+        "14-Day Delivery",
+        "5-Star Reviews"
+      ]
+    },
+    showcase: {
+      title: "Our Recent Work",
+      subtitle: "See the quality and variety of websites we've built for our clients",
+      viewLive: "View Live"
+    },
+    buttons: {
+      learnMore: "Learn More About Us"
+    },
+    form: {
+      title: "Request Your Quote",
+      subtitle: "Fill out the form below and we'll contact you with a custom proposal",
+      fields: {
+        fullName: "Full Name *",
+        fullNamePlaceholder: "Enter your full name",
+        email: "Email Address *",
+        emailPlaceholder: "your@email.com",
+        phone: "Phone Number *",
+        countryPlaceholder: "Country",
+        searchCountry: "Search country...",
+        phonePlaceholder: "Enter your phone number",
+        message: "Project Details *",
+        messagePlaceholder: "Tell us about your website needs, timeline, budget, and any specific requirements..."
+      },
+      validation: {
+        fullNameMin: "Full name must be at least 2 characters",
+        fullNameMax: "Full name must be less than 50 characters",
+        fullNameInvalid: "Full name can only contain letters and spaces",
+        emailInvalid: "Please enter a valid email address",
+        emailMin: "Email must be at least 5 characters",
+        emailMax: "Email must be less than 100 characters",
+        countryRequired: "Please select a country code",
+        phoneMin: "Phone number must be at least 5 digits",
+        phoneMax: "Phone number must be less than 15 digits",
+        phoneInvalid: "Please enter a valid phone number",
+        messageMin: "Message must be at least 10 characters",
+        messageMax: "Message must be less than 1000 characters"
+      },
+      buttons: {
+        submit: "Get My Free Quote",
+        submitting: "Sending..."
+      },
+      messages: {
+        responseTime: "We'll respond within 24 hours with a detailed proposal",
+        submitError: "Something went wrong. Please try again or contact us directly."
+      },
+      confirmation: {
+        title: "Thank You!",
+        subtitle: "We've received your request and will contact you within 24 hours with a detailed proposal for your website project.",
+        nextSteps: "What happens next?",
+        steps: [
+          {
+            title: "Review Your Requirements",
+            description: "We'll carefully analyze your project needs"
+          },
+          {
+            title: "Prepare Custom Proposal",
+            description: "Detailed plan tailored to your business"
+          },
+          {
+            title: "Schedule Free Consultation",
+            description: "Discuss your project in detail"
+          },
+          {
+            title: "Start Building Your Website",
+            description: "Transform your vision into reality"
+          }
+        ],
+        gotIt: "Got it!"
+      }
+    }
+  },
+  fr: {
+    hero: {
+      title: "Obtenez Votre Site Web Moderne",
+      titleSpan: "Construit Aujourd'hui",
+      subtitle: "Sites web professionnels, rapides et beaux qui convertissent les visiteurs en clients",
+      formTitle: "Obtenez Votre Devis Gratuit",
+      formSubtitle: "Parlez-nous de votre projet et nous vous recontacterons dans les 24 heures"
+    },
+    videoTestimonials: {
+      title: "Écoutez Nos Clients",
+      subtitle: "Témoignages réels de clients satisfaits"
+    },
+    team: {
+      badge: "Rencontrez Notre Équipe",
+      title: "Experts Passionnés",
+      titleSpan: "Derrière Chaque Projet",
+      description: "Avec des années d'expérience en développement web et marketing digital, notre équipe se consacre à livrer des résultats exceptionnels pour chaque client. Nous combinons l'expertise technique avec une vision créative pour construire des sites web qui non seulement ont l'air magnifiques mais qui génèrent aussi une croissance commerciale réelle.",
+      experience: "5+ Années d'Expérience",
+      projects: "200+ Projets Terminés",
+      satisfaction: "100% Satisfaction Client"
+    },
+    socialProof: {
+      badge: "Succès Client",
+      title: "Approuvé par les Entreprises du Monde Entier",
+      subtitle: "Rejoignez des centaines de clients satisfaits qui ont transformé leur présence digitale avec nos sites web modernes",
+      testimonials: [
+        {
+          text: "Travail incroyable ! Notre site web a l'air professionnel et se charge super rapidement. Fortement recommandé !",
+          name: "Sarah Johnson",
+          position: "PDG, TechStart Inc."
+        },
+        {
+          text: "Équipe professionnelle, excellente communication, et ont livré exactement ce dont nous avions besoin.",
+          name: "Mike Chen",
+          position: "Propriétaire d'Entreprise, Retail Plus"
+        },
+        {
+          text: "Meilleur investissement que nous ayons fait pour notre entreprise. Notre présence en ligne est maintenant exceptionnelle !",
+          name: "Lisa Rodriguez",
+          position: "Directrice Marketing, Growth Co."
+        }
+      ],
+      movingReviews: [
+        { name: "David Wilson", company: "Finance Pro", text: "Service exceptionnel et résultats !" },
+        { name: "Emma Thompson", company: "HealthCare Plus", text: "Le trafic de notre site web a augmenté de 300% !" },
+        { name: "James Brown", company: "E-commerce Solutions", text: "Livraison rapide et qualité incroyable." },
+        { name: "Maria Garcia", company: "Real Estate Group", text: "Équipe professionnelle, a dépassé les attentes." },
+        { name: "Alex Johnson", company: "Tech Innovations", text: "Meilleure expérience de développement web jamais vécue !" },
+        { name: "Sophie Lee", company: "Creative Agency", text: "Travail exceptionnel et excellente communication." }
+      ],
+      stats: [
+        { number: "500+", label: "Clients Satisfaits" },
+        { number: "1000+", label: "Projets Terminés" },
+        { number: "5★", label: "Note Moyenne" },
+        { number: "24/7", label: "Support Disponible" }
+      ]
+    },
+    finalCta: {
+      title: "Prêt à Transformer Votre Entreprise ?",
+      subtitle: "Rejoignez des centaines de clients satisfaits qui ont déjà transformé leur présence en ligne avec nos sites web modernes.",
+      features: [
+        "500+ Clients Satisfaits",
+        "Livraison en 14 Jours",
+        "Avis 5 Étoiles"
+      ]
+    },
+    showcase: {
+      title: "Nos Travaux Récents",
+      subtitle: "Découvrez la qualité et la variété des sites web que nous avons créés pour nos clients",
+      viewLive: "Voir en Direct"
+    },
+    buttons: {
+      learnMore: "En Savoir Plus sur Nous"
+    },
+    form: {
+      title: "Demandez Votre Devis",
+      subtitle: "Remplissez le formulaire ci-dessous et nous vous contacterons avec une proposition personnalisée",
+      fields: {
+        fullName: "Nom Complet *",
+        fullNamePlaceholder: "Entrez votre nom complet",
+        email: "Adresse Email *",
+        emailPlaceholder: "votre@email.com",
+        phone: "Numéro de Téléphone *",
+        countryPlaceholder: "Pays",
+        searchCountry: "Rechercher un pays...",
+        phonePlaceholder: "Entrez votre numéro de téléphone",
+        message: "Détails du Projet *",
+        messagePlaceholder: "Parlez-nous de vos besoins de site web, délais, budget et toutes exigences spécifiques..."
+      },
+      validation: {
+        fullNameMin: "Le nom complet doit comporter au moins 2 caractères",
+        fullNameMax: "Le nom complet doit comporter moins de 50 caractères",
+        fullNameInvalid: "Le nom complet ne peut contenir que des lettres et des espaces",
+        emailInvalid: "Veuillez entrer une adresse email valide",
+        emailMin: "L'email doit comporter au moins 5 caractères",
+        emailMax: "L'email doit comporter moins de 100 caractères",
+        countryRequired: "Veuillez sélectionner un indicatif pays",
+        phoneMin: "Le numéro de téléphone doit comporter au moins 5 chiffres",
+        phoneMax: "Le numéro de téléphone doit comporter moins de 15 chiffres",
+        phoneInvalid: "Veuillez entrer un numéro de téléphone valide",
+        messageMin: "Le message doit comporter au moins 10 caractères",
+        messageMax: "Le message doit comporter moins de 1000 caractères"
+      },
+      buttons: {
+        submit: "Obtenir Mon Devis Gratuit",
+        submitting: "Envoi en cours..."
+      },
+      messages: {
+        responseTime: "Nous vous répondrons dans les 24 heures avec une proposition détaillée",
+        submitError: "Une erreur s'est produite. Veuillez réessayer ou nous contacter directement."
+      },
+      confirmation: {
+        title: "Merci !",
+        subtitle: "Nous avons reçu votre demande et vous contacterons dans les 24 heures avec une proposition détaillée pour votre projet de site web.",
+        nextSteps: "Que se passe-t-il ensuite ?",
+        steps: [
+          {
+            title: "Examen de Vos Exigences",
+            description: "Nous analyserons soigneusement les besoins de votre projet"
+          },
+          {
+            title: "Préparation d'une Proposition Personnalisée",
+            description: "Plan détaillé adapté à votre entreprise"
+          },
+          {
+            title: "Planification d'une Consultation Gratuite",
+            description: "Discuter de votre projet en détail"
+          },
+          {
+            title: "Commencer la Construction de Votre Site Web",
+            description: "Transformer votre vision en réalité"
+          }
+        ],
+        gotIt: "Compris !"
+      }
+    }
+  },
+  pl: {
+    hero: {
+      title: "Uzyskaj Swoją Nowoczesną Stronę",
+      titleSpan: "Zbudowaną Dziś",
+      subtitle: "Profesjonalne, szybkie i piękne strony internetowe, które zamieniają odwiedzających w klientów",
+      formTitle: "Otrzymaj Darmową Wycenę",
+      formSubtitle: "Opowiedz nam o swoim projekcie, a odezwiemy się w ciągu 24 godzin"
+    },
+    videoTestimonials: {
+      title: "Posłuchaj Naszych Klientów",
+      subtitle: "Prawdziwe opinie zadowolonych klientów"
+    },
+    team: {
+      badge: "Poznaj Nasz Zespół",
+      title: "Pasjonaci Eksperci",
+      titleSpan: "Za Każdym Projektem",
+      description: "Z wieloletnim doświadczeniem w tworzeniu stron internetowych i marketingu cyfrowym, nasz zespół dedykuje się dostarczaniu wyjątkowych rezultatów dla każdego klienta. Łączymy wiedzę techniczną z kreatywną wizją, aby budować strony internetowe, które nie tylko wyglądają oszałamiająco, ale także napędzają prawdziwy wzrost biznesu.",
+      experience: "5+ Lat Doświadczenia",
+      projects: "200+ Ukończonych Projektów",
+      satisfaction: "100% Satysfakcja Klientów"
+    },
+    socialProof: {
+      badge: "Sukces Klientów",
+      title: "Zaufały Nam Firmy z Całego Świata",
+      subtitle: "Dołącz do setek zadowolonych klientów, którzy przekształcili swoją obecność cyfrową dzięki naszym nowoczesnym stronom internetowym",
+      testimonials: [
+        {
+          text: "Niesamowita praca! Nasza strona wygląda profesjonalnie i ładuje się super szybko. Gorąco polecam!",
+          name: "Sarah Johnson",
+          position: "Prezes, TechStart Inc."
+        },
+        {
+          text: "Profesjonalny zespół, świetna komunikacja i dostarczyli dokładnie to, czego potrzebowaliśmy.",
+          name: "Mike Chen",
+          position: "Właściciel Firmy, Retail Plus"
+        },
+        {
+          text: "Najlepsza inwestycja jaką zrobiliśmy dla naszego biznesu. Nasza obecność online jest teraz wybitna!",
+          name: "Lisa Rodriguez",
+          position: "Dyrektor Marketingu, Growth Co."
+        }
+      ],
+      movingReviews: [
+        { name: "David Wilson", company: "Finance Pro", text: "Wyjątkowa obsługa i rezultaty!" },
+        { name: "Emma Thompson", company: "HealthCare Plus", text: "Ruch na naszej stronie wzrósł o 300%!" },
+        { name: "James Brown", company: "E-commerce Solutions", text: "Szybka dostawa i niesamowita jakość." },
+        { name: "Maria Garcia", company: "Real Estate Group", text: "Profesjonalny zespół, przekroczył oczekiwania." },
+        { name: "Alex Johnson", company: "Tech Innovations", text: "Najlepsze doświadczenie z tworzenia stron internetowych!" },
+        { name: "Sophie Lee", company: "Creative Agency", text: "Wybitna praca i świetna komunikacja." }
+      ],
+      stats: [
+        { number: "500+", label: "Zadowolonych Klientów" },
+        { number: "1000+", label: "Ukończonych Projektów" },
+        { number: "5★", label: "Średnia Ocena" },
+        { number: "24/7", label: "Dostępne Wsparcie" }
+      ]
+    },
+    finalCta: {
+      title: "Gotowy na Transformację Swojego Biznesu?",
+      subtitle: "Dołącz do setek zadowolonych klientów, którzy już przekształcili swoją obecność online dzięki naszym nowoczesnym stronom internetowym.",
+      features: [
+        "500+ Zadowolonych Klientów",
+        "14-Dniowa Dostawa",
+        "5-Gwiazdkowe Opinie"
+      ]
+    },
+    showcase: {
+      title: "Nasze Ostatnie Prace",
+      subtitle: "Zobacz jakość i różnorodność stron internetowych, które stworzyliśmy dla naszych klientów",
+      viewLive: "Zobacz Na Żywo"
+    },
+    buttons: {
+      learnMore: "Dowiedz Się Więcej o Nas"
+    },
+    form: {
+      title: "Poproś o Wycenę",
+      subtitle: "Wypełnij formularz poniżej, a skontaktujemy się z Tobą ze spersonalizowaną propozycją",
+      fields: {
+        fullName: "Imię i Nazwisko *",
+        fullNamePlaceholder: "Wprowadź swoje imię i nazwisko",
+        email: "Adres Email *",
+        emailPlaceholder: "twoj@email.com",
+        phone: "Numer Telefonu *",
+        countryPlaceholder: "Kraj",
+        searchCountry: "Szukaj kraju...",
+        phonePlaceholder: "Wprowadź swój numer telefonu",
+        message: "Szczegóły Projektu *",
+        messagePlaceholder: "Opowiedz nam o swoich potrzebach dotyczących strony internetowej, terminach, budżecie i wszelkich szczególnych wymaganiach..."
+      },
+      validation: {
+        fullNameMin: "Imię i nazwisko musi mieć co najmniej 2 znaki",
+        fullNameMax: "Imię i nazwisko musi mieć mniej niż 50 znaków",
+        fullNameInvalid: "Imię i nazwisko może zawierać tylko litery i spacje",
+        emailInvalid: "Proszę wprowadzić prawidłowy adres email",
+        emailMin: "Email musi mieć co najmniej 5 znaków",
+        emailMax: "Email musi mieć mniej niż 100 znaków",
+        countryRequired: "Proszę wybrać kod kraju",
+        phoneMin: "Numer telefonu musi mieć co najmniej 5 cyfr",
+        phoneMax: "Numer telefonu musi mieć mniej niż 15 cyfr",
+        phoneInvalid: "Proszę wprowadzić prawidłowy numer telefonu",
+        messageMin: "Wiadomość musi mieć co najmniej 10 znaków",
+        messageMax: "Wiadomość musi mieć mniej niż 1000 znaków"
+      },
+      buttons: {
+        submit: "Otrzymaj Darmową Wycenę",
+        submitting: "Wysyłanie..."
+      },
+      messages: {
+        responseTime: "Odpowiemy w ciągu 24 godzin ze szczegółową propozycją",
+        submitError: "Coś poszło nie tak. Proszę spróbować ponownie lub skontaktować się z nami bezpośrednio."
+      },
+      confirmation: {
+        title: "Dziękujemy!",
+        subtitle: "Otrzymaliśmy Twoją prośbę i skontaktujemy się z Tobą w ciągu 24 godzin ze szczegółową propozycją dla Twojego projektu strony internetowej.",
+        nextSteps: "Co dzieje się dalej?",
+        steps: [
+          {
+            title: "Przegląd Twoich Wymagań",
+            description: "Dokładnie przeanalizujemy potrzeby Twojego projektu"
+          },
+          {
+            title: "Przygotowanie Spersonalizowanej Propozycji",
+            description: "Szczegółowy plan dostosowany do Twojego biznesu"
+          },
+          {
+            title: "Umówienie Darmowej Konsultacji",
+            description: "Omówienie Twojego projektu w szczegółach"
+          },
+          {
+            title: "Rozpoczęcie Budowy Twojej Strony",
+            description: "Przekształcenie Twojej wizji w rzeczywistość"
+          }
+        ],
+        gotIt: "Rozumiem!"
+      }
+    }
+  }
+};
+
 export const contactTranslations = {
   en: {
     hero: {
