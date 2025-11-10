@@ -11,10 +11,10 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
-import { portfolioTranslations } from "@/i18n/page-translations";
+import { portfolioTranslations, getYourWebsiteTranslations } from "@/i18n/page-translations";
 
 // Countdown Timer Component
-function CountdownTimer({ targetDate }: { targetDate: Date }) {
+function CountdownTimer({ targetDate, translations }: { targetDate: Date; translations: { days: string; hours: string; minutes: string; seconds: string } }) {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -50,19 +50,19 @@ function CountdownTimer({ targetDate }: { targetDate: Date }) {
     <div className="flex gap-2 sm:gap-4 justify-center">
       <div className="bg-slate-900 text-white rounded-lg p-3 sm:p-4 min-w-[60px] sm:min-w-[80px] text-center">
         <div className="text-2xl sm:text-3xl font-bold">{String(timeLeft.days).padStart(2, '0')}</div>
-        <div className="text-xs sm:text-sm text-slate-400">Days</div>
+        <div className="text-xs sm:text-sm text-slate-400">{translations.days}</div>
       </div>
       <div className="bg-slate-900 text-white rounded-lg p-3 sm:p-4 min-w-[60px] sm:min-w-[80px] text-center">
         <div className="text-2xl sm:text-3xl font-bold">{String(timeLeft.hours).padStart(2, '0')}</div>
-        <div className="text-xs sm:text-sm text-slate-400">Hours</div>
+        <div className="text-xs sm:text-sm text-slate-400">{translations.hours}</div>
       </div>
       <div className="bg-slate-900 text-white rounded-lg p-3 sm:p-4 min-w-[60px] sm:min-w-[80px] text-center">
         <div className="text-2xl sm:text-3xl font-bold">{String(timeLeft.minutes).padStart(2, '0')}</div>
-        <div className="text-xs sm:text-sm text-slate-400">Minutes</div>
+        <div className="text-xs sm:text-sm text-slate-400">{translations.minutes}</div>
       </div>
       <div className="bg-slate-900 text-white rounded-lg p-3 sm:p-4 min-w-[60px] sm:min-w-[80px] text-center">
         <div className="text-2xl sm:text-3xl font-bold">{String(timeLeft.seconds).padStart(2, '0')}</div>
-        <div className="text-xs sm:text-sm text-slate-400">Seconds</div>
+        <div className="text-xs sm:text-sm text-slate-400">{translations.seconds}</div>
       </div>
     </div>
   );
@@ -77,8 +77,11 @@ export default function LandingPageClient() {
   const animationIdRef = useRef<number | null>(null);
   const isPausedRef = useRef(false);
   
-  // Get portfolio projects - prioritize e-commerce but include all projects with images
+  // Get translations
+  const t = getYourWebsiteTranslations[language];
   const portfolioT = portfolioTranslations[language];
+  
+  // Get portfolio projects - prioritize e-commerce but include all projects with images
   const allEcommerceProjects = portfolioT.projects
     .filter(project => project.category === "E-commerce" && project.image && project.link);
   
@@ -157,7 +160,6 @@ export default function LandingPageClient() {
     <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Hero Section with Countdown and Form */}
       <section className="relative overflow-hidden bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-600 text-white pt-20 pb-12">
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10"></div>
         <motion.div 
           className="container mx-auto px-4 py-8 sm:py-12 max-w-7xl relative z-10"
           variants={containerVariants}
@@ -174,27 +176,27 @@ export default function LandingPageClient() {
 
               {/* Main Headline */}
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-tight">
-                Get An Award Winning<br className="sm:hidden block" />
-                <span className="text-yellow-300"> Website </span><br className="sm:hidden block" />
-                Done From <br className="sm:hidden block" />
-                <span className="text-3xl sm:text-4xl lg:text-5xl"> $199</span> This Black Friday
+                {t.hero.title}<br className="sm:hidden block" />
+                <span className="text-yellow-300"> {t.hero.titleHighlight} </span><br className="sm:hidden block" />
+                {t.hero.subtitle} <br className="sm:hidden block" />
+                <span className="text-3xl sm:text-4xl lg:text-5xl"> {t.hero.price}</span> {t.hero.priceLabel}
               </h1>
 
               {/* Discount Badge */}
               <div className="bg-yellow-400 text-slate-900 px-4 py-2 rounded-lg inline-block font-bold text-lg">
-                75% OFF Black Friday Coupon Valid Until Timer Hits 0
+                {t.hero.discountBadge}
               </div>
 
               {/* Countdown Timer */}
               <div className="py-4">
-                <CountdownTimer targetDate={targetDate} />
+                <CountdownTimer targetDate={targetDate} translations={t.countdown || { days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds" }} />
               </div>
 
               {/* Video Section */}
               <div className="space-y-3">
                 <div className="bg-blue-600 px-4 py-3 rounded-lg flex items-center gap-3 cursor-pointer hover:bg-blue-700 transition-colors">
                   <Play className="w-6 h-6" />
-                  <span className="font-semibold">Watch This Short Video To See How It Works</span>
+                  <span className="font-semibold">{t.hero.videoTitle}</span>
                 </div>
                 <div className="relative aspect-video bg-slate-900 rounded-lg overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -207,7 +209,7 @@ export default function LandingPageClient() {
 
               {/* As Seen On */}
               <div className="flex items-center gap-4 pt-4">
-                <span className="text-sm font-semibold">AS SEEN ON:</span>
+                <span className="text-sm font-semibold">{t.hero.asSeenOn}</span>
                 <div className="flex gap-3 opacity-80">
                   <span className="text-xs font-bold">FOX NEWS</span>
                   <span className="text-xs font-bold">CBS</span>
@@ -218,72 +220,72 @@ export default function LandingPageClient() {
 
               {/* What You Get */}
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <h3 className="text-2xl font-bold mb-4">Order Now And You'll Get:</h3>
+                <h3 className="text-2xl font-bold mb-4">{t.hero.orderTitle}</h3>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-yellow-300 flex-shrink-0 mt-0.5" />
                     <div>
-                      <span className="line-through opacity-70">Done-For-You Website: $2,500+</span>
+                      <span className="line-through opacity-70">{t.hero.items.website}</span>
                       <span className="ml-2 font-bold">Priceless</span>
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-yellow-300 flex-shrink-0 mt-0.5" />
                     <div>
-                      <span className="line-through opacity-70">30+ Winning Products Uploaded: $1,500+</span>
+                      <span className="line-through opacity-70">{t.hero.items.products}</span>
                       <span className="ml-2 font-bold">Priceless</span>
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-yellow-300 flex-shrink-0 mt-0.5" />
                     <div>
-                      <span className="line-through opacity-70">Private Access To Top Suppliers: $1,000+</span>
+                      <span className="line-through opacity-70">{t.hero.items.suppliers}</span>
                       <span className="ml-2 font-bold">Priceless</span>
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-yellow-300 flex-shrink-0 mt-0.5" />
                     <div>
-                      <span className="line-through opacity-70">Optimized Product Descriptions: $750+</span>
+                      <span className="line-through opacity-70">{t.hero.items.descriptions}</span>
                       <span className="ml-2 font-bold">Priceless</span>
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-yellow-300 flex-shrink-0 mt-0.5" />
                     <div>
-                      <span className="font-bold">Fully Hands-Off Order Fulfilment: Priceless</span>
+                      <span className="font-bold">{t.hero.items.fulfillment}</span>
                     </div>
                   </li>
                   <li className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-yellow-300 flex-shrink-0 mt-0.5" />
                     <div>
-                      <span className="font-bold">Award Winning 24/7 Support: Priceless</span>
+                      <span className="font-bold">{t.hero.items.support}</span>
                     </div>
                   </li>
                 </ul>
 
                 {/* Bonuses */}
                 <div className="mt-6 pt-6 border-t border-white/20">
-                  <h4 className="font-bold text-lg mb-3">Plus 3 Bonuses:</h4>
+                  <h4 className="font-bold text-lg mb-3">{t.hero.bonusesTitle}</h4>
                   <ul className="space-y-2">
                     <li className="flex items-start gap-2">
                       <Gift className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
                       <div>
-                        <span className="line-through opacity-70">Bonus #1: Done-For-You Logo Design: $300+</span>
+                        <span className="line-through opacity-70">{t.hero.items.bonus1}</span>
                         <span className="ml-2 font-bold">FREE</span>
                       </div>
                     </li>
                     <li className="flex items-start gap-2">
                       <Gift className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
                       <div>
-                        <span className="line-through opacity-70">Bonus #2: $0 - $412k Case Study: $500+</span>
+                        <span className="line-through opacity-70">{t.hero.items.bonus2}</span>
                         <span className="ml-2 font-bold">FREE</span>
                       </div>
                     </li>
                     <li className="flex items-start gap-2">
                       <Gift className="w-5 h-5 text-yellow-300 flex-shrink-0 mt-0.5" />
                       <div>
-                        <span className="line-through opacity-70">Bonus #3: Mystery Gift: $500+</span>
+                        <span className="line-through opacity-70">{t.hero.items.bonus3}</span>
                         <span className="ml-2 font-bold">FREE</span>
                       </div>
                     </li>
@@ -328,14 +330,14 @@ export default function LandingPageClient() {
                         ease: "easeInOut",
                       }}
                     >
-                      $199!
+                      {t.hero.formPrice}
                     </motion.span>
                   </motion.div>
-                  <p className="text-slate-600 text-sm mb-2">75% OFF Black Friday Coupon Applied! (Usually $20)</p>
+                  <p className="text-slate-600 text-sm mb-2">{t.hero.formDiscount}</p>
                   
                   {/* Availability */}
                   <div className="mb-4">
-                    <p className="text-sm text-slate-600 mb-2">Black Friday Store Availability for Today:</p>
+                    <p className="text-sm text-slate-600 mb-2">{t.hero.availability}</p>
                    
                   </div>
                 </div>
@@ -359,32 +361,14 @@ export default function LandingPageClient() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4">How It Works</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4">{t.howItWorks.title}</h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                icon: Rocket,
-                title: "We Set Up Your Store",
-                description: "Your eCommerce site is built, including 30 high-potential products in your niche, all for just $199."
-              },
-              {
-                icon: Package,
-                title: "Suppliers Handle Fulfillment",
-                description: "Integrated suppliers ship products directly to your customers, taking care of all logistics."
-              },
-              {
-                icon: DollarSign,
-                title: "Keep the Difference",
-                description: "When a dropshipping sale occurs, you keep the difference. Example: Sell for $39.99, pay the supplier $9.99, and keep $30 difference."
-              },
-              {
-                icon: TrendingUp,
-                title: "Scale and Grow",
-                description: "Reinvest profits, optimize your store, and expand to build a thriving online business."
-              }
-            ].map((step, index) => (
+            {t.howItWorks.steps.map((step, index) => {
+              const icons = [Rocket, Package, DollarSign, TrendingUp];
+              const StepIcon = icons[index];
+              return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -395,14 +379,15 @@ export default function LandingPageClient() {
                 <Card className="h-full bg-white shadow-lg hover:shadow-xl transition-shadow">
                   <CardContent className="p-6 text-center">
                     <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <step.icon className="w-8 h-8 text-emerald-600" />
+                      <StepIcon className="w-8 h-8 text-emerald-600" />
                     </div>
                     <h3 className="text-xl font-bold mb-3 text-slate-900">{step.title}</h3>
                     <p className="text-slate-600">{step.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
-            ))}
+            );
+            })}
           </div>
 
           {/* CTA Button */}
@@ -418,10 +403,10 @@ export default function LandingPageClient() {
               className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg"
               onClick={scrollToForm}
             >
-              Claim Your $199 Store! 🎁
+              {t.howItWorks.cta}
               <Gift className="ml-2 w-5 h-5" />
             </Button>
-            <p className="text-slate-600 mt-2">And Get It Delivered By Tomorrow...</p>
+            <p className="text-slate-600 mt-2">{t.howItWorks.ctaSubtitle}</p>
           </motion.div>
         </div>
       </section>
@@ -436,7 +421,7 @@ export default function LandingPageClient() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4">Examples of Our Stores</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4">{t.examples.title}</h2>
           </motion.div>
 
           {/* Infinite Scrolling Carousel */}
@@ -525,76 +510,14 @@ export default function LandingPageClient() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4">Real People, Real Results.</h2>
-            <p className="text-lg text-slate-600">Trusted by New Store Owners Worldwide</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4">{t.testimonials.title}</h2>
+            <p className="text-lg text-slate-600">{t.testimonials.subtitle}</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                name: "Adessa M.",
-                initials: "AM",
-                title: "6 Sales in My First Week",
-                review: "Store arrived in under 12 hours. Followed the ad guide and made six sales in week one. Best $199 I've spent.",
-                verified: true
-              },
-              {
-                name: "Cosmas C.",
-                initials: "CC",
-                title: "Store Delivered Overnight",
-                review: "Ordered in the afternoon, live by morning. Clean branding and products loaded - better than the $3k store I bought last year.",
-                verified: true
-              },
-              {
-                name: "Gabriel V.",
-                initials: "GV",
-                title: "First Sale in 48 Hours",
-                review: "Didn't touch any code. Followed their launch steps and got my first order in two days - then two more by the end of the week.",
-                verified: true
-              },
-              {
-                name: "Tammy H.",
-                initials: "TH",
-                title: "From Zero to Live in 24 Hours",
-                review: "They built the store, loaded products, and handed me a simple launch plan. I dreaded the tech - now I'm excited to sell.",
-                verified: true
-              },
-              {
-                name: "Aisha K.",
-                initials: "AK",
-                title: "Legit & Worth Every Penny",
-                review: "Looked too cheap to be real - it is legit. My pet store looks premium and was ready to sell instantly. Orders came in the first week.",
-                verified: true
-              },
-              {
-                name: "Patrick M.",
-                initials: "PM",
-                title: "Faster Than I Imagined",
-                review: "I've tried the DIY route. This blew it away - launched in under a day and started seeing traffic and orders immediately after.",
-                verified: true
-              },
-              {
-                name: "Kay S.D.",
-                initials: "KS",
-                title: "The $199 That Changed Everything",
-                review: "Almost paid thousands for a 'system.' Glad I didn't. This was high-quality, fast, and actually made money.",
-                verified: true
-              },
-              {
-                name: "Faith M.",
-                initials: "FM",
-                title: "Even a Beginner Can Do This",
-                review: "Store ready, ad guide included, first sales within days. It felt effortless - and the support actually solves problems.",
-                verified: true
-              },
-              {
-                name: "Logan M.",
-                initials: "LM",
-                title: "Finally Moving After Stalling",
-                review: "I'd failed with two stores before. The difference here was the step-by-step launch and quick answers on support. First customer message on day two.",
-                verified: true
-              }
-            ].map((testimonial, index) => (
+            {t.testimonials.items.map((testimonial, index) => {
+              const initials = testimonial.name.split(' ').map(n => n[0]).join('').toUpperCase();
+              return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -606,7 +529,7 @@ export default function LandingPageClient() {
                   <CardContent className="p-6">
                     <div className="flex items-start gap-3 mb-4">
                       <div className="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center text-white font-bold">
-                        {testimonial.initials}
+                        {initials}
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-1">
@@ -617,11 +540,9 @@ export default function LandingPageClient() {
                             ))}
                           </div>
                         </div>
-                        {testimonial.verified && (
-                          <Badge variant="secondary" className="bg-green-100 text-green-700 text-xs">
-                            Verified
-                          </Badge>
-                        )}
+                        <Badge variant="secondary" className="bg-green-100 text-green-700 text-xs">
+                          {t.verified || "Verified"}
+                        </Badge>
                       </div>
                     </div>
                     <h5 className="font-bold text-lg mb-2 text-slate-900">{testimonial.title}</h5>
@@ -629,7 +550,8 @@ export default function LandingPageClient() {
                   </CardContent>
                 </Card>
               </motion.div>
-            ))}
+            );
+            })}
           </div>
         </div>
       </section>
@@ -645,53 +567,12 @@ export default function LandingPageClient() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-              Your Most Common Questions Answered Below...
+              {t.faq.title}
             </h2>
           </motion.div>
 
           <Accordion type="single" collapsible className="w-full">
-            {[
-              {
-                question: "Do I need to have a Shopify Account Before using the Websites?",
-                answer: "No! All our Shopify Dropshipping Stores come as brand new stores that you'll get a 3 day free trial with. After the 3 Day Free Trial, Shopify will be $1/Month for 3 Months and after 3 Months Shopify will be $39/Month. Shopify gives you an entire 90 Days to give your website a shot and only after 90 days you can choose to pay the $39 which is nothing if you are making sales on your store every day. if you don't want to pay the $39 you can cancel your $1/month for 3 months trial. The risk is very low."
-              },
-              {
-                question: "What if I already have a Shopify Store?",
-                answer: "Most of the time it is a lot better if you have an expert setup the store from scratch for you since the design you made is most likely not setup for success. So, even if you have already have a shopify store, don't worry. We'll still be able to create a new one for you that is setup correctly."
-              },
-              {
-                question: "How many products will I get on my store?",
-                answer: "All our stores come pre-implemented with 30 Products."
-              },
-              {
-                question: "What other fees are associated with this?",
-                answer: "The only other thing that you have to pay for is hosting for your Shopify store. You will get 3 month trial for $1 a month, if you choose to keep it you will need to pay $39 a month for hosting your website through shopify, you can cancel at anytime and there are no contracts or other hidden fees."
-              },
-              {
-                question: "Do you advertise the store for me?",
-                answer: "We do NOT do any advertising for your store. That will be for you to do when the store is done."
-              },
-              {
-                question: "What if I have my own products? Can I add them to my store?",
-                answer: "Yes! You'll easily be able to add as many products as you like to your store after deliver it. The process is extremely simple and you can do it within a couple of clicks."
-              },
-              {
-                question: "Are these stores prebuilt?",
-                answer: "Yes our stores are prebuilt, meaning it's a template for you to build off of and shouldn't be considered a 'Business in a box'. We are building a website template for you, not a business. We are a website design agency, not a business opportunity."
-              },
-              {
-                question: "How will I be able to use the Shopify Store as my own?",
-                answer: "24 - 48 Hours after you place your order, we'll send you your login information for your new Shopify Dropshipping Store. All you'll have to do is login, change the password, and the store is all yours!"
-              },
-              {
-                question: "Can I get a Refund if I don't like my Shopify store?",
-                answer: "We have a 365 Day Guarantee, if you use your store for 365 Days and don't make your money back we'll fully refund you."
-              },
-              {
-                question: "Will you help me make changes and customizations on my Shopify Store?",
-                answer: "We will provide you support to help you access the Shopify store and use it. We'll also give you a step by step video guide on how to access and make changes to your store. However, we will not be able to go into your account and do the changes FOR YOU as that will not allow us to provide our stores are this good of a price. Rest assured, you will love your website and you'll easily be able to make the changes you would like."
-              }
-            ].map((faq, index) => (
+            {t.faq.items.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`} className="border-b">
                 <AccordionTrigger className="text-left font-semibold text-slate-900 hover:text-emerald-600">
                   {faq.question}
@@ -715,17 +596,17 @@ export default function LandingPageClient() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-              Claim Your $199 Store! 🎁
+              {t.finalCta.title}
             </h2>
             <p className="text-xl mb-8 text-emerald-100">
-              And Get It Delivered By Tomorrow...
+              {t.finalCta.subtitle}
             </p>
             <Button 
               size="lg" 
               className="bg-white text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg font-bold"
               onClick={scrollToForm}
             >
-              Order Now
+              {t.finalCta.button}
               <ArrowUpRight className="ml-2 w-5 h-5" />
             </Button>
           </motion.div>

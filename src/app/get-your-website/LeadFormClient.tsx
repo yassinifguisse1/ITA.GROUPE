@@ -9,6 +9,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { CheckCircle, Loader2, AlertCircle } from 'lucide-react';
+import { useLanguage } from "@/context/LanguageContext";
+import { getYourWebsiteTranslations } from "@/i18n/page-translations";
 
 // Form validation schema - only name, email, and phone
 const formSchema = z.object({
@@ -20,6 +22,8 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 export default function LeadFormClient() {
+  const { language } = useLanguage();
+  const t = getYourWebsiteTranslations[language];
   const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
   const [submitError, setSubmitError] = useState('');
 
@@ -73,20 +77,20 @@ export default function LeadFormClient() {
         <div className="space-y-4">
           <div className="flex gap-2 mb-4">
             <div className="flex-1 p-3 rounded-lg text-center font-semibold bg-blue-600 text-white">
-              1 START ORDER<br />Name & Email
+              {t.form.step1}<br />{t.form.step1Subtitle}
             </div>
           </div>
 
-          <p className="text-xs text-slate-600 mb-4">* Denotes mandatory fields</p>
+          <p className="text-xs text-slate-600 mb-4">{t.form.mandatoryFields}</p>
 
           <div>
             <Label htmlFor="fullName" className="text-slate-700">
-              Full Name <span className="text-red-500">*</span>
+              {t.form.fullName} <span className="text-red-500">*</span>
             </Label>
             <Input
               id="fullName"
               {...register('fullName')}
-              placeholder="Full Name..."
+              placeholder={`${t.form.fullName}...`}
               className="mt-1"
             />
             {errors.fullName && (
@@ -96,13 +100,13 @@ export default function LeadFormClient() {
 
           <div>
             <Label htmlFor="email" className="text-slate-700">
-              Email <span className="text-red-500">*</span>
+              {t.form.email} <span className="text-red-500">*</span>
             </Label>
             <Input
               id="email"
               type="email"
               {...register('email')}
-              placeholder="Email Address..."
+              placeholder={`${t.form.email}...`}
               className="mt-1"
             />
             {errors.email && (
@@ -112,12 +116,12 @@ export default function LeadFormClient() {
 
           <div>
             <Label htmlFor="phoneNumber" className="text-slate-700">
-              Phone Number <span className="text-red-500">*</span>
+              {t.form.phoneNumber} <span className="text-red-500">*</span>
             </Label>
             <Input
               id="phoneNumber"
               {...register('phoneNumber')}
-              placeholder="Phone Number..."
+              placeholder={`${t.form.phoneNumber}...`}
               className="mt-1"
             />
             {errors.phoneNumber && (
@@ -143,11 +147,11 @@ export default function LeadFormClient() {
                 Submitting...
               </>
             ) : (
-              '→ Choose Your Store Ready For Sales By Tomorrow!'
+              t.form.submitButton
             )}
           </Button>
 
-          <p className="text-xs text-center text-slate-600">We Respect Your Privacy & Information</p>
+          <p className="text-xs text-center text-slate-600">{t.form.privacy}</p>
         </div>
       </form>
 
@@ -158,38 +162,28 @@ export default function LeadFormClient() {
             <div className="flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mx-auto mb-4">
               <CheckCircle className="w-10 h-10 text-green-600" />
             </div>
-            <DialogTitle className="text-center text-2xl">Thank You!</DialogTitle>
+            <DialogTitle className="text-center text-2xl">{t.form.confirmation.title}</DialogTitle>
             <DialogDescription className="text-center pt-2">
-              Thank you for your interest! We'll review your information and contact you soon to discuss your store requirements.
+              {t.form.confirmation.message}
             </DialogDescription>
           </DialogHeader>
           <div className="mt-6 space-y-3">
             <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-              <h4 className="font-semibold text-blue-900 mb-2">What happens next?</h4>
+              <h4 className="font-semibold text-blue-900 mb-2">{t.form.confirmation.nextSteps}</h4>
               <ul className="space-y-2 text-sm text-blue-700">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                  <span>We'll review your information</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                  <span>Contact you to discuss your needs</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                  <span>Prepare a custom proposal</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                  <span>Get your store ready for sales</span>
-                </li>
+                {t.form.confirmation.steps.map((step, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                    <span>{step}</span>
+                  </li>
+                ))}
               </ul>
             </div>
             <Button
               onClick={() => setShowConfirmationDialog(false)}
               className="w-full bg-emerald-600 hover:bg-emerald-700"
             >
-              Got it!
+              {t.form.confirmation.gotIt}
             </Button>
           </div>
         </DialogContent>

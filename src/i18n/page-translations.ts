@@ -1325,3 +1325,558 @@ export const termsTranslations = {
     }
   }
 };
+
+export const getYourWebsiteTranslations = {
+  en: {
+    hero: {
+      title: "Get An Award Winning",
+      titleHighlight: "Website",
+      subtitle: "Done From",
+      price: "$199",
+      priceLabel: "This Black Friday",
+      discountBadge: "75% OFF Black Friday Coupon Valid Until Timer Hits 0",
+      videoTitle: "Watch This Short Video To See How It Works",
+      asSeenOn: "AS SEEN ON:",
+      orderTitle: "Order Now And You'll Get:",
+      bonusesTitle: "Plus 3 Bonuses:",
+      items: {
+        website: "Done-For-You Website: $2,500+",
+        products: "30+ Winning Products Uploaded: $1,500+",
+        suppliers: "Private Access To Top Suppliers: $1,000+",
+        descriptions: "Optimized Product Descriptions: $750+",
+        fulfillment: "Fully Hands-Off Order Fulfilment: Priceless",
+        support: "Award Winning 24/7 Support: Priceless",
+        bonus1: "Bonus #1: Done-For-You Logo Design: $300+",
+        bonus2: "Bonus #2: $0 - $412k Case Study: $500+",
+        bonus3: "Bonus #3: Mystery Gift: $500+"
+      },
+      formPrice: "$199!",
+      formDiscount: "75% OFF Black Friday Coupon Applied! (Usually $20)",
+      availability: "Black Friday Store Availability for Today:"
+    },
+    howItWorks: {
+      title: "How It Works",
+      steps: [
+        {
+          title: "We Set Up Your Store",
+          description: "Your eCommerce site is built, including 30 high-potential products in your niche, all for just $199."
+        },
+        {
+          title: "Suppliers Handle Fulfillment",
+          description: "Integrated suppliers ship products directly to your customers, taking care of all logistics."
+        },
+        {
+          title: "Keep the Difference",
+          description: "When a dropshipping sale occurs, you keep the difference. Example: Sell for $39.99, pay the supplier $9.99, and keep $30 difference."
+        },
+        {
+          title: "Scale and Grow",
+          description: "Reinvest profits, optimize your store, and expand to build a thriving online business."
+        }
+      ],
+      cta: "Claim Your $199 Store! 🎁",
+      ctaSubtitle: "And Get It Delivered By Tomorrow..."
+    },
+    examples: {
+      title: "Examples of Our Stores"
+    },
+    testimonials: {
+      title: "Real People, Real Results.",
+      subtitle: "Trusted by New Store Owners Worldwide",
+      items: [
+        {
+          name: "Adessa M.",
+          title: "6 Sales in My First Week",
+          review: "Store arrived in under 12 hours. Followed the ad guide and made six sales in week one. Best $199 I've spent."
+        },
+        {
+          name: "Cosmas C.",
+          title: "Store Delivered Overnight",
+          review: "Ordered in the afternoon, live by morning. Clean branding and products loaded - better than the $3k store I bought last year."
+        },
+        {
+          name: "Gabriel V.",
+          title: "First Sale in 48 Hours",
+          review: "Didn't touch any code. Followed their launch steps and got my first order in two days - then two more by the end of the week."
+        },
+        {
+          name: "Tammy H.",
+          title: "From Zero to Live in 24 Hours",
+          review: "They built the store, loaded products, and handed me a simple launch plan. I dreaded the tech - now I'm excited to sell."
+        },
+        {
+          name: "Aisha K.",
+          title: "Legit & Worth Every Penny",
+          review: "Looked too cheap to be real - it is legit. My pet store looks premium and was ready to sell instantly. Orders came in the first week."
+        },
+        {
+          name: "Patrick M.",
+          title: "Faster Than I Imagined",
+          review: "I've tried the DIY route. This blew it away - launched in under a day and started seeing traffic and orders immediately after."
+        },
+        {
+          name: "Kay S.D.",
+          title: "The $199 That Changed Everything",
+          review: "Almost paid thousands for a 'system.' Glad I didn't. This was high-quality, fast, and actually made money."
+        },
+        {
+          name: "Faith M.",
+          title: "Even a Beginner Can Do This",
+          review: "Store ready, ad guide included, first sales within days. It felt effortless - and the support actually solves problems."
+        },
+        {
+          name: "Logan M.",
+          title: "Finally Moving After Stalling",
+          review: "I'd failed with two stores before. The difference here was the step-by-step launch and quick answers on support. First customer message on day two."
+        }
+      ]
+    },
+    faq: {
+      title: "Your Most Common Questions Answered Below...",
+      items: [
+        {
+          question: "Do I need to have a Shopify Account Before using the Websites?",
+          answer: "No! All our Shopify Dropshipping Stores come as brand new stores that you'll get a 3 day free trial with. After the 3 Day Free Trial, Shopify will be $1/Month for 3 Months and after 3 Months Shopify will be $39/Month. Shopify gives you an entire 90 Days to give your website a shot and only after 90 days you can choose to pay the $39 which is nothing if you are making sales on your store every day. if you don't want to pay the $39 you can cancel your $1/month for 3 months trial. The risk is very low."
+        },
+        {
+          question: "What if I already have a Shopify Store?",
+          answer: "Most of the time it is a lot better if you have an expert setup the store from scratch for you since the design you made is most likely not setup for success. So, even if you have already have a shopify store, don't worry. We'll still be able to create a new one for you that is setup correctly."
+        },
+        {
+          question: "How many products will I get on my store?",
+          answer: "All our stores come pre-implemented with 30 Products."
+        },
+        {
+          question: "What other fees are associated with this?",
+          answer: "The only other thing that you have to pay for is hosting for your Shopify store. You will get 3 month trial for $1 a month, if you choose to keep it you will need to pay $39 a month for hosting your website through shopify, you can cancel at anytime and there are no contracts or other hidden fees."
+        },
+        {
+          question: "Do you advertise the store for me?",
+          answer: "We do NOT do any advertising for your store. That will be for you to do when the store is done."
+        },
+        {
+          question: "What if I have my own products? Can I add them to my store?",
+          answer: "Yes! You'll easily be able to add as many products as you like to your store after deliver it. The process is extremely simple and you can do it within a couple of clicks."
+        },
+        {
+          question: "Are these stores prebuilt?",
+          answer: "Yes our stores are prebuilt, meaning it's a template for you to build off of and shouldn't be considered a 'Business in a box'. We are building a website template for you, not a business. We are a website design agency, not a business opportunity."
+        },
+        {
+          question: "How will I be able to use the Shopify Store as my own?",
+          answer: "24 - 48 Hours after you place your order, we'll send you your login information for your new Shopify Dropshipping Store. All you'll have to do is login, change the password, and the store is all yours!"
+        },
+        {
+          question: "Can I get a Refund if I don't like my Shopify store?",
+          answer: "We have a 365 Day Guarantee, if you use your store for 365 Days and don't make your money back we'll fully refund you."
+        },
+        {
+          question: "Will you help me make changes and customizations on my Shopify Store?",
+          answer: "We will provide you support to help you access the Shopify store and use it. We'll also give you a step by step video guide on how to access and make changes to your store. However, we will not be able to go into your account and do the changes FOR YOU as that will not allow us to provide our stores are this good of a price. Rest assured, you will love your website and you'll easily be able to make the changes you would like."
+        }
+      ]
+    },
+    finalCta: {
+      title: "Claim Your $199 Store! 🎁",
+      subtitle: "And Get It Delivered By Tomorrow...",
+      button: "Order Now"
+    },
+    form: {
+      step1: "1 START ORDER",
+      step1Subtitle: "Name & Email",
+      mandatoryFields: "* Denotes mandatory fields",
+      fullName: "Full Name",
+      email: "Email",
+      phoneNumber: "Phone Number",
+      submitButton: "→ Choose Your Store Ready For Sales By Tomorrow!",
+      privacy: "We Respect Your Privacy & Information",
+      confirmation: {
+        title: "Thank You!",
+        message: "Thank you for your interest! We'll review your information and contact you soon to discuss your store requirements.",
+        nextSteps: "What happens next?",
+        steps: [
+          "We'll review your information",
+          "Contact you to discuss your needs",
+          "Prepare a custom proposal",
+          "Get your store ready for sales"
+        ],
+        gotIt: "Got it!"
+      }
+    },
+    countdown: {
+      days: "Days",
+      hours: "Hours",
+      minutes: "Minutes",
+      seconds: "Seconds"
+    },
+    verified: "Verified"
+  },
+  fr: {
+    hero: {
+      title: "Obtenez Un Site Web",
+      titleHighlight: "Primé",
+      subtitle: "Fait Pour Vous En",
+      price: "199 $",
+      priceLabel: "Ce Vendredi Noir",
+      discountBadge: "Coupon Vendredi Noir 75% DE RÉDUCTION Valide Jusqu'à Ce Que Le Compte À Rebours Atteigne 0",
+      videoTitle: "Regardez Cette Courte Vidéo Pour Voir Comment Ça Marche",
+      asSeenOn: "VU SUR:",
+      orderTitle: "Commandez Maintenant Et Vous Obtiendrez:",
+      bonusesTitle: "Plus 3 Bonus:",
+      items: {
+        website: "Site Web Fait Pour Vous: 2 500 $+",
+        products: "30+ Produits Gagnants Téléchargés: 1 500 $+",
+        suppliers: "Accès Privé Aux Meilleurs Fournisseurs: 1 000 $+",
+        descriptions: "Descriptions De Produits Optimisées: 750 $+",
+        fulfillment: "Exécution Complète Des Commandes Sans Intervention: Inestimable",
+        support: "Support 24/7 Primé: Inestimable",
+        bonus1: "Bonus #1: Conception De Logo Fait Pour Vous: 300 $+",
+        bonus2: "Bonus #2: Étude De Cas 0 $ - 412 000 $: 500 $+",
+        bonus3: "Bonus #3: Cadeau Mystère: 500 $+"
+      },
+      formPrice: "199 $!",
+      formDiscount: "Coupon Vendredi Noir 75% DE RÉDUCTION Appliqué! (Habituellement 20 $)",
+      availability: "Disponibilité Du Magasin Vendredi Noir Pour Aujourd'hui:"
+    },
+    howItWorks: {
+      title: "Comment Ça Marche",
+      steps: [
+        {
+          title: "Nous Configurons Votre Magasin",
+          description: "Votre site eCommerce est construit, incluant 30 produits à fort potentiel dans votre niche, le tout pour seulement 199 $."
+        },
+        {
+          title: "Les Fournisseurs Gèrent L'Exécution",
+          description: "Les fournisseurs intégrés expédient les produits directement à vos clients, en s'occupant de toute la logistique."
+        },
+        {
+          title: "Gardez La Différence",
+          description: "Lorsqu'une vente de dropshipping se produit, vous gardez la différence. Exemple: Vendez pour 39,99 $, payez le fournisseur 9,99 $, et gardez 30 $ de différence."
+        },
+        {
+          title: "Développez Et Grandissez",
+          description: "Réinvestissez les profits, optimisez votre magasin et développez-vous pour construire une entreprise en ligne prospère."
+        }
+      ],
+      cta: "Réclamez Votre Magasin À 199 $! 🎁",
+      ctaSubtitle: "Et Recevez-Le Demain..."
+    },
+    examples: {
+      title: "Exemples De Nos Magasins"
+    },
+    testimonials: {
+      title: "De Vraies Personnes, De Vrais Résultats.",
+      subtitle: "Approuvé Par Les Nouveaux Propriétaires De Magasins Du Monde Entier",
+      items: [
+        {
+          name: "Adessa M.",
+          title: "6 Ventes Ma Première Semaine",
+          review: "Le magasin est arrivé en moins de 12 heures. J'ai suivi le guide publicitaire et j'ai fait six ventes la première semaine. Le meilleur 199 $ que j'ai dépensé."
+        },
+        {
+          name: "Cosmas C.",
+          title: "Magasin Livré Du Jour Au Lendemain",
+          review: "Commandé l'après-midi, en ligne le matin. Marque propre et produits chargés - mieux que le magasin de 3 000 $ que j'ai acheté l'année dernière."
+        },
+        {
+          name: "Gabriel V.",
+          title: "Première Vente En 48 Heures",
+          review: "Je n'ai touché aucun code. J'ai suivi leurs étapes de lancement et j'ai reçu ma première commande en deux jours - puis deux autres avant la fin de la semaine."
+        },
+        {
+          name: "Tammy H.",
+          title: "De Zéro À En Ligne En 24 Heures",
+          review: "Ils ont construit le magasin, chargé les produits et m'ont remis un plan de lancement simple. Je redoutais la technologie - maintenant je suis excité de vendre."
+        },
+        {
+          name: "Aisha K.",
+          title: "Légitime Et Vaut Chaque Centime",
+          review: "Cela semblait trop bon marché pour être vrai - c'est légitime. Mon magasin pour animaux a l'air premium et était prêt à vendre instantanément. Les commandes sont arrivées la première semaine."
+        },
+        {
+          name: "Patrick M.",
+          title: "Plus Rapide Que Je Ne L'Imaginais",
+          review: "J'ai essayé la voie DIY. Cela l'a dépassé - lancé en moins d'un jour et j'ai commencé à voir du trafic et des commandes immédiatement après."
+        },
+        {
+          name: "Kay S.D.",
+          title: "Les 199 $ Qui Ont Tout Changé",
+          review: "J'ai presque payé des milliers pour un 'système.' Heureusement que je ne l'ai pas fait. C'était de haute qualité, rapide et a réellement rapporté de l'argent."
+        },
+        {
+          name: "Faith M.",
+          title: "Même Un Débutant Peut Le Faire",
+          review: "Magasin prêt, guide publicitaire inclus, premières ventes en quelques jours. C'était sans effort - et le support résout réellement les problèmes."
+        },
+        {
+          name: "Logan M.",
+          title: "Enfin En Mouvement Après Avoir Calé",
+          review: "J'avais échoué avec deux magasins auparavant. La différence ici était le lancement étape par étape et les réponses rapides au support. Premier message client le deuxième jour."
+        }
+      ]
+    },
+    faq: {
+      title: "Vos Questions Les Plus Courantes Répondues Ci-Dessous...",
+      items: [
+        {
+          question: "Ai-Je Besoin D'Avoir Un Compte Shopify Avant D'Utiliser Les Sites Web?",
+          answer: "Non! Tous nos magasins Shopify Dropshipping arrivent comme de nouveaux magasins avec un essai gratuit de 3 jours. Après l'essai gratuit de 3 jours, Shopify sera de 1 $/mois pendant 3 mois et après 3 mois Shopify sera de 39 $/mois. Shopify vous donne 90 jours complets pour essayer votre site web et ce n'est qu'après 90 jours que vous pouvez choisir de payer les 39 $, ce qui n'est rien si vous faites des ventes sur votre magasin tous les jours. si vous ne voulez pas payer les 39 $, vous pouvez annuler votre essai de 1 $/mois pendant 3 mois. Le risque est très faible."
+        },
+        {
+          question: "Et Si J'Ai Déjà Un Magasin Shopify?",
+          answer: "La plupart du temps, il est beaucoup mieux qu'un expert configure le magasin à partir de zéro pour vous, car le design que vous avez fait n'est probablement pas configuré pour le succès. Donc, même si vous avez déjà un magasin shopify, ne vous inquiétez pas. Nous pourrons toujours en créer un nouveau pour vous qui est correctement configuré."
+        },
+        {
+          question: "Combien De Produits Vais-Je Obtenir Sur Mon Magasin?",
+          answer: "Tous nos magasins arrivent pré-implémentés avec 30 Produits."
+        },
+        {
+          question: "Quels Autres Frais Sont Associés À Cela?",
+          answer: "La seule autre chose que vous devez payer est l'hébergement pour votre magasin Shopify. Vous obtiendrez un essai de 3 mois pour 1 $ par mois, si vous choisissez de le garder, vous devrez payer 39 $ par mois pour héberger votre site web via shopify, vous pouvez annuler à tout moment et il n'y a pas de contrats ou d'autres frais cachés."
+        },
+        {
+          question: "Faites-Vous De La Publicité Pour Mon Magasin?",
+          answer: "Nous ne faisons AUCUNE publicité pour votre magasin. Ce sera à vous de le faire lorsque le magasin sera terminé."
+        },
+        {
+          question: "Et Si J'Ai Mes Propres Produits? Puis-Je Les Ajouter À Mon Magasin?",
+          answer: "Oui! Vous pourrez facilement ajouter autant de produits que vous le souhaitez à votre magasin après la livraison. Le processus est extrêmement simple et vous pouvez le faire en quelques clics."
+        },
+        {
+          question: "Ces Magasins Sont-Ils Préconstruits?",
+          answer: "Oui, nos magasins sont préconstruits, ce qui signifie que c'est un modèle pour vous de construire et ne devrait pas être considéré comme une 'Entreprise en boîte'. Nous construisons un modèle de site web pour vous, pas une entreprise. Nous sommes une agence de design de sites web, pas une opportunité commerciale."
+        },
+        {
+          question: "Comment Pourrai-Je Utiliser Le Magasin Shopify Comme Le Mien?",
+          answer: "24 - 48 heures après avoir passé votre commande, nous vous enverrons vos informations de connexion pour votre nouveau magasin Shopify Dropshipping. Tout ce que vous aurez à faire est de vous connecter, changer le mot de passe, et le magasin est entièrement à vous!"
+        },
+        {
+          question: "Puis-Je Obtenir Un Remboursement Si Je N'Aime Pas Mon Magasin Shopify?",
+          answer: "Nous avons une garantie de 365 jours, si vous utilisez votre magasin pendant 365 jours et ne récupérez pas votre argent, nous vous rembourserons intégralement."
+        },
+        {
+          question: "M'Aiderez-Vous À Faire Des Modifications Et Des Personnalisations Sur Mon Magasin Shopify?",
+          answer: "Nous vous fournirons un support pour vous aider à accéder au magasin Shopify et l'utiliser. Nous vous donnerons également un guide vidéo étape par étape sur la façon d'accéder et de faire des modifications à votre magasin. Cependant, nous ne pourrons pas aller dans votre compte et faire les modifications POUR VOUS car cela ne nous permettrait pas de fournir nos magasins à ce bon prix. Soyez assuré, vous adorerez votre site web et vous pourrez facilement faire les modifications que vous souhaitez."
+        }
+      ]
+    },
+    finalCta: {
+      title: "Réclamez Votre Magasin À 199 $! 🎁",
+      subtitle: "Et Recevez-Le Demain...",
+      button: "Commander Maintenant"
+    },
+    form: {
+      step1: "1 COMMENCER LA COMMANDE",
+      step1Subtitle: "Nom Et Email",
+      mandatoryFields: "* Désigne les champs obligatoires",
+      fullName: "Nom Complet",
+      email: "Email",
+      phoneNumber: "Numéro De Téléphone",
+      submitButton: "→ Choisissez Votre Magasin Prêt Pour Les Ventes Dès Demain!",
+      privacy: "Nous Respectons Votre Vie Privée Et Vos Informations",
+      confirmation: {
+        title: "Merci!",
+        message: "Merci pour votre intérêt! Nous examinerons vos informations et vous contacterons bientôt pour discuter de vos besoins en magasin.",
+        nextSteps: "Que Se Passe-T-Il Ensuite?",
+        steps: [
+          "Nous examinerons vos informations",
+          "Vous contacter pour discuter de vos besoins",
+          "Préparer une proposition personnalisée",
+          "Préparer votre magasin pour les ventes"
+        ],
+        gotIt: "Compris!"
+      }
+    },
+    countdown: {
+      days: "Jours",
+      hours: "Heures",
+      minutes: "Minutes",
+      seconds: "Secondes"
+    },
+    verified: "Vérifié"
+  },
+  pl: {
+    hero: {
+      title: "Otrzymaj Nagrodzony",
+      titleHighlight: "Stronę Internetową",
+      subtitle: "Wykonaną Od",
+      price: "199 $",
+      priceLabel: "W Ten Czarny Piątek",
+      discountBadge: "Kupon Czarny Piątek 75% ZNIŻKI Ważny Do Zera Licznika",
+      videoTitle: "Obejrzyj Ten Krótki Film, Aby Zobaczyć, Jak To Działa",
+      asSeenOn: "WIDZIANE W:",
+      orderTitle: "Zamów Teraz, A Otrzymasz:",
+      bonusesTitle: "Plus 3 Bonusy:",
+      items: {
+        website: "Strona Internetowa Wykonana Dla Ciebie: 2 500 $+",
+        products: "30+ Zwycięskich Produktów Przesłanych: 1 500 $+",
+        suppliers: "Prywatny Dostęp Do Najlepszych Dostawców: 1 000 $+",
+        descriptions: "Zoptymalizowane Opisy Produktów: 750 $+",
+        fulfillment: "Pełna Realizacja Zamówień Bez Zaangażowania: Bezcenne",
+        support: "Nagrodzone Wsparcie 24/7: Bezcenne",
+        bonus1: "Bonus #1: Projekt Logo Wykonany Dla Ciebie: 300 $+",
+        bonus2: "Bonus #2: Studium Przypadku 0 $ - 412 000 $: 500 $+",
+        bonus3: "Bonus #3: Tajemniczy Prezent: 500 $+"
+      },
+      formPrice: "199 $!",
+      formDiscount: "Kupon Czarny Piątek 75% ZNIŻKI Zastosowany! (Zwykle 20 $)",
+      availability: "Dostępność Sklepu Czarny Piątek Na Dzisiaj:"
+    },
+    howItWorks: {
+      title: "Jak To Działa",
+      steps: [
+        {
+          title: "Konfigurujemy Twój Sklep",
+          description: "Twój sklep eCommerce jest zbudowany, w tym 30 produktów o wysokim potencjale w Twojej niszy, wszystko za jedyne 199 $."
+        },
+        {
+          title: "Dostawcy Obsługują Realizację",
+          description: "Zintegrowani dostawcy wysyłają produkty bezpośrednio do Twoich klientów, zajmując się całą logistyką."
+        },
+        {
+          title: "Zachowaj Różnicę",
+          description: "Gdy następuje sprzedaż dropshipping, zachowujesz różnicę. Przykład: Sprzedaj za 39,99 $, zapłać dostawcy 9,99 $, i zachowaj 30 $ różnicy."
+        },
+        {
+          title: "Skaluj I Rozwijaj",
+          description: "Reinwestuj zyski, optymalizuj swój sklep i rozwijaj się, aby zbudować prosperujący biznes online."
+        }
+      ],
+      cta: "Odbierz Swój Sklep Za 199 $! 🎁",
+      ctaSubtitle: "I Otrzymaj Go Jutro..."
+    },
+    examples: {
+      title: "Przykłady Naszych Sklepów"
+    },
+    testimonials: {
+      title: "Prawdziwi Ludzie, Prawdziwe Wyniki.",
+      subtitle: "Zaufane Przez Nowych Właścicieli Sklepów Na Całym Świecie",
+      items: [
+        {
+          name: "Adessa M.",
+          title: "6 Sprzedaży W Moim Pierwszym Tygodniu",
+          review: "Sklep przybył w mniej niż 12 godzin. Podążałem za przewodnikiem reklamowym i zrobiłem sześć sprzedaży w pierwszym tygodniu. Najlepsze 199 $, które wydałem."
+        },
+        {
+          name: "Cosmas C.",
+          title: "Sklep Dostarczony W Noc",
+          review: "Zamówione po południu, na żywo rano. Czysta marka i załadowane produkty - lepsze niż sklep za 3 000 $, który kupiłem w zeszłym roku."
+        },
+        {
+          name: "Gabriel V.",
+          title: "Pierwsza Sprzedaż W 48 Godzin",
+          review: "Nie dotknąłem żadnego kodu. Podążałem za ich krokami uruchomienia i otrzymałem moje pierwsze zamówienie w dwa dni - potem dwa więcej przed końcem tygodnia."
+        },
+        {
+          name: "Tammy H.",
+          title: "Od Zera Do Na Żywo W 24 Godziny",
+          review: "Zbudowali sklep, załadowali produkty i wręczyli mi prosty plan uruchomienia. Obawiałem się technologii - teraz jestem podekscytowany sprzedażą."
+        },
+        {
+          name: "Aisha K.",
+          title: "Legalne I Warte Każdego Grosza",
+          review: "Wyglądało zbyt tanio, aby być prawdziwe - jest legalne. Mój sklep dla zwierząt wygląda premium i był gotowy do sprzedaży natychmiast. Zamówienia przyszły w pierwszym tygodniu."
+        },
+        {
+          name: "Patrick M.",
+          title: "Szybsze Niż Wyobrażałem",
+          review: "Próbowałem drogi DIY. To to przewyższyło - uruchomione w mniej niż dzień i zacząłem widzieć ruch i zamówienia natychmiast po."
+        },
+        {
+          name: "Kay S.D.",
+          title: "199 $, Które Zmieniło Wszystko",
+          review: "Prawie zapłaciłem tysiące za 'system.' Cieszę się, że nie. To była wysokiej jakości, szybka i faktycznie zarobiła pieniądze."
+        },
+        {
+          name: "Faith M.",
+          title: "Nawet Początkujący Może To Zrobić",
+          review: "Sklep gotowy, przewodnik reklamowy włączony, pierwsze sprzedaże w ciągu kilku dni. To było bez wysiłku - i wsparcie faktycznie rozwiązuje problemy."
+        },
+        {
+          name: "Logan M.",
+          title: "Wreszcie W Ruchu Po Zatrzymaniu",
+          review: "Nie udało mi się z dwoma sklepami wcześniej. Różnica tutaj była krok po kroku uruchomienie i szybkie odpowiedzi na wsparcie. Pierwsza wiadomość klienta drugiego dnia."
+        }
+      ]
+    },
+    faq: {
+      title: "Twoje Najczęstsze Pytania Odpowiedzi Poniżej...",
+      items: [
+        {
+          question: "Czy Muszę Mieć Konto Shopify Przed Użyciem Stron Internetowych?",
+          answer: "Nie! Wszystkie nasze sklepy Shopify Dropshipping przychodzą jako nowe sklepy z 3-dniowym bezpłatnym okresem próbnym. Po 3-dniowym bezpłatnym okresie próbnym Shopify będzie kosztować 1 $/miesiąc przez 3 miesiące, a po 3 miesiącach Shopify będzie kosztować 39 $/miesiąc. Shopify daje Ci pełne 90 dni, aby wypróbować swoją stronę internetową i dopiero po 90 dniach możesz wybrać zapłatę 39 $, co jest niczym, jeśli codziennie robisz sprzedaże w swoim sklepie. jeśli nie chcesz płacić 39 $, możesz anulować swój okres próbny 1 $/miesiąc przez 3 miesiące. Ryzyko jest bardzo niskie."
+        },
+        {
+          question: "Co Jeśli Już Mam Sklep Shopify?",
+          answer: "W większości przypadków jest znacznie lepiej, jeśli ekspert skonfiguruje sklep od zera dla Ciebie, ponieważ projekt, który zrobiłeś, najprawdopodobniej nie jest skonfigurowany do sukcesu. Więc nawet jeśli już masz sklep shopify, nie martw się. Nadal będziemy mogli utworzyć nowy dla Ciebie, który jest poprawnie skonfigurowany."
+        },
+        {
+          question: "Ile Produktów Otrzymam W Moim Sklepie?",
+          answer: "Wszystkie nasze sklepy przychodzą wstępnie zaimplementowane z 30 Produktami."
+        },
+        {
+          question: "Jakie Inne Opłaty Są Związane Z Tym?",
+          answer: "Jedyną inną rzeczą, którą musisz zapłacić, jest hosting dla Twojego sklepu Shopify. Otrzymasz 3-miesięczny okres próbny za 1 $ miesięcznie, jeśli zdecydujesz się go zachować, będziesz musiał zapłacić 39 $ miesięcznie za hosting swojej strony internetowej przez shopify, możesz anulować w dowolnym momencie i nie ma umów ani innych ukrytych opłat."
+        },
+        {
+          question: "Czy Reklamujecie Sklep Dla Mnie?",
+          answer: "NIE robimy żadnej reklamy dla Twojego sklepu. To będzie dla Ciebie do zrobienia, gdy sklep będzie gotowy."
+        },
+        {
+          question: "Co Jeśli Mam Własne Produkty? Czy Mogę Je Dodać Do Mojego Sklepu?",
+          answer: "Tak! Łatwo będziesz mógł dodać tyle produktów, ile chcesz do swojego sklepu po dostawie. Proces jest niezwykle prosty i możesz to zrobić w kilka kliknięć."
+        },
+        {
+          question: "Czy Te Sklepy Są Wstępnie Zbudowane?",
+          answer: "Tak, nasze sklepy są wstępnie zbudowane, co oznacza, że jest to szablon dla Ciebie do zbudowania i nie powinien być uważany za 'Biznes w pudełku'. Budujemy szablon strony internetowej dla Ciebie, nie biznes. Jesteśmy agencją projektowania stron internetowych, nie możliwością biznesową."
+        },
+        {
+          question: "Jak Będę Mógł Używać Sklepu Shopify Jako Swojego?",
+          answer: "24 - 48 godzin po złożeniu zamówienia wyślemy Ci informacje logowania do Twojego nowego sklepu Shopify Dropshipping. Wszystko, co musisz zrobić, to zalogować się, zmienić hasło, a sklep jest całkowicie Twój!"
+        },
+        {
+          question: "Czy Mogę Otrzymać Zwrot Pieniędzy, Jeśli Nie Podoba Mi Się Mój Sklep Shopify?",
+          answer: "Mamy gwarancję 365 dni, jeśli używasz swojego sklepu przez 365 dni i nie odzyskujesz swoich pieniędzy, w pełni zwrócimy Ci pieniądze."
+        },
+        {
+          question: "Czy Pomocie Mi Wprowadzić Zmiany I Dostosowania W Moim Sklepie Shopify?",
+          answer: "Zapewnimy Ci wsparcie, aby pomóc Ci uzyskać dostęp do sklepu Shopify i go używać. Damy Ci również przewodnik wideo krok po kroku, jak uzyskać dostęp i wprowadzić zmiany w swoim sklepie. Jednak nie będziemy mogli wejść do Twojego konta i wprowadzić zmian DLA CIEBIE, ponieważ nie pozwoliłoby nam to zapewnić naszych sklepów w tak dobrej cenie. Bądź pewien, pokochasz swoją stronę internetową i łatwo będziesz mógł wprowadzić zmiany, które chcesz."
+        }
+      ]
+    },
+    finalCta: {
+      title: "Odbierz Swój Sklep Za 199 $! 🎁",
+      subtitle: "I Otrzymaj Go Jutro...",
+      button: "Zamów Teraz"
+    },
+    form: {
+      step1: "1 ROZPOCZNIJ ZAMÓWIENIE",
+      step1Subtitle: "Imię I Email",
+      mandatoryFields: "* Oznacza pola obowiązkowe",
+      fullName: "Imię I Nazwisko",
+      email: "Email",
+      phoneNumber: "Numer Telefonu",
+      submitButton: "→ Wybierz Swój Sklep Gotowy Do Sprzedaży Już Jutro!",
+      privacy: "Szanujemy Twoją Prywatność I Informacje",
+      confirmation: {
+        title: "Dziękujemy!",
+        message: "Dziękujemy za zainteresowanie! Przejrzymy Twoje informacje i wkrótce się z Tobą skontaktujemy, aby omówić Twoje potrzeby dotyczące sklepu.",
+        nextSteps: "Co Dzieje Się Dalej?",
+        steps: [
+          "Przejrzymy Twoje informacje",
+          "Skontaktujemy się z Tobą, aby omówić Twoje potrzeby",
+          "Przygotujemy spersonalizowaną propozycję",
+          "Przygotujemy Twój sklep do sprzedaży"
+        ],
+        gotIt: "Rozumiem!"
+      }
+    },
+    countdown: {
+      days: "Dni",
+      hours: "Godziny",
+      minutes: "Minuty",
+      seconds: "Sekundy"
+    },
+    verified: "Zweryfikowane"
+  }
+};
