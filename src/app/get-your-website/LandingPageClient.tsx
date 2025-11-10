@@ -4,25 +4,28 @@ import { motion, useAnimationControls } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle, Star, Users, Zap, ArrowUpRight, ExternalLink, Play, Rocket, Package, DollarSign, TrendingUp, Clock, Shield, Gift, Award } from 'lucide-react';
+import { CheckCircle, Star, Users, Zap, ArrowUpRight, ExternalLink, Play, Pause, Rocket, Package, DollarSign, TrendingUp, Clock, Shield, Gift, Award } from 'lucide-react';
 import LeadFormClient from './LeadFormClient';
 import Image from 'next/image';
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
-import { portfolioTranslations, getYourWebsiteTranslations } from "@/i18n/page-translations";
+import { portfolioTranslations, getYourWebsiteTranslations , landingPageTranslations} from "@/i18n/page-translations";
 import Link from "next/link";
+
 
 
 // Countdown Timer Component
 function CountdownTimer({ targetDate, translations }: { targetDate: Date; translations: { days: string; hours: string; minutes: string; seconds: string } }) {
+
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0
   });
+ 
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -79,10 +82,18 @@ export default function LandingPageClient() {
   const animationIdRef = useRef<number | null>(null);
   const isPausedRef = useRef(false);
   
+  // Video refs and state
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+  const video1Ref = useRef<HTMLVideoElement>(null);
+  const video2Ref = useRef<HTMLVideoElement>(null);
+  const video3Ref = useRef<HTMLVideoElement>(null);
+  const [playingVideo, setPlayingVideo] = useState<number | null>(null);
+  const [isHeroVideoPlaying, setIsHeroVideoPlaying] = useState(false);
+  
   // Get translations
   const t = getYourWebsiteTranslations[language];
   const portfolioT = portfolioTranslations[language];
-  
+  const landingT = landingPageTranslations[language];
   // Get portfolio projects - prioritize e-commerce but include all projects with images
   const allEcommerceProjects = portfolioT.projects
     .filter(project => project.category === "E-commerce" && project.image && project.link);
@@ -200,26 +211,48 @@ export default function LandingPageClient() {
                   <Play className="w-6 h-6" />
                   <span className="font-semibold">{t.hero.videoTitle}</span>
                 </div>
-                <div className="relative aspect-video bg-slate-900 rounded-lg overflow-hidden group">
+                <div 
+                  className="relative aspect-video bg-slate-900 rounded-lg overflow-hidden group cursor-pointer"
+                  onClick={() => {
+                    if (heroVideoRef.current) {
+                      if (isHeroVideoPlaying) {
+                        heroVideoRef.current.pause();
+                        setIsHeroVideoPlaying(false);
+                      } else {
+                        heroVideoRef.current.play();
+                        setIsHeroVideoPlaying(true);
+                      }
+                    }
+                  }}
+                >
                   <video
+                    ref={heroVideoRef}
                     className="w-full h-full object-cover"
-                    controls
-                    controlsList="nodownload nofullscreen noremoteplayback"
-                    preload="auto"
+                    preload="metadata"
                     playsInline
-                    autoPlay
-                    // muted
                     loop
-                    crossOrigin="anonymous"
+                    onPlay={() => setIsHeroVideoPlaying(true)}
+                    onPause={() => setIsHeroVideoPlaying(false)}
                     onError={(e) => {
-                      console.error('Video error:', e);
+                      console.error('Hero video error:', e);
                       console.error('Video error details:', (e.target as HTMLVideoElement).error);
                     }}
                   >
                     <source src="/video/adsvd.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none"></div>
+                  {/* Play/Pause Overlay */}
+                  <div className={`absolute inset-0 bg-black/30 flex items-center justify-center transition-opacity duration-300 ${
+                    isHeroVideoPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-100'
+                  }`}>
+                    <div className="bg-white/95 rounded-full p-4 lg:p-5 shadow-lg transform transition-transform duration-300 group-hover:scale-110">
+                      {isHeroVideoPlaying ? (
+                        <Pause className="w-10 h-10 lg:w-12 lg:h-12 text-emerald-600" />
+                      ) : (
+                        <Play className="w-10 h-10 lg:w-12 lg:h-12 text-emerald-600 ml-1" />
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -626,6 +659,194 @@ export default function LandingPageClient() {
               <ArrowUpRight className="ml-2 w-5 h-5" />
             </Button>
           </motion.div>
+        </div>
+      </section>
+      {/* Video Testimonials Section */}
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h3 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">{landingT.videoTestimonials.title}</h3>
+            <p className="text-lg text-slate-600">{landingT.videoTestimonials.subtitle}</p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {/* Video 1 */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative group cursor-pointer"
+              onClick={() => {
+                if (video1Ref.current) {
+                  if (playingVideo === 1) {
+                    video1Ref.current.pause();
+                    setPlayingVideo(null);
+                  } else {
+                    // Pause other videos
+                    if (video2Ref.current) video2Ref.current.pause();
+                    if (video3Ref.current) video3Ref.current.pause();
+                    video1Ref.current.play();
+                    setPlayingVideo(1);
+                  }
+                }
+              }}
+            >
+              <div className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 bg-slate-900">
+                <video
+                  ref={video1Ref}
+                  className="w-full h-auto"
+                  poster="/first-client.webp"
+                  preload="metadata"
+                  playsInline
+                  loop
+                  
+                  onPlay={() => setPlayingVideo(1)}
+                  onPause={() => {
+                    if (playingVideo === 1) setPlayingVideo(null);
+                  }}
+                  onError={(e) => {
+                    console.error('Video 1 error:', e);
+                  }}
+                >
+                  <source src="/video/first-client.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                {/* Play/Pause Overlay */}
+                <div className={`absolute inset-0 bg-black/30 flex items-center justify-center transition-opacity duration-300 ${
+                  playingVideo === 1 ? 'opacity-0 hover:opacity-100' : 'opacity-100'
+                }`}>
+                  <div className="bg-white/95 rounded-full p-4 lg:p-5 shadow-lg transform transition-transform duration-300 group-hover:scale-110">
+                    {playingVideo === 1 ? (
+                      <Pause className="w-8 h-8 lg:w-10 lg:h-10 text-emerald-600" />
+                    ) : (
+                      <Play className="w-8 h-8 lg:w-10 lg:h-10 text-emerald-600 ml-1" />
+                    )}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Video 2 */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="relative group cursor-pointer"
+              onClick={() => {
+                if (video2Ref.current) {
+                  if (playingVideo === 2) {
+                    video2Ref.current.pause();
+                    setPlayingVideo(null);
+                  } else {
+                    // Pause other videos
+                    if (video1Ref.current) video1Ref.current.pause();
+                    if (video3Ref.current) video3Ref.current.pause();
+                    video2Ref.current.play();
+                    setPlayingVideo(2);
+                  }
+                }
+              }}
+            >
+              <div className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 bg-slate-900">
+                <video
+                  ref={video2Ref}
+                  className="w-full h-auto"
+                  poster="/second.webp"
+                  preload="metadata"
+                  playsInline
+                  loop
+                  
+                  onPlay={() => setPlayingVideo(2)}
+                  onPause={() => {
+                    if (playingVideo === 2) setPlayingVideo(null);
+                  }}
+                  onError={(e) => {
+                    console.error('Video 2 error:', e);
+                  }}
+                >
+                  <source src="/video/second-client.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                {/* Play/Pause Overlay */}
+                <div className={`absolute inset-0 bg-black/30 flex items-center justify-center transition-opacity duration-300 ${
+                  playingVideo === 2 ? 'opacity-0 hover:opacity-100' : 'opacity-100'
+                }`}>
+                  <div className="bg-white/95 rounded-full p-4 lg:p-5 shadow-lg transform transition-transform duration-300 group-hover:scale-110">
+                    {playingVideo === 2 ? (
+                      <Pause className="w-8 h-8 lg:w-10 lg:h-10 text-emerald-600" />
+                    ) : (
+                      <Play className="w-8 h-8 lg:w-10 lg:h-10 text-emerald-600 ml-1" />
+                    )}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Video 3 */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative group cursor-pointer md:col-span-2 lg:col-span-1"
+              onClick={() => {
+                if (video3Ref.current) {
+                  if (playingVideo === 3) {
+                    video3Ref.current.pause();
+                    setPlayingVideo(null);
+                  } else {
+                    // Pause other videos
+                    if (video1Ref.current) video1Ref.current.pause();
+                    if (video2Ref.current) video2Ref.current.pause();
+                    video3Ref.current.play();
+                    setPlayingVideo(3);
+                  }
+                }
+              }}
+            >
+              <div className="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 bg-slate-900">
+                <video
+                  ref={video3Ref}
+                  className="w-full h-auto"
+                  poster="/third.png"
+                  preload="metadata"
+                  playsInline
+                  loop
+                  
+                  onPlay={() => setPlayingVideo(3)}
+                  onPause={() => {
+                    if (playingVideo === 3) setPlayingVideo(null);
+                  }}
+                  onError={(e) => {
+                    console.error('Video 3 error:', e);
+                  }}
+                >
+                  <source src="/video/third-client.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                {/* Play/Pause Overlay */}
+                <div className={`absolute inset-0 bg-black/30 flex items-center justify-center transition-opacity duration-300 ${
+                  playingVideo === 3 ? 'opacity-0 hover:opacity-100' : 'opacity-100'
+                }`}>
+                  <div className="bg-white/95 rounded-full p-4 lg:p-5 shadow-lg transform transition-transform duration-300 group-hover:scale-110">
+                    {playingVideo === 3 ? (
+                      <Pause className="w-8 h-8 lg:w-10 lg:h-10 text-emerald-600" />
+                    ) : (
+                      <Play className="w-8 h-8 lg:w-10 lg:h-10 text-emerald-600 ml-1" />
+                    )}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
