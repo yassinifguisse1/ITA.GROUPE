@@ -199,12 +199,24 @@ export default function LandingPageClient() {
                   <Play className="w-6 h-6" />
                   <span className="font-semibold">{t.hero.videoTitle}</span>
                 </div>
-                <div className="relative aspect-video bg-slate-900 rounded-lg overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-8 cursor-pointer hover:bg-white/30 transition-colors">
-                      <Play className="w-16 h-16 text-white" />
-                    </div>
-                  </div>
+                <div className="relative aspect-video bg-slate-900 rounded-lg overflow-hidden group">
+                  <video
+                    className="w-full h-full object-cover"
+                    controls
+                    controlsList="nodownload nofullscreen noremoteplayback"
+                    preload="metadata"
+                    playsInline
+                    loop
+                    crossOrigin="anonymous"
+                    onError={(e) => {
+                      console.error('Video error:', e);
+                      console.error('Video error details:', (e.target as HTMLVideoElement).error);
+                    }}
+                  >
+                    <source src="/video/adsvd.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none"></div>
                 </div>
               </div>
 
