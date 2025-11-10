@@ -16,7 +16,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { landingPageTranslations } from "@/i18n/page-translations";
 
 // Country codes data
-const countryCodes = [
+export const countryCodes = [
   { code: '+1', country: 'US/Canada', flag: '🇺🇸' },
   { code: '+44', country: 'United Kingdom', flag: '🇬🇧' },
   { code: '+33', country: 'France', flag: '🇫🇷' },

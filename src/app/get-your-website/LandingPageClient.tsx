@@ -13,6 +13,7 @@ import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
 import { portfolioTranslations, getYourWebsiteTranslations } from "@/i18n/page-translations";
 
+
 // Countdown Timer Component
 function CountdownTimer({ targetDate, translations }: { targetDate: Date; translations: { days: string; hours: string; minutes: string; seconds: string } }) {
   const [timeLeft, setTimeLeft] = useState({
@@ -194,7 +195,7 @@ export default function LandingPageClient() {
 
               {/* Video Section */}
               <div className="space-y-3">
-                <div className="bg-blue-600 px-4 py-3 rounded-lg flex items-center gap-3 cursor-pointer hover:bg-blue-700 transition-colors">
+                <div className="bg-emerald-600 px-4 py-3 rounded-lg flex items-center gap-3 cursor-pointer hover:bg-emerald-700 transition-colors">
                   <Play className="w-6 h-6" />
                   <span className="font-semibold">{t.hero.videoTitle}</span>
                 </div>

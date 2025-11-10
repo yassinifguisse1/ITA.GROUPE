@@ -1435,44 +1435,52 @@ export const getYourWebsiteTranslations = {
       title: "Your Most Common Questions Answered Below...",
       items: [
         {
-          question: "Do I need to have a Shopify Account Before using the Websites?",
-          answer: "No! All our Shopify Dropshipping Stores come as brand new stores that you'll get a 3 day free trial with. After the 3 Day Free Trial, Shopify will be $1/Month for 3 Months and after 3 Months Shopify will be $39/Month. Shopify gives you an entire 90 Days to give your website a shot and only after 90 days you can choose to pay the $39 which is nothing if you are making sales on your store every day. if you don't want to pay the $39 you can cancel your $1/month for 3 months trial. The risk is very low."
+          question: "What platforms do you build websites on?",
+          answer: "We build websites on a variety of modern platforms including WordPress, Next.js, React, Vue.js, and custom solutions. We also specialize in e-commerce platforms like Shopify, WooCommerce, and custom e-commerce solutions. We'll recommend the best platform based on your specific needs, budget, and business goals."
         },
         {
-          question: "What if I already have a Shopify Store?",
-          answer: "Most of the time it is a lot better if you have an expert setup the store from scratch for you since the design you made is most likely not setup for success. So, even if you have already have a shopify store, don't worry. We'll still be able to create a new one for you that is setup correctly."
+          question: "How long does it take to build a website?",
+          answer: "Our standard website delivery time is 24-48 hours for basic websites. More complex projects like custom platforms, AI SaaS applications, or enterprise solutions typically take 2-4 weeks depending on the scope. We'll provide you with a detailed timeline after reviewing your requirements."
         },
         {
-          question: "How many products will I get on my store?",
-          answer: "All our stores come pre-implemented with 30 Products."
+          question: "Do you build AI-powered SaaS platforms?",
+          answer: "Yes! We specialize in building AI-powered SaaS platforms and applications. Our team has extensive experience with AI integrations, machine learning features, and modern SaaS architecture. We can help you build everything from AI chatbots to complex data analysis platforms."
         },
         {
-          question: "What other fees are associated with this?",
-          answer: "The only other thing that you have to pay for is hosting for your Shopify store. You will get 3 month trial for $1 a month, if you choose to keep it you will need to pay $39 a month for hosting your website through shopify, you can cancel at anytime and there are no contracts or other hidden fees."
+          question: "What's included in the $199 website package?",
+          answer: "The $199 package includes a fully responsive, modern website with up to 5 pages, basic SEO optimization, mobile-friendly design, contact forms, and basic customization. Premium features like e-commerce functionality, AI integrations, custom platforms, and advanced features are available as add-ons."
         },
         {
-          question: "Do you advertise the store for me?",
-          answer: "We do NOT do any advertising for your store. That will be for you to do when the store is done."
+          question: "Can you build custom web applications and platforms?",
+          answer: "Absolutely! We build custom web applications, SaaS platforms, dashboards, and complex web systems. Our team specializes in creating scalable, secure, and high-performance custom solutions tailored to your specific business needs."
         },
         {
-          question: "What if I have my own products? Can I add them to my store?",
-          answer: "Yes! You'll easily be able to add as many products as you like to your store after deliver it. The process is extremely simple and you can do it within a couple of clicks."
+          question: "Do you provide hosting and domain services?",
+          answer: "We can help you set up hosting and domain registration, but these are separate services with their own costs. We'll guide you through the process and recommend reliable hosting providers based on your website's requirements. Hosting typically costs $5-50/month depending on your needs."
         },
         {
-          question: "Are these stores prebuilt?",
-          answer: "Yes our stores are prebuilt, meaning it's a template for you to build off of and shouldn't be considered a 'Business in a box'. We are building a website template for you, not a business. We are a website design agency, not a business opportunity."
+          question: "Will my website be mobile-responsive?",
+          answer: "Yes! All our websites are fully responsive and optimized for mobile devices, tablets, and desktops. Mobile responsiveness is included in every package we offer, ensuring your website looks great on all screen sizes."
         },
         {
-          question: "How will I be able to use the Shopify Store as my own?",
-          answer: "24 - 48 Hours after you place your order, we'll send you your login information for your new Shopify Dropshipping Store. All you'll have to do is login, change the password, and the store is all yours!"
+          question: "Do you provide ongoing support and maintenance?",
+          answer: "Yes, we offer ongoing support and maintenance packages. Basic support includes bug fixes and security updates. Premium support packages include regular updates, feature additions, performance optimization, and priority support. We'll discuss your maintenance needs after your website is delivered."
         },
         {
-          question: "Can I get a Refund if I don't like my Shopify store?",
-          answer: "We have a 365 Day Guarantee, if you use your store for 365 Days and don't make your money back we'll fully refund you."
+          question: "Can I make changes to my website after it's delivered?",
+          answer: "Yes! You'll receive full access to your website and can make changes yourself if you're comfortable with the platform. We also provide training and documentation. For complex changes, we offer maintenance packages or one-time update services at reasonable rates."
         },
         {
-          question: "Will you help me make changes and customizations on my Shopify Store?",
-          answer: "We will provide you support to help you access the Shopify store and use it. We'll also give you a step by step video guide on how to access and make changes to your store. However, we will not be able to go into your account and do the changes FOR YOU as that will not allow us to provide our stores are this good of a price. Rest assured, you will love your website and you'll easily be able to make the changes you would like."
+          question: "What if I need additional features or integrations later?",
+          answer: "No problem! We can add features, integrations, and functionality to your website at any time. Whether you need payment gateways, third-party APIs, AI features, analytics tools, or custom functionality, we can help. We'll provide a quote for any additional work."
+        },
+        {
+          question: "Do you offer SEO optimization?",
+          answer: "Yes! Basic SEO optimization is included in all our packages. This includes proper meta tags, structured data, mobile optimization, and fast loading speeds. For advanced SEO services like content optimization, link building, and ongoing SEO campaigns, we offer separate SEO packages."
+        },
+        {
+          question: "What technologies and frameworks do you use?",
+          answer: "We use modern, industry-standard technologies including React, Next.js, Vue.js, Node.js, TypeScript, Python (for AI/ML features), and various databases. We stay up-to-date with the latest frameworks and tools to ensure your website is built with cutting-edge technology."
         }
       ]
     },
@@ -1619,44 +1627,52 @@ export const getYourWebsiteTranslations = {
       title: "Vos Questions Les Plus Courantes Répondues Ci-Dessous...",
       items: [
         {
-          question: "Ai-Je Besoin D'Avoir Un Compte Shopify Avant D'Utiliser Les Sites Web?",
-          answer: "Non! Tous nos magasins Shopify Dropshipping arrivent comme de nouveaux magasins avec un essai gratuit de 3 jours. Après l'essai gratuit de 3 jours, Shopify sera de 1 $/mois pendant 3 mois et après 3 mois Shopify sera de 39 $/mois. Shopify vous donne 90 jours complets pour essayer votre site web et ce n'est qu'après 90 jours que vous pouvez choisir de payer les 39 $, ce qui n'est rien si vous faites des ventes sur votre magasin tous les jours. si vous ne voulez pas payer les 39 $, vous pouvez annuler votre essai de 1 $/mois pendant 3 mois. Le risque est très faible."
+          question: "Sur Quelles Plateformes Construisez-Vous Les Sites Web?",
+          answer: "Nous construisons des sites web sur diverses plateformes modernes, notamment WordPress, Next.js, React, Vue.js et des solutions personnalisées. Nous nous spécialisons également dans les plateformes e-commerce comme Shopify, WooCommerce et des solutions e-commerce personnalisées. Nous recommanderons la meilleure plateforme en fonction de vos besoins spécifiques, de votre budget et de vos objectifs commerciaux."
         },
         {
-          question: "Et Si J'Ai Déjà Un Magasin Shopify?",
-          answer: "La plupart du temps, il est beaucoup mieux qu'un expert configure le magasin à partir de zéro pour vous, car le design que vous avez fait n'est probablement pas configuré pour le succès. Donc, même si vous avez déjà un magasin shopify, ne vous inquiétez pas. Nous pourrons toujours en créer un nouveau pour vous qui est correctement configuré."
+          question: "Combien De Temps Faut-Il Pour Construire Un Site Web?",
+          answer: "Notre délai de livraison standard est de 24 à 48 heures pour les sites web de base. Les projets plus complexes comme les plateformes personnalisées, les applications SaaS IA ou les solutions d'entreprise prennent généralement 2 à 4 semaines selon la portée. Nous vous fournirons un calendrier détaillé après avoir examiné vos exigences."
         },
         {
-          question: "Combien De Produits Vais-Je Obtenir Sur Mon Magasin?",
-          answer: "Tous nos magasins arrivent pré-implémentés avec 30 Produits."
+          question: "Construisez-Vous Des Plateformes SaaS Alimentées Par L'IA?",
+          answer: "Oui! Nous nous spécialisons dans la construction de plateformes et d'applications SaaS alimentées par l'IA. Notre équipe a une vaste expérience avec les intégrations IA, les fonctionnalités d'apprentissage automatique et l'architecture SaaS moderne. Nous pouvons vous aider à construire tout, des chatbots IA aux plateformes d'analyse de données complexes."
         },
         {
-          question: "Quels Autres Frais Sont Associés À Cela?",
-          answer: "La seule autre chose que vous devez payer est l'hébergement pour votre magasin Shopify. Vous obtiendrez un essai de 3 mois pour 1 $ par mois, si vous choisissez de le garder, vous devrez payer 39 $ par mois pour héberger votre site web via shopify, vous pouvez annuler à tout moment et il n'y a pas de contrats ou d'autres frais cachés."
+          question: "Qu'est-Ce Qui Est Inclus Dans Le Forfait Site Web À 199 $?",
+          answer: "Le forfait à 199 $ comprend un site web moderne entièrement responsive avec jusqu'à 5 pages, optimisation SEO de base, design adapté aux mobiles, formulaires de contact et personnalisation de base. Les fonctionnalités premium comme la fonctionnalité e-commerce, les intégrations IA, les plateformes personnalisées et les fonctionnalités avancées sont disponibles en options supplémentaires."
         },
         {
-          question: "Faites-Vous De La Publicité Pour Mon Magasin?",
-          answer: "Nous ne faisons AUCUNE publicité pour votre magasin. Ce sera à vous de le faire lorsque le magasin sera terminé."
+          question: "Pouvez-Vous Construire Des Applications Web Personnalisées Et Des Plateformes?",
+          answer: "Absolument! Nous construisons des applications web personnalisées, des plateformes SaaS, des tableaux de bord et des systèmes web complexes. Notre équipe se spécialise dans la création de solutions personnalisées évolutives, sécurisées et performantes adaptées à vos besoins commerciaux spécifiques."
         },
         {
-          question: "Et Si J'Ai Mes Propres Produits? Puis-Je Les Ajouter À Mon Magasin?",
-          answer: "Oui! Vous pourrez facilement ajouter autant de produits que vous le souhaitez à votre magasin après la livraison. Le processus est extrêmement simple et vous pouvez le faire en quelques clics."
+          question: "Offrez-Vous Des Services D'Hébergement Et De Domaine?",
+          answer: "Nous pouvons vous aider à configurer l'hébergement et l'enregistrement de domaine, mais ce sont des services séparés avec leurs propres coûts. Nous vous guiderons tout au long du processus et recommanderons des fournisseurs d'hébergement fiables en fonction des exigences de votre site web. L'hébergement coûte généralement 5 à 50 $/mois selon vos besoins."
         },
         {
-          question: "Ces Magasins Sont-Ils Préconstruits?",
-          answer: "Oui, nos magasins sont préconstruits, ce qui signifie que c'est un modèle pour vous de construire et ne devrait pas être considéré comme une 'Entreprise en boîte'. Nous construisons un modèle de site web pour vous, pas une entreprise. Nous sommes une agence de design de sites web, pas une opportunité commerciale."
+          question: "Mon Site Web Sera-T-Il Adapté Aux Mobiles?",
+          answer: "Oui! Tous nos sites web sont entièrement responsives et optimisés pour les appareils mobiles, tablettes et ordinateurs de bureau. La réactivité mobile est incluse dans tous les forfaits que nous offrons, garantissant que votre site web a fière allure sur toutes les tailles d'écran."
         },
         {
-          question: "Comment Pourrai-Je Utiliser Le Magasin Shopify Comme Le Mien?",
-          answer: "24 - 48 heures après avoir passé votre commande, nous vous enverrons vos informations de connexion pour votre nouveau magasin Shopify Dropshipping. Tout ce que vous aurez à faire est de vous connecter, changer le mot de passe, et le magasin est entièrement à vous!"
+          question: "Offrez-Vous Un Support Et Une Maintenance Continus?",
+          answer: "Oui, nous offrons des forfaits de support et de maintenance continus. Le support de base comprend les corrections de bugs et les mises à jour de sécurité. Les forfaits de support premium comprennent des mises à jour régulières, des ajouts de fonctionnalités, l'optimisation des performances et un support prioritaire. Nous discuterons de vos besoins de maintenance après la livraison de votre site web."
         },
         {
-          question: "Puis-Je Obtenir Un Remboursement Si Je N'Aime Pas Mon Magasin Shopify?",
-          answer: "Nous avons une garantie de 365 jours, si vous utilisez votre magasin pendant 365 jours et ne récupérez pas votre argent, nous vous rembourserons intégralement."
+          question: "Puis-Je Apporter Des Modifications À Mon Site Web Après Sa Livraison?",
+          answer: "Oui! Vous recevrez un accès complet à votre site web et pourrez apporter des modifications vous-même si vous êtes à l'aise avec la plateforme. Nous fournissons également une formation et une documentation. Pour les modifications complexes, nous offrons des forfaits de maintenance ou des services de mise à jour ponctuels à des tarifs raisonnables."
         },
         {
-          question: "M'Aiderez-Vous À Faire Des Modifications Et Des Personnalisations Sur Mon Magasin Shopify?",
-          answer: "Nous vous fournirons un support pour vous aider à accéder au magasin Shopify et l'utiliser. Nous vous donnerons également un guide vidéo étape par étape sur la façon d'accéder et de faire des modifications à votre magasin. Cependant, nous ne pourrons pas aller dans votre compte et faire les modifications POUR VOUS car cela ne nous permettrait pas de fournir nos magasins à ce bon prix. Soyez assuré, vous adorerez votre site web et vous pourrez facilement faire les modifications que vous souhaitez."
+          question: "Et Si J'Ai Besoin De Fonctionnalités Ou D'Intégrations Supplémentaires Plus Tard?",
+          answer: "Pas de problème! Nous pouvons ajouter des fonctionnalités, des intégrations et des fonctionnalités à votre site web à tout moment. Que vous ayez besoin de passerelles de paiement, d'API tierces, de fonctionnalités IA, d'outils d'analyse ou de fonctionnalités personnalisées, nous pouvons vous aider. Nous fournirons un devis pour tout travail supplémentaire."
+        },
+        {
+          question: "Offrez-Vous L'Optimisation SEO?",
+          answer: "Oui! L'optimisation SEO de base est incluse dans tous nos forfaits. Cela comprend les balises meta appropriées, les données structurées, l'optimisation mobile et des vitesses de chargement rapides. Pour les services SEO avancés comme l'optimisation de contenu, la création de liens et les campagnes SEO continues, nous offrons des forfaits SEO séparés."
+        },
+        {
+          question: "Quelles Technologies Et Frameworks Utilisez-Vous?",
+          answer: "Nous utilisons des technologies modernes et standard de l'industrie, notamment React, Next.js, Vue.js, Node.js, TypeScript, Python (pour les fonctionnalités IA/ML) et diverses bases de données. Nous restons à jour avec les derniers frameworks et outils pour garantir que votre site web est construit avec une technologie de pointe."
         }
       ]
     },
@@ -1803,44 +1819,52 @@ export const getYourWebsiteTranslations = {
       title: "Twoje Najczęstsze Pytania Odpowiedzi Poniżej...",
       items: [
         {
-          question: "Czy Muszę Mieć Konto Shopify Przed Użyciem Stron Internetowych?",
-          answer: "Nie! Wszystkie nasze sklepy Shopify Dropshipping przychodzą jako nowe sklepy z 3-dniowym bezpłatnym okresem próbnym. Po 3-dniowym bezpłatnym okresie próbnym Shopify będzie kosztować 1 $/miesiąc przez 3 miesiące, a po 3 miesiącach Shopify będzie kosztować 39 $/miesiąc. Shopify daje Ci pełne 90 dni, aby wypróbować swoją stronę internetową i dopiero po 90 dniach możesz wybrać zapłatę 39 $, co jest niczym, jeśli codziennie robisz sprzedaże w swoim sklepie. jeśli nie chcesz płacić 39 $, możesz anulować swój okres próbny 1 $/miesiąc przez 3 miesiące. Ryzyko jest bardzo niskie."
+          question: "Na Jakich Platformach Budujecie Strony Internetowe?",
+          answer: "Budujemy strony internetowe na różnych nowoczesnych platformach, w tym WordPress, Next.js, React, Vue.js i rozwiązania niestandardowe. Specjalizujemy się również w platformach e-commerce, takich jak Shopify, WooCommerce i niestandardowe rozwiązania e-commerce. Zarekomendujemy najlepszą platformę na podstawie Twoich konkretnych potrzeb, budżetu i celów biznesowych."
         },
         {
-          question: "Co Jeśli Już Mam Sklep Shopify?",
-          answer: "W większości przypadków jest znacznie lepiej, jeśli ekspert skonfiguruje sklep od zera dla Ciebie, ponieważ projekt, który zrobiłeś, najprawdopodobniej nie jest skonfigurowany do sukcesu. Więc nawet jeśli już masz sklep shopify, nie martw się. Nadal będziemy mogli utworzyć nowy dla Ciebie, który jest poprawnie skonfigurowany."
+          question: "Ile Czasu Zajmuje Zbudowanie Strony Internetowej?",
+          answer: "Nasz standardowy czas dostawy strony internetowej to 24-48 godzin dla podstawowych stron. Bardziej złożone projekty, takie jak niestandardowe platformy, aplikacje SaaS AI lub rozwiązania dla przedsiębiorstw, zazwyczaj trwają 2-4 tygodnie w zależności od zakresu. Zapewnimy Ci szczegółowy harmonogram po przejrzeniu Twoich wymagań."
         },
         {
-          question: "Ile Produktów Otrzymam W Moim Sklepie?",
-          answer: "Wszystkie nasze sklepy przychodzą wstępnie zaimplementowane z 30 Produktami."
+          question: "Czy Budujecie Platformy SaaS Zasilane AI?",
+          answer: "Tak! Specjalizujemy się w budowaniu platform i aplikacji SaaS zasilanych AI. Nasz zespół ma szerokie doświadczenie w integracjach AI, funkcjach uczenia maszynowego i nowoczesnej architekturze SaaS. Możemy pomóc Ci zbudować wszystko, od chatbotów AI po złożone platformy analizy danych."
         },
         {
-          question: "Jakie Inne Opłaty Są Związane Z Tym?",
-          answer: "Jedyną inną rzeczą, którą musisz zapłacić, jest hosting dla Twojego sklepu Shopify. Otrzymasz 3-miesięczny okres próbny za 1 $ miesięcznie, jeśli zdecydujesz się go zachować, będziesz musiał zapłacić 39 $ miesięcznie za hosting swojej strony internetowej przez shopify, możesz anulować w dowolnym momencie i nie ma umów ani innych ukrytych opłat."
+          question: "Co Jest Zawarte W Pakiecie Strony Internetowej Za 199 $?",
+          answer: "Pakiet za 199 $ obejmuje w pełni responsywną, nowoczesną stronę internetową z do 5 stronami, podstawową optymalizacją SEO, designem przyjaznym dla urządzeń mobilnych, formularzami kontaktowymi i podstawową personalizacją. Funkcje premium, takie jak funkcjonalność e-commerce, integracje AI, niestandardowe platformy i zaawansowane funkcje, są dostępne jako dodatki."
         },
         {
-          question: "Czy Reklamujecie Sklep Dla Mnie?",
-          answer: "NIE robimy żadnej reklamy dla Twojego sklepu. To będzie dla Ciebie do zrobienia, gdy sklep będzie gotowy."
+          question: "Czy Możecie Zbudować Niestandardowe Aplikacje Internetowe I Platformy?",
+          answer: "Absolutnie! Budujemy niestandardowe aplikacje internetowe, platformy SaaS, pulpity nawigacyjne i złożone systemy internetowe. Nasz zespół specjalizuje się w tworzeniu skalowalnych, bezpiecznych i wydajnych rozwiązań niestandardowych dostosowanych do Twoich konkretnych potrzeb biznesowych."
         },
         {
-          question: "Co Jeśli Mam Własne Produkty? Czy Mogę Je Dodać Do Mojego Sklepu?",
-          answer: "Tak! Łatwo będziesz mógł dodać tyle produktów, ile chcesz do swojego sklepu po dostawie. Proces jest niezwykle prosty i możesz to zrobić w kilka kliknięć."
+          question: "Czy Oferujecie Usługi Hostingu I Domeny?",
+          answer: "Możemy pomóc Ci skonfigurować hosting i rejestrację domeny, ale są to oddzielne usługi z własnymi kosztami. Poprowadzimy Cię przez proces i zarekomendujemy niezawodnych dostawców hostingu na podstawie wymagań Twojej strony internetowej. Hosting zazwyczaj kosztuje 5-50 $/miesiąc w zależności od Twoich potrzeb."
         },
         {
-          question: "Czy Te Sklepy Są Wstępnie Zbudowane?",
-          answer: "Tak, nasze sklepy są wstępnie zbudowane, co oznacza, że jest to szablon dla Ciebie do zbudowania i nie powinien być uważany za 'Biznes w pudełku'. Budujemy szablon strony internetowej dla Ciebie, nie biznes. Jesteśmy agencją projektowania stron internetowych, nie możliwością biznesową."
+          question: "Czy Moja Strona Internetowa Będzie Responsywna Na Urządzenia Mobilne?",
+          answer: "Tak! Wszystkie nasze strony internetowe są w pełni responsywne i zoptymalizowane pod kątem urządzeń mobilnych, tabletów i komputerów stacjonarnych. Responsywność mobilna jest zawarta w każdym pakiecie, który oferujemy, zapewniając, że Twoja strona internetowa wygląda świetnie na wszystkich rozmiarach ekranów."
         },
         {
-          question: "Jak Będę Mógł Używać Sklepu Shopify Jako Swojego?",
-          answer: "24 - 48 godzin po złożeniu zamówienia wyślemy Ci informacje logowania do Twojego nowego sklepu Shopify Dropshipping. Wszystko, co musisz zrobić, to zalogować się, zmienić hasło, a sklep jest całkowicie Twój!"
+          question: "Czy Oferujecie Ciągłe Wsparcie I Konserwację?",
+          answer: "Tak, oferujemy pakiety ciągłego wsparcia i konserwacji. Podstawowe wsparcie obejmuje naprawy błędów i aktualizacje bezpieczeństwa. Pakiety wsparcia premium obejmują regularne aktualizacje, dodawanie funkcji, optymalizację wydajności i wsparcie priorytetowe. Omówimy Twoje potrzeby konserwacyjne po dostarczeniu Twojej strony internetowej."
         },
         {
-          question: "Czy Mogę Otrzymać Zwrot Pieniędzy, Jeśli Nie Podoba Mi Się Mój Sklep Shopify?",
-          answer: "Mamy gwarancję 365 dni, jeśli używasz swojego sklepu przez 365 dni i nie odzyskujesz swoich pieniędzy, w pełni zwrócimy Ci pieniądze."
+          question: "Czy Mogę Wprowadzić Zmiany Na Mojej Stronie Internetowej Po Jej Dostarczeniu?",
+          answer: "Tak! Otrzymasz pełny dostęp do swojej strony internetowej i możesz wprowadzać zmiany samodzielnie, jeśli czujesz się komfortowo z platformą. Zapewniamy również szkolenia i dokumentację. W przypadku złożonych zmian oferujemy pakiety konserwacyjne lub jednorazowe usługi aktualizacji w rozsądnych cenach."
         },
         {
-          question: "Czy Pomocie Mi Wprowadzić Zmiany I Dostosowania W Moim Sklepie Shopify?",
-          answer: "Zapewnimy Ci wsparcie, aby pomóc Ci uzyskać dostęp do sklepu Shopify i go używać. Damy Ci również przewodnik wideo krok po kroku, jak uzyskać dostęp i wprowadzić zmiany w swoim sklepie. Jednak nie będziemy mogli wejść do Twojego konta i wprowadzić zmian DLA CIEBIE, ponieważ nie pozwoliłoby nam to zapewnić naszych sklepów w tak dobrej cenie. Bądź pewien, pokochasz swoją stronę internetową i łatwo będziesz mógł wprowadzić zmiany, które chcesz."
+          question: "Co Jeśli Będę Potrzebował Dodatkowych Funkcji Lub Integracji Później?",
+          answer: "Bez problemu! Możemy dodać funkcje, integracje i funkcjonalności do Twojej strony internetowej w dowolnym momencie. Niezależnie od tego, czy potrzebujesz bramek płatniczych, zewnętrznych API, funkcji AI, narzędzi analitycznych czy niestandardowej funkcjonalności, możemy pomóc. Zapewnimy wycenę dla każdej dodatkowej pracy."
+        },
+        {
+          question: "Czy Oferujecie Optymalizację SEO?",
+          answer: "Tak! Podstawowa optymalizacja SEO jest zawarta we wszystkich naszych pakietach. Obejmuje to odpowiednie tagi meta, dane strukturalne, optymalizację mobilną i szybkie czasy ładowania. W przypadku zaawansowanych usług SEO, takich jak optymalizacja treści, budowanie linków i ciągłe kampanie SEO, oferujemy oddzielne pakiety SEO."
+        },
+        {
+          question: "Jakich Technologii I Frameworków Używacie?",
+          answer: "Używamy nowoczesnych, standardowych technologii branżowych, w tym React, Next.js, Vue.js, Node.js, TypeScript, Python (dla funkcji AI/ML) i różnych baz danych. Śledzimy najnowsze frameworki i narzędzia, aby zapewnić, że Twoja strona internetowa jest zbudowana z najnowocześniejszą technologią."
         }
       ]
     },
