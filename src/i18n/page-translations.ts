@@ -1496,7 +1496,7 @@ export const getYourWebsiteTranslations = {
       fullName: "Full Name",
       email: "Email",
       phoneNumber: "Phone Number",
-      submitButton: "→ Choose Your Store Ready For Sales By Tomorrow!",
+      submitButton: "→ Claim Your $199 Store! 🎁",
       privacy: "We Respect Your Privacy & Information",
       confirmation: {
         title: "Thank You!",
@@ -1688,7 +1688,7 @@ export const getYourWebsiteTranslations = {
       fullName: "Nom Complet",
       email: "Email",
       phoneNumber: "Numéro De Téléphone",
-      submitButton: "→ Choisissez Votre Magasin Prêt Pour Les Ventes Dès Demain!",
+      submitButton: "→ Réclamez Votre Magasin À 199 €! 🎁",
       privacy: "Nous Respectons Votre Vie Privée Et Vos Informations",
       confirmation: {
         title: "Merci!",
@@ -1880,7 +1880,7 @@ export const getYourWebsiteTranslations = {
       fullName: "Imię I Nazwisko",
       email: "Email",
       phoneNumber: "Numer Telefonu",
-      submitButton: "→ Wybierz Swój Sklep Gotowy Do Sprzedaży Już Jutro!",
+      submitButton: "→ Odbierz Swój Sklep Za 199 zł! 🎁",
       privacy: "Szanujemy Twoją Prywatność I Informacje",
       confirmation: {
         title: "Dziękujemy!",

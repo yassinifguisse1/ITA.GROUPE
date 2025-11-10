@@ -46,9 +46,9 @@ export default function GlobalNavigation() {
     return languages.find(lang => lang.code === language) || languages[0];
   };
 
-  // Close language dropdown when clicking outside
+  // Close language dropdown when clicking outside (both mouse and touch)
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       if (languageDropdownRef.current && !languageDropdownRef.current.contains(event.target as Node)) {
         setLanguageDropdownOpen(false);
       }
@@ -56,10 +56,12 @@ export default function GlobalNavigation() {
 
     if (languageDropdownOpen) {
       document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
     };
   }, [languageDropdownOpen]);
 
@@ -336,14 +338,73 @@ export default function GlobalNavigation() {
           <NavbarLogo />
           <div className="flex items-center gap-2">
             {/* Mobile Language Selector */}
-            <button
-              onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-foreground/80 hover:text-primary transition-colors rounded-lg hover:bg-accent relative"
-              aria-label="Select language"
-            >
-              <span className="text-base">{getCurrentLanguage().flag}</span>
-              <ChevronDown className={`h-3 w-3 transition-transform ${languageDropdownOpen ? 'rotate-180' : ''}`} />
-            </button>
+            <div className="relative" ref={languageDropdownRef}>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setLanguageDropdownOpen(!languageDropdownOpen);
+                }}
+                onTouchStart={(e) => {
+                  e.stopPropagation();
+                }}
+                className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-foreground/80 hover:text-primary active:text-primary transition-colors rounded-lg hover:bg-accent active:bg-accent relative z-50"
+                aria-label="Select language"
+                type="button"
+              >
+                <span className="text-base">{getCurrentLanguage().flag}</span>
+                <ChevronDown className={`h-3 w-3 transition-transform ${languageDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {/* Mobile Language Dropdown */}
+              {languageDropdownOpen && (
+                <>
+                  {/* Backdrop to close dropdown when clicking outside */}
+                  <div 
+                    className="fixed inset-0 z-[45]" 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setLanguageDropdownOpen(false);
+                    }}
+                    onTouchStart={(e) => {
+                      e.stopPropagation();
+                      setLanguageDropdownOpen(false);
+                    }}
+                  />
+                  <div 
+                    className="absolute top-full right-0 mt-2 w-40 rounded-xl shadow-2xl border border-white/20 bg-white dark:bg-neutral-900/95 overflow-hidden z-[50]"
+                    onClick={(e) => e.stopPropagation()}
+                    onTouchStart={(e) => e.stopPropagation()}
+                  >
+                    {languages.map((lang) => (
+                      <button
+                        key={lang.code}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setLanguage(lang.code as "en" | "fr" | "pl");
+                          setLanguageDropdownOpen(false);
+                        }}
+                        onTouchStart={(e) => {
+                          e.stopPropagation();
+                          setLanguage(lang.code as "en" | "fr" | "pl");
+                          setLanguageDropdownOpen(false);
+                        }}
+                        className={`flex items-center gap-2 w-full px-3 py-2.5 text-sm transition-colors touch-manipulation ${
+                          language === lang.code
+                            ? 'bg-primary/10 text-primary font-medium'
+                            : 'text-foreground/70 active:bg-accent/50 active:text-primary'
+                        }`}
+                        type="button"
+                      >
+                        <span className="text-base">{lang.flag}</span>
+                        <span>{lang.name}</span>
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
             
             <MobileNavToggle
               isOpen={mobileMenuOpen}
@@ -351,36 +412,6 @@ export default function GlobalNavigation() {
             />
           </div>
         </MobileNavHeader>
-        
-        {/* Mobile Language Dropdown */}
-        {languageDropdownOpen && (
-          <>
-            {/* Backdrop to close dropdown when clicking outside */}
-            <div 
-              className="fixed inset-0 z-40" 
-              onClick={() => setLanguageDropdownOpen(false)}
-            />
-            <div className="absolute top-16 right-4 w-40 rounded-xl shadow-2xl border border-white/20 bg-white dark:bg-neutral-900/95 overflow-hidden z-50">
-              {languages.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => {
-                    setLanguage(lang.code as "en" | "fr" | "pl");
-                    setLanguageDropdownOpen(false);
-                  }}
-                  className={`flex items-center gap-2 w-full px-3 py-2.5 text-sm transition-colors ${
-                    language === lang.code
-                      ? 'bg-primary/10 text-primary font-medium'
-                      : 'text-foreground/70 hover:bg-accent/50 hover:text-primary'
-                  }`}
-                >
-                  <span className="text-base">{lang.flag}</span>
-                  <span>{lang.name}</span>
-                </button>
-              ))}
-            </div>
-          </>
-        )}
         
         <MobileNavMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)}>
           {navItems[language].map((item, index) => renderMobileNavItem(item, index))}

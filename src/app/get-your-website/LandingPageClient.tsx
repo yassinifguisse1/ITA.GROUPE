@@ -257,14 +257,15 @@ export default function LandingPageClient() {
               </div>
 
               {/* As Seen On */}
-              <div className="flex items-center gap-4 pt-4">
-                <span className="text-sm font-semibold">{t.hero.asSeenOn}</span>
-                <div className="flex gap-3 opacity-80">
-                  <span className="text-xs font-bold">FOX NEWS</span>
-                  <span className="text-xs font-bold">CBS</span>
-                  <span className="text-xs font-bold">NBC</span>
-                  <span className="text-xs font-bold">ABC</span>
-                </div>
+              <div className="pt-4">
+                <Image
+                  src="/240116_Contentellect-ASO-Banners_Standard.png"
+                  alt="As Seen On: FOX NEWS, CBS, NBC, ABC"
+                  width={800}
+                  height={200}
+                  className="w-full h-auto object-contain"
+                  priority
+                />
               </div>
 
               {/* What You Get */}
