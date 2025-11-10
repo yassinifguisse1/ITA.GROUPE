@@ -188,15 +188,15 @@ export default function LandingPageClient() {
               </div> */}
 
               {/* Main Headline */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-tight text-center">
                 {t.hero.title}<br className="sm:hidden block" />
-                <span className="text-yellow-300"> {t.hero.titleHighlight} </span><br className="sm:hidden block" />
-                {t.hero.subtitle} <br className="sm:hidden block" />
+                <span className="text-yellow-300"> {t.hero.titleHighlight} </span>
+                {t.hero.subtitle} 
                 <span className="text-3xl sm:text-4xl lg:text-5xl"> {t.hero.price}</span> {t.hero.priceLabel}
               </h1>
 
               {/* Discount Badge */}
-              <div className="bg-yellow-400 text-slate-900 px-4 py-2 rounded-lg inline-block font-bold text-lg">
+              <div className="bg-yellow-400 text-slate-900 px-4 py-2 rounded-lg inline-block font-bold text-lg text-center">
                 {t.hero.discountBadge}
               </div>
 
