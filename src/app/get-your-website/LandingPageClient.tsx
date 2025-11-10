@@ -205,8 +205,10 @@ export default function LandingPageClient() {
                     className="w-full h-full object-cover"
                     controls
                     controlsList="nodownload nofullscreen noremoteplayback"
-                    preload="metadata"
+                    preload="auto"
                     playsInline
+                    autoPlay
+                    // muted
                     loop
                     crossOrigin="anonymous"
                     onError={(e) => {
