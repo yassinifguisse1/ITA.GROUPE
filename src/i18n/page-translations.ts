@@ -823,7 +823,7 @@ export const portfolioTranslations = {
         category: "Services",
         description: "Site web d'entreprise de services CVC professionnels présentant solutions de chauffage, ventilation et climatisation. Propose réservation de services, système de réponse d'urgence, témoignages clients et couverture complète de zone de service.",
         tags: ["CVC", "Services", "Réservation"],
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/hvac-1760970581896.jpg",
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1760969888607.png",
         link: "https://unityhvac.com/",
         featured: true
       },
@@ -965,7 +965,7 @@ export const portfolioTranslations = {
         category: "Usługi",
         description: "Profesjonalna strona firmy usług HVAC prezentująca rozwiązania ogrzewania, wentylacji i klimatyzacji. Oferuje rezerwację usług, system reagowania na nagłe wypadki, referencje klientów i kompleksowe pokrycie obszaru usług.",
         tags: ["HVAC", "Usługi", "Rezerwacja"],
-        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/hvac-1760970581896.jpg",
+        image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/image-1760969888607.png",
         link: "https://unityhvac.com/",
         featured: true
       },
@@ -1524,7 +1524,7 @@ export const getYourWebsiteTranslations = {
       title: "Obtenez Un Site Web",
       titleHighlight: "Primé",
       subtitle: "Fait Pour Vous En",
-      price: "199 $",
+      price: "199 €",
       priceLabel: "Ce Vendredi Noir",
       discountBadge: "Coupon Vendredi Noir 75% DE RÉDUCTION Valide Jusqu'à Ce Que Le Compte À Rebours Atteigne 0",
       videoTitle: "Regardez Cette Courte Vidéo Pour Voir Comment Ça Marche",
@@ -1542,7 +1542,7 @@ export const getYourWebsiteTranslations = {
         bonus2: "Bonus #2: Étude De Cas 0 $ - 412 000 $: 500 $+",
         bonus3: "Bonus #3: Cadeau Mystère: 500 $+"
       },
-      formPrice: "199 $!",
+      formPrice: "199 €!",
       formDiscount: "Coupon Vendredi Noir 75% DE RÉDUCTION Appliqué! (Habituellement 20 $)",
       availability: "Disponibilité Du Magasin Vendredi Noir Pour Aujourd'hui:"
     },
@@ -1551,7 +1551,7 @@ export const getYourWebsiteTranslations = {
       steps: [
         {
           title: "Nous Configurons Votre Magasin",
-          description: "Votre site eCommerce est construit, incluant 30 produits à fort potentiel dans votre niche, le tout pour seulement 199 $."
+          description: "Votre site eCommerce est construit, incluant 30 produits à fort potentiel dans votre niche, le tout pour seulement 199 €."
         },
         {
           title: "Les Fournisseurs Gèrent L'Exécution",
@@ -1566,7 +1566,7 @@ export const getYourWebsiteTranslations = {
           description: "Réinvestissez les profits, optimisez votre magasin et développez-vous pour construire une entreprise en ligne prospère."
         }
       ],
-      cta: "Réclamez Votre Magasin À 199 $! 🎁",
+      cta: "Réclamez Votre Magasin À 199 €! 🎁",
       ctaSubtitle: "Et Recevez-Le Demain..."
     },
     examples: {
@@ -1579,7 +1579,7 @@ export const getYourWebsiteTranslations = {
         {
           name: "Adessa M.",
           title: "6 Ventes Ma Première Semaine",
-          review: "Le magasin est arrivé en moins de 12 heures. J'ai suivi le guide publicitaire et j'ai fait six ventes la première semaine. Le meilleur 199 $ que j'ai dépensé."
+          review: "Le magasin est arrivé en moins de 12 heures. J'ai suivi le guide publicitaire et j'ai fait six ventes la première semaine. Le meilleur 199 € que j'ai dépensé."
         },
         {
           name: "Cosmas C.",
@@ -1608,7 +1608,7 @@ export const getYourWebsiteTranslations = {
         },
         {
           name: "Kay S.D.",
-          title: "Les 199 $ Qui Ont Tout Changé",
+          title: "Les 199 € Qui Ont Tout Changé",
           review: "J'ai presque payé des milliers pour un 'système.' Heureusement que je ne l'ai pas fait. C'était de haute qualité, rapide et a réellement rapporté de l'argent."
         },
         {
@@ -1639,8 +1639,8 @@ export const getYourWebsiteTranslations = {
           answer: "Oui! Nous nous spécialisons dans la construction de plateformes et d'applications SaaS alimentées par l'IA. Notre équipe a une vaste expérience avec les intégrations IA, les fonctionnalités d'apprentissage automatique et l'architecture SaaS moderne. Nous pouvons vous aider à construire tout, des chatbots IA aux plateformes d'analyse de données complexes."
         },
         {
-          question: "Qu'est-Ce Qui Est Inclus Dans Le Forfait Site Web À 199 $?",
-          answer: "Le forfait à 199 $ comprend un site web moderne entièrement responsive avec jusqu'à 5 pages, optimisation SEO de base, design adapté aux mobiles, formulaires de contact et personnalisation de base. Les fonctionnalités premium comme la fonctionnalité e-commerce, les intégrations IA, les plateformes personnalisées et les fonctionnalités avancées sont disponibles en options supplémentaires."
+          question: "Qu'est-Ce Qui Est Inclus Dans Le Forfait Site Web À 199 €?",
+          answer: "Le forfait à 199 € comprend un site web moderne entièrement responsive avec jusqu'à 5 pages, optimisation SEO de base, design adapté aux mobiles, formulaires de contact et personnalisation de base. Les fonctionnalités premium comme la fonctionnalité e-commerce, les intégrations IA, les plateformes personnalisées et les fonctionnalités avancées sont disponibles en options supplémentaires."
         },
         {
           question: "Pouvez-Vous Construire Des Applications Web Personnalisées Et Des Plateformes?",
@@ -1677,7 +1677,7 @@ export const getYourWebsiteTranslations = {
       ]
     },
     finalCta: {
-      title: "Réclamez Votre Magasin À 199 $! 🎁",
+      title: "Réclamez Votre Magasin À 199 €! 🎁",
       subtitle: "Et Recevez-Le Demain...",
       button: "Commander Maintenant"
     },
@@ -1716,7 +1716,7 @@ export const getYourWebsiteTranslations = {
       title: "Otrzymaj Nagrodzony",
       titleHighlight: "Stronę Internetową",
       subtitle: "Wykonaną Od",
-      price: "199 $",
+      price: "199 zł",
       priceLabel: "W Ten Czarny Piątek",
       discountBadge: "Kupon Czarny Piątek 75% ZNIŻKI Ważny Do Zera Licznika",
       videoTitle: "Obejrzyj Ten Krótki Film, Aby Zobaczyć, Jak To Działa",
@@ -1734,8 +1734,8 @@ export const getYourWebsiteTranslations = {
         bonus2: "Bonus #2: Studium Przypadku 0 $ - 412 000 $: 500 $+",
         bonus3: "Bonus #3: Tajemniczy Prezent: 500 $+"
       },
-      formPrice: "199 $!",
-      formDiscount: "Kupon Czarny Piątek 75% ZNIŻKI Zastosowany! (Zwykle 20 $)",
+      formPrice: "199 zł!",
+      formDiscount: "Kupon Czarny Piątek 75% ZNIŻKI Zastosowany! (Zwykle 20 zł)",
       availability: "Dostępność Sklepu Czarny Piątek Na Dzisiaj:"
     },
     howItWorks: {
@@ -1743,7 +1743,7 @@ export const getYourWebsiteTranslations = {
       steps: [
         {
           title: "Konfigurujemy Twój Sklep",
-          description: "Twój sklep eCommerce jest zbudowany, w tym 30 produktów o wysokim potencjale w Twojej niszy, wszystko za jedyne 199 $."
+          description: "Twój sklep eCommerce jest zbudowany, w tym 30 produktów o wysokim potencjale w Twojej niszy, wszystko za jedyne 199 zł."
         },
         {
           title: "Dostawcy Obsługują Realizację",
@@ -1758,7 +1758,7 @@ export const getYourWebsiteTranslations = {
           description: "Reinwestuj zyski, optymalizuj swój sklep i rozwijaj się, aby zbudować prosperujący biznes online."
         }
       ],
-      cta: "Odbierz Swój Sklep Za 199 $! 🎁",
+      cta: "Odbierz Swój Sklep Za 199 zł! 🎁",
       ctaSubtitle: "I Otrzymaj Go Jutro..."
     },
     examples: {
@@ -1771,7 +1771,7 @@ export const getYourWebsiteTranslations = {
         {
           name: "Adessa M.",
           title: "6 Sprzedaży W Moim Pierwszym Tygodniu",
-          review: "Sklep przybył w mniej niż 12 godzin. Podążałem za przewodnikiem reklamowym i zrobiłem sześć sprzedaży w pierwszym tygodniu. Najlepsze 199 $, które wydałem."
+          review: "Sklep przybył w mniej niż 12 godzin. Podążałem za przewodnikiem reklamowym i zrobiłem sześć sprzedaży w pierwszym tygodniu. Najlepsze 199 zł, które wydałem."
         },
         {
           name: "Cosmas C.",
@@ -1800,7 +1800,7 @@ export const getYourWebsiteTranslations = {
         },
         {
           name: "Kay S.D.",
-          title: "199 $, Które Zmieniło Wszystko",
+          title: "199 zł, Które Zmieniło Wszystko",
           review: "Prawie zapłaciłem tysiące za 'system.' Cieszę się, że nie. To była wysokiej jakości, szybka i faktycznie zarobiła pieniądze."
         },
         {
@@ -1831,8 +1831,8 @@ export const getYourWebsiteTranslations = {
           answer: "Tak! Specjalizujemy się w budowaniu platform i aplikacji SaaS zasilanych AI. Nasz zespół ma szerokie doświadczenie w integracjach AI, funkcjach uczenia maszynowego i nowoczesnej architekturze SaaS. Możemy pomóc Ci zbudować wszystko, od chatbotów AI po złożone platformy analizy danych."
         },
         {
-          question: "Co Jest Zawarte W Pakiecie Strony Internetowej Za 199 $?",
-          answer: "Pakiet za 199 $ obejmuje w pełni responsywną, nowoczesną stronę internetową z do 5 stronami, podstawową optymalizacją SEO, designem przyjaznym dla urządzeń mobilnych, formularzami kontaktowymi i podstawową personalizacją. Funkcje premium, takie jak funkcjonalność e-commerce, integracje AI, niestandardowe platformy i zaawansowane funkcje, są dostępne jako dodatki."
+          question: "Co Jest Zawarte W Pakiecie Strony Internetowej Za 199 zł?",
+          answer: "Pakiet za 199 zł obejmuje w pełni responsywną, nowoczesną stronę internetową z do 5 stronami, podstawową optymalizacją SEO, designem przyjaznym dla urządzeń mobilnych, formularzami kontaktowymi i podstawową personalizacją. Funkcje premium, takie jak funkcjonalność e-commerce, integracje AI, niestandardowe platformy i zaawansowane funkcje, są dostępne jako dodatki."
         },
         {
           question: "Czy Możecie Zbudować Niestandardowe Aplikacje Internetowe I Platformy?",
@@ -1869,7 +1869,7 @@ export const getYourWebsiteTranslations = {
       ]
     },
     finalCta: {
-      title: "Odbierz Swój Sklep Za 199 $! 🎁",
+      title: "Odbierz Swój Sklep Za 199 zł! 🎁",
       subtitle: "I Otrzymaj Go Jutro...",
       button: "Zamów Teraz"
     },

@@ -12,6 +12,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
 import { portfolioTranslations, getYourWebsiteTranslations } from "@/i18n/page-translations";
+import Link from "next/link";
 
 
 // Countdown Timer Component
@@ -463,8 +464,8 @@ export default function LandingPageClient() {
                   whileHover={{ scale: 1.05, y: -5 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow group cursor-pointer h-full">
-                    <a 
+                  <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow group cursor-pointer h-full p-0">
+                    <Link 
                       href={project.link || '#'} 
                       target="_blank" 
                       rel="noopener noreferrer"
@@ -504,7 +505,7 @@ export default function LandingPageClient() {
                           </div>
                         )}
                       </CardContent>
-                    </a>
+                    </Link>
                   </Card>
                 </motion.div>
               ))}
@@ -586,11 +587,11 @@ export default function LandingPageClient() {
 
           <Accordion type="single" collapsible className="w-full">
             {t.faq.items.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="border-b">
-                <AccordionTrigger className="text-left font-semibold text-slate-900 hover:text-emerald-600">
+              <AccordionItem key={index} value={`item-${index}`} className="border-b bg-slate-50 hover:bg-emerald-50 transition-colors rounded-lg mb-2 px-4 py-2">
+                <AccordionTrigger className="text-left font-semibold text-slate-900 hover:text-emerald-600 py-4">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-slate-600 leading-relaxed pt-2">
+                <AccordionContent className="text-slate-600 leading-relaxed pt-2 pb-4">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
