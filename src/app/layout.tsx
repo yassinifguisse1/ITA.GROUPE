@@ -8,6 +8,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import FacebookPixel from "@/components/FacebookPixel";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://itagroupe.com'),
@@ -173,7 +174,9 @@ export default function RootLayout({
         <ErrorReporter />
         <LanguageProvider>
           <GlobalNavigation />
-          <FacebookPixel />
+          <Suspense fallback={null}>
+            <FacebookPixel />
+          </Suspense>
           {children}
         </LanguageProvider>
         <Toaster />
