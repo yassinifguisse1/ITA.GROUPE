@@ -168,7 +168,18 @@ export default function LandingPageClient() {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
   };
-
+  
+// Track page view when landing page loads
+useEffect(() => {
+  if (typeof window !== 'undefined' && window.fbq) {
+    window.fbq('track', 'ViewContent', {
+      content_name: 'Website Building Landing Page',
+      content_type: 'product',
+      value: 199,
+      currency: 'USD',
+    });
+  }
+}, []);
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Hero Section with Countdown and Form */}

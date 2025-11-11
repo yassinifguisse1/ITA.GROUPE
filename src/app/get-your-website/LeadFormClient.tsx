@@ -55,11 +55,77 @@ export default function LeadFormClient() {
     country.code.includes(countrySearch) ||
     country.flag.includes(countrySearch)
   );
+// Add this helper function at the top of your file, after imports
+function getCookie(name: string): string | null {
+  if (typeof document === 'undefined') return null;
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
+  return null;
+}
+function getCountryFromCode(countryCode: string): string {
+  const country = countryCodes.find(c => c.code === countryCode);
+  return country?.country.toLowerCase() || '';
+}
+  // const onSubmit = async (data: FormData) => {
+  //   setSubmitError('');
+
+  //   try {
+  //     const response = await fetch('/api/get-your-website', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({
+  //         fullName: data.fullName,
+  //         email: data.email,
+  //         phoneNumber: `${data.countryCode} ${data.phoneNumber}`,
+  //       }),
+  //     });
+
+  //     if (!response.ok) {
+  //       const errorData = await response.json();
+  //       throw new Error(errorData.message || 'Failed to submit form');
+  //     }
+
+  //     setShowConfirmationDialog(true);
+  //     reset();
+  //     setCountrySearch('');
+  //     setIsCountrySelectOpen(false);
+  //   } catch (error) {
+  //     console.error('Error submitting form:', error);
+  //     setSubmitError(error instanceof Error ? error.message : 'Failed to submit your information. Please try again.');
+  //   }
+  // };
+
 
   const onSubmit = async (data: FormData) => {
     setSubmitError('');
-
+  
     try {
+      // Get Facebook cookies
+      const fbp = getCookie('_fbp');
+      const fbc = getCookie('_fbc');
+  
+      // Extract first and last name
+      const nameParts = data.fullName.trim().split(' ');
+      const firstName = nameParts[0];
+      const lastName = nameParts.slice(1).join(' ') || '';
+      
+      // Get country name from code
+      const countryName = getCountryFromCode(data.countryCode);
+  
+      // 1. Track with Facebook Pixel (client-side)
+      if (typeof window !== 'undefined' && window.fbq) {
+        window.fbq('track', 'Lead', {
+          content_name: 'Website Building Service',
+          content_category: 'Lead Form',
+          value: 199,
+          currency: 'USD',
+        });
+      }
+  
+      // 2. Send to your backend
       const response = await fetch('/api/get-your-website', {
         method: 'POST',
         headers: {
@@ -71,12 +137,39 @@ export default function LeadFormClient() {
           phoneNumber: `${data.countryCode} ${data.phoneNumber}`,
         }),
       });
-
+  
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || 'Failed to submit form');
       }
-
+  
+      // 3. Send to Facebook Conversions API (server-side)
+      try {
+        const fbResponse = await fetch('/api/facebook-conversion', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            eventName: 'Lead',
+            email: data.email,
+            phone: `${data.countryCode}${data.phoneNumber}`,
+            firstName: firstName,
+            lastName: lastName,
+            country: countryName,
+            eventSourceUrl: window.location.href,
+            fbp: fbp,
+            fbc: fbc,
+          }),
+        });
+        
+        const fbResult = await fbResponse.json();
+        console.log('Facebook tracking result:', fbResult);
+      } catch (fbError) {
+        console.error('Facebook tracking error:', fbError);
+        // Don't fail the entire form submission
+      }
+  
       setShowConfirmationDialog(true);
       reset();
       setCountrySearch('');
@@ -86,7 +179,6 @@ export default function LeadFormClient() {
       setSubmitError(error instanceof Error ? error.message : 'Failed to submit your information. Please try again.');
     }
   };
-
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

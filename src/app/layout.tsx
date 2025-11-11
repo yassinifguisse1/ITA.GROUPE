@@ -7,6 +7,7 @@ import Script from "next/script";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
+import FacebookPixel from "@/components/FacebookPixel";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://itagroupe.com'),
@@ -166,18 +167,19 @@ export default function RootLayout({
           }}
         />
       </head>
+      
       <body>
         <VisualEditsMessenger />
         <ErrorReporter />
         <LanguageProvider>
           <GlobalNavigation />
+          <FacebookPixel />
           {children}
         </LanguageProvider>
         <Toaster />
         <Script id="orchids-init" strategy="afterInteractive">
           {`window.__ORCHIDS_VISUAL_EDITS__ = true;`}
         </Script>
-        
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-PCQ0CKE9XN"
