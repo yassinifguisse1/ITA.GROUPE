@@ -46,9 +46,7 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-gray-100 animate-pulse flex items-center justify-center"><div className="text-gray-600">
-      </div></div>}>
+    
       <AboutPageClient />
-    </Suspense>
   );
 }

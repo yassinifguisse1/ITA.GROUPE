@@ -41,12 +41,23 @@ interface BlogPostClientProps {
 export default function BlogPostClient({ post, relatedPosts }: BlogPostClientProps) {
   const { language } = useLanguage();
   const t = translations[language];
-
+  const GRAIN_DATA_URL =
+  "data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E";
   return (
     <>
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="relative pt-32 pb-12 px-4">
+        <section className="relative min-h-[70vh] flex flex-col justify-end pb-20 pt-32 overflow-hidden text-white bg-gradient-to-br from-[#09090b] via-[#1e3a8a] to-[#4338ca]/70">
+      <div
+        aria-hidden
+        style={{
+          backgroundImage: `url("${GRAIN_DATA_URL}")`,
+          backgroundSize: "180px 180px",
+          backgroundRepeat: "repeat",
+          mixBlendMode: "overlay",
+        }}
+        className="absolute inset-0 pointer-events-none opacity-90"
+      />
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-background" />
           
           <div className="relative max-w-4xl mx-auto">
@@ -106,10 +117,22 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
               </button>
             </div>
           </div>
+          <div className="relative container mx-auto px-6 lg:px-4 aspect-[16/7] mt-8 rounded-2xl overflow-hidden bg-white">
+          <Image
+             src={post.image}
+             alt={post.title[language]}
+             width={1000}
+             height={1000}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+            className="object-cover rounded-2xl bg-white"
+            priority
+          />
+        </div>
+
         </section>
 
         {/* Featured Image */}
-        <section className="px-4 mb-12">
+        {/* <section className="px-4 mb-12">
           <div className="max-w-5xl mx-auto">
             <div className="relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
@@ -122,7 +145,7 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
               />
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Article Content */}
         <article className="px-4 pb-20">

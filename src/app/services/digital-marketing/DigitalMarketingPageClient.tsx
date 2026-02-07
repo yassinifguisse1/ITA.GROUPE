@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import Footer from "@/components/Footer";
-import GlobalNavigation from "@/components/GlobalNavigation";
 import ShaderBackground from "@/components/ShaderBackground";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
@@ -358,7 +357,6 @@ export default function DigitalMarketingPageClient() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-950 dark:to-neutral-900">
-      <GlobalNavigation />
       
       {/* Hero Section */}
       <ShaderBackground>

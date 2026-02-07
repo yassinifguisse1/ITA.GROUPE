@@ -1,6 +1,5 @@
 import VisualEditsMessenger from "@/visual-edits/VisualEditsMessenger";
 import ErrorReporter from "@/components/ErrorReporter";
-import GlobalNavigation from "@/components/GlobalNavigation";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { Toaster } from "@/components/ui/sonner";
 import Script from "next/script";
@@ -173,7 +172,6 @@ export default function RootLayout({
         <VisualEditsMessenger />
         <ErrorReporter />
         <LanguageProvider>
-          <GlobalNavigation />
           <Suspense fallback={null}>
             <FacebookPixel />
           </Suspense>

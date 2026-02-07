@@ -1,7 +1,6 @@
 "use client";
 
 import { Smartphone, Tablet, Watch, Zap, CheckCircle2, ArrowRight, MapPin, Users, Award, Check, Trophy, UsersRound, Sparkles , Phone } from "lucide-react";
-import Footer from "@/components/Footer";
 import Image from "next/image";
 import AnimatedTechTabs from "@/components/AnimatedTechTabs";
 import { motion } from "framer-motion";
@@ -9,7 +8,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { PointerHighlight } from "@/components/ui/pointer-highlight";
 import ShaderBackground from "@/components/ShaderBackground"
-import GlobalNavigation from "@/components/GlobalNavigation";
 import { useLanguage } from "@/context/LanguageContext";
 
 const content = {
@@ -339,7 +337,6 @@ export default function MobileDevelopmentPageClient() {
 
   return (
     <div className="relative">
-      <GlobalNavigation />
       <main>
         {/* Hero Section */}
         <section className="relative min-h-screen bg-black overflow-hidden">
@@ -632,7 +629,6 @@ export default function MobileDevelopmentPageClient() {
           </div>
         </section>
 
-        <Footer language={language} />
       </main>
     </div>
   );

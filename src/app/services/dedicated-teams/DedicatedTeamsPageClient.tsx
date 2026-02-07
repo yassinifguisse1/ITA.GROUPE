@@ -10,7 +10,6 @@ import { PointerHighlight } from "@/components/ui/pointer-highlight";
 import ShaderBackground from "@/components/ShaderBackground";
 import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import GlobalNavigation from "@/components/GlobalNavigation";
 
 
 const content = {
@@ -252,7 +251,6 @@ export default function DedicatedTeamsPageClient() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-950 dark:to-neutral-900">
-    <GlobalNavigation />
       {/* Hero Section */}
       <ShaderBackground>
         <section className="relative min-h-[65vh] flex items-center justify-center overflow-hidden pt-32 pb-20">

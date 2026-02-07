@@ -3,7 +3,6 @@
 import { Metadata } from "next";
 import { Target, TrendingUp, Users, FileSearch, CheckCircle2, ArrowRight, Sparkles, BarChart3, Clock, Shield, Phone, ChevronLeft, ChevronRight } from "lucide-react";
 import Footer from "@/components/Footer";
-import GlobalNavigation from "@/components/GlobalNavigation";
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
@@ -585,7 +584,6 @@ export default function BusinessAnalysisPageClient() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-neutral-50 dark:from-neutral-950 dark:to-neutral-900">
-      <GlobalNavigation />
 
       {/* Hero Section - Like QA Page */}
       <ShaderBackground>

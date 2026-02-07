@@ -10,7 +10,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { PointerHighlight } from "@/components/ui/pointer-highlight";
 import ShaderBackground from "@/components/ShaderBackground"
-import GlobalNavigation from "@/components/GlobalNavigation";
 import { useLanguage } from "@/context/LanguageContext";
 
 const content = {
@@ -673,7 +672,6 @@ export default function SoftwareProductDevelopmentPageClient() {
 
   return (
     <div className="min-h-screen bg-white dark:from-neutral-950 dark:to-neutral-900">
-      <GlobalNavigation />
       
       {/* Hero Section - IMPROVED */}
       <ShaderBackground>
