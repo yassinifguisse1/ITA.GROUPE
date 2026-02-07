@@ -360,10 +360,10 @@ const WorkSection = () => {
             AGENCY MILESTONES
           </p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-16">
-              <MilestoneCounter end={12} suffix="+" label="Years of Experience" />
-              <MilestoneCounter end={41} suffix="+" label="Projects Completed" />
-              <MilestoneCounter end={17} suffix="+" label="Clients Worldwide" />
-              <MilestoneCounter end={83} suffix="%" label="Customer Satisfaction" />
+              <MilestoneCounter end={2} suffix="+" label="Years of Experience" />
+              <MilestoneCounter end={20} suffix="+" label="Projects Completed" />
+              <MilestoneCounter end={47} suffix="+" label="Clients Worldwide" />
+              <MilestoneCounter end={99} suffix="%" label="Customer Satisfaction" />
             </div>
         </div>
       </div>

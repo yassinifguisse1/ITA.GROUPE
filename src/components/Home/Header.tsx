@@ -74,13 +74,13 @@ const Header = () => {
               <sup className="text-[10px] font-thin absolute top-1 -right-4">TM</sup>
             </div>
           </a>
-          <p
+          {/* <p
             className={`text-xs lg:text-lg hidden lg:inline-flex tracking-wide mt-1 transition-colors duration-300 ${
               isScrolled ? "text-zinc-500" : "text-white/70"
             }`}
           >
             • France, {time} (GMT+2)
-          </p>
+          </p> */}
         </div>
 
         {/* Right Side: Nav and CTA */}
