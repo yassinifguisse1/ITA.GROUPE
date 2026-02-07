@@ -18,7 +18,7 @@ const Testimonials = () => {
             (REVIEWS - 05)
           </p>
           <div className="flex justify-between items-end">
-            <h2 className="text-7xl md:text-8xl lg:text-9xl font-semibold tracking-tighter bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-400 bg-clip-text text-transparent leading-none">
+            <h2 className="text-7xl md:text-8xl lg:text-9xl font-semibold tracking-tighter bg-gradient-text   bg-clip-text text-transparent leading-none">
               Testimonials
             </h2>
             <div className="flex gap-4 mb-2">

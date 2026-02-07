@@ -159,6 +159,9 @@
   /* Custom Design Tokens */
   --gradient-primary: linear-gradient(135deg, #163C2E 0%, #239D89 100%);
   --gradient-secondary: linear-gradient(135deg, rgba(35, 157, 137, 0.1) 0%, rgba(22, 60, 46, 0.1) 100%);
+  /* Hero / section gradients */
+  --gradient-hero-r: linear-gradient(to right, #163c2e 0%, #239d89 50%, rgba(67, 56, 202, 0.6) 100%);
+  --gradient-hero-tr: linear-gradient(to top right, #163c2e 0%, #239d89 100%);
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.03);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.05);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
@@ -205,6 +208,14 @@
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.4);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.6), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+}
+
+/* Hero / section gradient utilities (from-[#163c2e] via-[#239D89] to-[#4338ca]/60 and from-[#163c2e] to-[#239D89]) */
+.bg-gradient-text {
+  background-image: var( --gradient-primary);
+}
+.bg-gradient-hero {
+  background-image: var(--gradient-hero-tr);
 }
 
 @layer base {
@@ -411,4 +422,12 @@
 /* Hide Next.js error overlay portal */
 nextjs-portal {
   display: none !important;
+}
+
+/*  bg-gradient-to-r from-[#163c2e] via-[#239D89] to-[#4338ca]/60 */
+.gradient-text-2 {
+  background: var(--gradient-primary-2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

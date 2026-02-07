@@ -15,7 +15,7 @@ const Footer = () => {
             </p>
             <a 
               href="mailto:hello@itagroupe.com" 
-              className="text-4xl md:text-6xl lg:text-[5.5rem] font-bold tracking-tighter text-[#4e6cff] hover:text-white transition-colors duration-300 leading-none"
+              className="text-4xl md:text-6xl lg:text-[5.5rem] font-bold tracking-tighter bg-gradient-text bg-clip-text text-transparent hover:bg-gradient-text/80 transition-colors duration-300 leading-none"
             >
               hello@itagroupe.com
             </a>
@@ -94,6 +94,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      
     </footer>
   );
 };

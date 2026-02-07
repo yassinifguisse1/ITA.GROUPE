@@ -236,7 +236,7 @@ const MilestoneCounter = ({ end, suffix, label }: { end: number; suffix: string;
   return (
     <div ref={ref} className="flex flex-col gap-4">
       <span className="text-6xl lg:text-[5rem] font-bold tracking-tightest text-zinc-900 leading-none">
-        {count}<span className="text-blue-600">{suffix}</span>
+        {count}<span className="">{suffix}</span>
       </span>
       <span className="text-zinc-500 text-sm font-medium tracking-wide">{label}</span>
     </div>
@@ -249,7 +249,7 @@ const WorkSection = () => {
       <div className="container mx-auto px-6 lg:px-4">
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row justify-between items-baseline mb-16">
-          <h2 className="text-7xl lg:text-9xl font-semibold tracking-tighter bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 bg-clip-text text-transparent">
+          <h2 className="text-7xl lg:text-9xl font-semibold tracking-tighter bg-gradient-text   bg-clip-text text-transparent">
             Our Work
           </h2>
           <p className="text-sm font-bold text-zinc-400 mt-4 lg:mt-0 uppercase tracking-widest leading-none">
@@ -276,7 +276,7 @@ const WorkSection = () => {
             </div>
             <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 px-2">
               <div>
-                <h3 className="text-2xl font-semibold tracking-tight group-hover:text-blue-600 transition-colors duration-300">DadOfSEO</h3>
+                <h3 className="text-2xl font-semibold tracking-tight group-hover:bg-gradient-text bg-clip-text text-transparent transition-colors duration-300">DadOfSEO</h3>
                 <p className="text-zinc-500 text-sm mt-2 font-medium">(2024 — Ongoing)</p>
               </div>
               <div className="flex gap-2">
@@ -307,7 +307,7 @@ const WorkSection = () => {
             </div>
             <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 px-2">
               <div>
-                <h3 className="text-2xl font-semibold tracking-tight group-hover:text-blue-600 transition-colors duration-300">Amseel Cars</h3>
+                <h3 className="text-2xl font-semibold tracking-tight group-hover:bg-gradient-text bg-clip-text text-transparent transition-colors duration-300">Amseel Cars</h3>
                 <p className="text-zinc-500 text-sm mt-2 font-medium">(2025)</p>
               </div>
               <div className="flex gap-2">
@@ -335,7 +335,7 @@ const WorkSection = () => {
               />
             </div>
             <div className="px-2">
-              <h4 className="font-semibold text-xl tracking-tight group-hover:text-blue-600 transition-colors duration-300">Mister Fish</h4>
+              <h4 className="font-semibold text-xl tracking-tight group-hover:bg-gradient-text bg-clip-text text-transparent transition-colors duration-300">Mister Fish</h4>
               <p className="text-zinc-400 text-sm mt-1 font-medium">(Restaurant Website - 2025)</p>
             </div>
           </Link>
@@ -345,7 +345,7 @@ const WorkSection = () => {
             <h3 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight max-w-3xl mb-12">
               We born in a shared studio loft with one mission: <span className="font-bold">create work that doesn&apos;t blend in</span>
             </h3>
-              <Link href="/projects" className="flex items-center gap-6 bg-[#d9ff00] hover:bg-[#cbe635] text-zinc-950 px-10 py-5 rounded-full font-bold transition-all duration-300 hover:scale-105 group">
+              <Link href="/projects" className="flex items-center gap-6 bg-gradient-to-r from-[#163c2e] to-[#239D89]   bg-clip-text text-transparent hover:bg-gradient-text/80 text-zinc-950q px-10 py-5 rounded-full font-bold transition-all duration-300 hover:scale-105 group">
                 See All Projects 
                 <div className="size-10 bg-zinc-950 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
                   <ArrowRight className="text-[#d9ff00]" size={20} />

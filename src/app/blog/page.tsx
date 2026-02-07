@@ -126,24 +126,26 @@ const posts = [
   },
 ];
 
-const GRAIN_DATA_URL =
-  "data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E";
+// const GRAIN_DATA_URL =
+//   "data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E";
 export default function BlogPage() {
   return (
     <>
       <Header />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-20 overflow-hidden text-white bg-gradient-to-br from-[#09090b] via-[#1e3a8a] to-[#4338ca]/70">
+      <section className="relative min-h-[70vh] flex flex-col justify-end pb-20 pt-32 overflow-hidden text-white bg-gradient-hero">
       <div
         aria-hidden
         style={{
-          backgroundImage: `url("${GRAIN_DATA_URL}")`,
-          backgroundSize: "180px 180px",
+          // backgroundImage: `url("${GRAIN_DATA_URL}")`,
+          backgroundImage: "url(/images/grain.avif)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
           backgroundRepeat: "repeat",
           mixBlendMode: "overlay",
         }}
-        className="absolute inset-0 pointer-events-none opacity-90"
+        className="absolute inset-0 bg-zinc-600 pointer-events-none opacity-50"
       />
         <div className="container mx-auto px-6 lg:px-4 relative z-10">
           <p className="uppercase text-white/60 text-xs font-bold tracking-[0.3rem] mb-6">

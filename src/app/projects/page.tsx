@@ -308,7 +308,7 @@ export default function ProjectsPage() {
       <Header />
 
       {/* Hero */}
-      <section className="relative min-h-[70vh] flex flex-col justify-end pb-20 pt-32 overflow-hidden text-white bg-gradient-to-br from-[#09090b] via-[#1e3a8a] to-[#4338ca]/70">
+      <section className="relative min-h-[70vh] flex flex-col justify-end pb-20 pt-32 overflow-hidden text-white bg-gradient-hero">
         <div
           style={{
             backgroundImage: "url(/images/grain.avif)",
@@ -341,7 +341,7 @@ export default function ProjectsPage() {
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 mb-4">
                 Featured
               </p>
-              <h2 className="text-5xl lg:text-7xl font-semibold tracking-tighter bg-gradient-to-r from-blue-700 via-blue-500 to-indigo-400 bg-clip-text text-transparent leading-none">
+              <h2 className="text-5xl lg:text-7xl font-semibold tracking-tighter bg-gradient-text bg-clip-text text-transparent leading-none">
                 Selected Work
               </h2>
             </div>
@@ -374,7 +374,7 @@ export default function ProjectsPage() {
                 </div>
                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 px-2">
                   <div>
-                    <h3 className="text-2xl font-semibold tracking-tight group-hover:text-blue-600 transition-colors duration-300">
+                    <h3 className="text-2xl font-semibold tracking-tight group-hover:bg-gradient-text bg-clip-text text-transparent transition-colors duration-300">
                       {project.title}
                     </h3>
                     <p className="text-zinc-500 text-sm mt-2 font-medium">
@@ -423,7 +423,7 @@ export default function ProjectsPage() {
                         className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-in-out"
                       />
                     </div>
-                    <h3 className="text-xl font-semibold tracking-tight group-hover:text-blue-600 transition-colors duration-300 mb-1">
+                    <h3 className="text-xl font-semibold tracking-tight group-hover:bg-gradient-text bg-clip-text text-transparent transition-colors duration-300 mb-1">
                       {project.title}
                     </h3>
                     <p className="text-zinc-400 text-xs font-medium mb-3">

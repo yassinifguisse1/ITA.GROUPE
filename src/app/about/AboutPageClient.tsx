@@ -8,8 +8,8 @@ export const metadata = {
   description: "Learn more about ITAGROUPE, the design agency that moves culture.",
 };
 
-const GRAIN_DATA_URL =
-  "data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E";
+// const GRAIN_DATA_URL =
+//   "data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E";
 
   export default function AboutPage() {
   return (
@@ -17,16 +17,17 @@ const GRAIN_DATA_URL =
       <Header />
 
       {/* Hero */}
-      <section className="relative min-h-[70vh] flex flex-col justify-end pb-20 pt-32 overflow-hidden text-white bg-gradient-to-br from-[#09090b] via-[#1e3a8a] to-[#4338ca]/70">
+      <section className="relative min-h-[70vh] flex flex-col justify-end pb-20 pt-32 overflow-hidden text-white bg-gradient-hero">
       <div
         aria-hidden
         style={{
-          backgroundImage: `url("${GRAIN_DATA_URL}")`,
-          backgroundSize: "180px 180px",
-          backgroundRepeat: "repeat",
+          // backgroundImage: `url("${GRAIN_DATA_URL}")`,
+          backgroundImage: "url(/images/grain.avif)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
           mixBlendMode: "overlay",
         }}
-        className="absolute inset-0 pointer-events-none opacity-90"
+        className="absolute inset-0 bg-zinc-600 pointer-events-none opacity-50"
       />
         <div className="container mx-auto px-6 lg:px-4 relative z-10">
           <p className="uppercase text-white/60 text-xs font-bold tracking-[0.3rem] mb-6">
@@ -72,7 +73,7 @@ const GRAIN_DATA_URL =
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 mb-4">
               What Drives Us
             </p>
-            <h2 className="text-5xl lg:text-7xl font-semibold tracking-tighter bg-gradient-to-r from-blue-700 via-blue-500 to-indigo-400 bg-clip-text text-transparent leading-none">
+            <h2 className="text-5xl lg:text-7xl font-semibold tracking-tighter bg-gradient-text bg-clip-text text-transparent leading-none">
               Our Values
             </h2>
           </div>
@@ -123,7 +124,7 @@ const GRAIN_DATA_URL =
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 mb-4">
               Our Team
             </p>
-            <h2 className="text-5xl lg:text-7xl font-semibold tracking-tighter bg-gradient-to-r from-blue-700 via-blue-500 to-indigo-400 bg-clip-text text-transparent leading-none">
+            <h2 className="text-5xl lg:text-7xl font-semibold tracking-tighter bg-gradient-text bg-clip-text text-transparent leading-none">
               The People Behind the Work
             </h2>
           </div>
@@ -132,12 +133,12 @@ const GRAIN_DATA_URL =
             {[
               {
                 name: "Mohammed Talhaoui",
-                role: "SEO Specialist · Website & Software Builder · Performance & Growth",
+                role: "CEO ",
                 image: "/images/mohamed.avif",
               },
               {
                 name: "Khalil Akirar",
-                role: "No-Code Product Builder & SEO Specialist · Growth-Focused Site Optimization",
+                role: "Project Owner ",
                 image: "/images/khalill.avif",
               },
               {

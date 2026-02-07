@@ -47,16 +47,17 @@ export default function BlogPostClient({ post, relatedPosts }: BlogPostClientPro
     <>
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="relative min-h-[70vh] flex flex-col justify-end pb-20 pt-32 overflow-hidden text-white bg-gradient-to-br from-[#09090b] via-[#1e3a8a] to-[#4338ca]/70">
+        <section className="relative min-h-[70vh] flex flex-col justify-end pb-20 pt-32 overflow-hidden text-white bg-gradient-hero">
       <div
         aria-hidden
         style={{
-          backgroundImage: `url("${GRAIN_DATA_URL}")`,
-          backgroundSize: "180px 180px",
+          backgroundImage: "url(/images/grain.avif)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
           backgroundRepeat: "repeat",
           mixBlendMode: "overlay",
         }}
-        className="absolute inset-0 pointer-events-none opacity-90"
+        className="absolute inset-0 bg-zinc-600 pointer-events-none opacity-50"
       />
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-background" />
           
