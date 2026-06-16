@@ -6,7 +6,6 @@ export const runtime = 'nodejs';
 export async function GET() {
   const baseUrl = 'https://itagroupe.com';
   const currentDate = new Date().toISOString().split('T')[0];
-  
   // Filter out "All" category as it's not a real category page
   const validCategories = categories.filter(cat => cat !== 'All');
   
@@ -20,7 +19,6 @@ export async function GET() {
       lastmod: currentDate
     };
   });
-
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${categoryPages.map(page => `  <url>

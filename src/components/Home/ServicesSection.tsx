@@ -135,11 +135,11 @@ const ServicesSection = () => {
             <div className="aspect-[4/5] bg-zinc-50 rounded-[2.5rem] overflow-hidden group">
               <div className="relative size-full cursor-pointer">
                 {/* Background Placeholder Text */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                {/* <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                   <span className="text-zinc-300 font-medium italic font-sans">
                     ({services[activeIndex].title} Image)
                   </span>
-                </div>
+                </div> */}
                 
                 {/* Image Overlay */}
                 <Image

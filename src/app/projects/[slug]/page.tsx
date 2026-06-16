@@ -571,7 +571,7 @@ export default async function ProjectDetailPage({
       <Header />
 
       {/* Hero */}
-      <section className="relative min-h-[70vh] flex flex-col justify-end pb-20 pt-32 overflow-hidden text-white bg-gradient-to-br from-[#09090b] via-[#1e3a8a] to-[#4338ca]/70">
+      <section className="relative min-h-[70vh] flex flex-col justify-end pb-20 pt-32 overflow-hidden text-white bg-gradient-hero">
         <div
           style={{
             backgroundImage: "url(/images/grain.avif)",
@@ -769,7 +769,7 @@ export default async function ProjectDetailPage({
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 mb-4">
             Impact
           </p>
-          <h2 className="text-5xl lg:text-7xl font-semibold tracking-tighter bg-gradient-to-r from-blue-700 via-blue-500 to-indigo-400 bg-clip-text text-transparent leading-none mb-16">
+          <h2 className="text-5xl lg:text-7xl font-semibold tracking-tighter bg-gradient-text bg-clip-text text-transparent leading-none mb-16">
             The Results
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">

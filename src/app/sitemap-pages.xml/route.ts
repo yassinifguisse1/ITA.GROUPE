@@ -12,6 +12,7 @@ export async function GET() {
     { url: '', lastmod: currentDate },
     { url: '/about', lastmod: currentDate },
     { url: '/contact', lastmod: currentDate },
+    { url: '/liens', lastmod: currentDate },
     { url: '/careers', lastmod: currentDate },
     { url: '/portfolio', lastmod: currentDate },
     { url: '/blog', lastmod: currentDate },
@@ -61,4 +62,3 @@ ${staticPages.map(page => `  <url>
     },
   });
 }
-
