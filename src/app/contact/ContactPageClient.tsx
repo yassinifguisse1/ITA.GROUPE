@@ -100,10 +100,10 @@ export default function ContactPage() {
                       Phone
                     </p>
                     <Link
-                      href="tel:+212611303435"
+                      href="tel:+212706393339"
                       className="text-sm font-medium text-zinc-900 hover:text-blue-600 transition-colors"
                     >
-                      +212 6 11 30 34 35
+                      +212 7 06 39 33 39
                     </Link>
                   </div>
                 </div>

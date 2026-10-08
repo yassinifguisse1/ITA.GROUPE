@@ -26,8 +26,8 @@ export const metadata: Metadata = {
   },
 };
 
-const phoneNumber = "+212611303435";
-const displayPhoneNumber = "+212 6 11 30 34 35";
+const phoneNumber = "+212706393339";
+const displayPhoneNumber = "+212 7 06 39 33 39";
 const email = "hello@itagroupe.com";
 
 const contactLinks = [
